@@ -3,111 +3,217 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- =========================================================
+       EDIT HERE: Basic SEO + Title
+       ========================================================= -->
   <meta name="description" content="Joly Solutions — independent engineering and operational advisory for complex, regulated asset portfolios." />
   <title>Joly Solutions</title>
 
   <style>
+    /* =========================================================
+       EDIT HERE: Brand colours + sizing tokens
+       - tweak these first before touching anything else
+       ========================================================= */
     :root{
-      --bg: #0b0f14;
-      --panel: rgba(255,255,255,0.06);
-      --border: rgba(255,255,255,0.12);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.72);
-      --muted2: rgba(255,255,255,0.60);
-      --accent: #63e6e2;   /* cyan */
-      --accent2:#8b5cf6;   /* purple */
+      --bg: #080b10;
+
+      /* Brand palette */
+      --purple: #8b5cf6;
+      --cyan:   #63e6e2;
       --gunmetal:#2a3441;
-      --shadow: 0 18px 50px rgba(0,0,0,0.45);
-      --radius: 18px;
+
+      /* Text */
+      --text:  rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.74);
+      --muted2:rgba(255,255,255,0.60);
+
+      /* UI */
+      --border: rgba(255,255,255,0.12);
+      --panel:  rgba(255,255,255,0.06);
+      --shadow: 0 18px 60px rgba(0,0,0,0.55);
+      --radius: 20px;
+
+      /* Layout */
       --max: 1120px;
+
+      /* Brand sizing (your main request) */
+      --logoSize: 64px;       /* was 40px */
+      --brandNameSize: 20px;  /* was 15px */
+      --brandTagSize: 13px;   /* was 12px */
     }
 
     *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background:
-        radial-gradient(900px 500px at 20% 10%, rgba(139,92,246,0.25), transparent 60%),
-        radial-gradient(900px 500px at 80% 20%, rgba(99,230,226,0.18), transparent 55%),
-        radial-gradient(800px 500px at 60% 90%, rgba(42,52,65,0.35), transparent 60%),
-        var(--bg);
       color: var(--text);
-      line-height:1.5;
+      line-height:1.55;
+
+      /* =========================================================
+         EDIT HERE: Background “colour + character”
+         - You can add/remove radial gradients to taste
+         ========================================================= */
+      background:
+        radial-gradient(900px 500px at 18% 10%, rgba(139,92,246,0.32), transparent 62%),
+        radial-gradient(900px 550px at 82% 20%, rgba(99,230,226,0.26), transparent 60%),
+        radial-gradient(700px 450px at 45% 92%, rgba(42,52,65,0.45), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.03), transparent 25%),
+        var(--bg);
     }
 
     a{ color: inherit; text-decoration: none; }
     a:hover{ text-decoration: underline; text-underline-offset: 3px; }
 
-    .wrap{ max-width: var(--max); margin:0 auto; padding: 28px 18px 60px; }
+    .wrap{ max-width: var(--max); margin:0 auto; padding: 28px 18px 70px; }
 
+    /* =========================================================
+       TOP BAR / HEADER
+       ========================================================= */
     header{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 14px;
-      position: sticky; top:0;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(11,15,20,0.85), rgba(11,15,20,0.55));
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top:0;
       z-index: 10;
+
+      /* glassy effect */
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(8,11,16,0.92), rgba(8,11,16,0.55));
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
+
     header .inner{
       max-width: var(--max);
       margin:0 auto;
       width: 100%;
       padding: 14px 18px;
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
     }
 
+    /* =========================================================
+       BRAND (Logo + Name)
+       - Your main request: larger and more “designed”
+       ========================================================= */
     .brand{
-      display:flex; align-items:center; gap: 12px;
-      min-width: 240px;
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      min-width: 260px;
     }
+
     .logo{
-      width: 40px; height: 40px; flex: 0 0 auto;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.10);
-      display:grid; place-items:center;
+      width: var(--logoSize);
+      height: var(--logoSize);
+      border-radius: 16px;
+      display:grid;
+      place-items:center;
       overflow:hidden;
+
+      /* more visual character */
+      background:
+        linear-gradient(135deg, rgba(99,230,226,0.22), rgba(139,92,246,0.18));
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.45),
+        0 0 28px rgba(99,230,226,0.10),
+        0 0 28px rgba(139,92,246,0.08);
     }
-    .logo img{ width: 100%; height: 100%; object-fit: contain; }
+
+    .logo img{
+      width: 92%;
+      height: 92%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.25));
+    }
+
     .brand-title{
-      display:flex; flex-direction:column;
-      line-height:1.1;
+      display:flex;
+      flex-direction:column;
+      line-height:1.15;
     }
-    .brand-title strong{ font-size: 15px; letter-spacing: 0.2px; }
-    .brand-title span{ font-size: 12px; color: var(--muted2); }
+
+    .brand-title strong{
+      font-size: var(--brandNameSize);
+      letter-spacing: -0.2px;
+      font-weight: 800;
+
+      /* subtle gradient text for “more colour” */
+      background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(99,230,226,0.95));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .brand-title span{
+      font-size: var(--brandTagSize);
+      color: var(--muted2);
+      letter-spacing: 0.1px;
+    }
 
     nav{
-      display:flex; align-items:center; gap: 14px; flex-wrap: wrap;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
       justify-content: flex-end;
     }
+
     nav a{
       font-size: 13px;
       color: var(--muted);
       padding: 8px 10px;
       border-radius: 10px;
+      border: 1px solid transparent;
     }
+
     nav a:hover{
       background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.10);
       text-decoration:none;
       color: var(--text);
     }
 
+    /* =========================================================
+       HERO
+       ========================================================= */
     .hero{
       margin-top: 26px;
       padding: 28px;
       border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.14);
       box-shadow: var(--shadow);
+
+      /* more colour and depth */
+      background:
+        radial-gradient(900px 400px at 15% 0%, rgba(139,92,246,0.20), transparent 60%),
+        radial-gradient(900px 400px at 85% 20%, rgba(99,230,226,0.16), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.04));
+
       display:grid;
       grid-template-columns: 1.25fr 0.75fr;
       gap: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* decorative top border line */
+    .hero::before{
+      content:"";
+      position:absolute;
+      top:0; left:0; right:0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+      opacity: 0.75;
     }
 
     .kicker{
-      display:inline-flex; align-items:center; gap:10px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
       padding: 8px 12px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.14);
@@ -116,24 +222,29 @@
       font-size: 13px;
       width: fit-content;
     }
+
     .dot{
-      width:10px; height:10px; border-radius:99px;
-      background: linear-gradient(45deg, var(--accent2), var(--accent));
+      width:10px;
+      height:10px;
+      border-radius:99px;
+      background: linear-gradient(45deg, var(--purple), var(--cyan));
       box-shadow: 0 0 18px rgba(99,230,226,0.25);
     }
 
     h1{
       margin: 14px 0 10px;
-      font-size: clamp(26px, 3vw, 40px);
-      letter-spacing: -0.4px;
-      line-height: 1.15;
+      font-size: clamp(28px, 3.2vw, 44px);
+      letter-spacing: -0.6px;
+      line-height: 1.12;
     }
+
     .subhead{
       font-size: 15px;
       color: var(--muted);
-      max-width: 70ch;
+      max-width: 72ch;
       margin: 0 0 14px;
     }
+
     .trust{
       font-size: 14px;
       color: var(--muted2);
@@ -141,36 +252,68 @@
     }
 
     .cta-row{ display:flex; gap: 12px; flex-wrap: wrap; }
+
     .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap: 10px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
       padding: 12px 14px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.14);
       background: rgba(255,255,255,0.06);
       color: var(--text);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 14px;
-      text-decoration:none;
+      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
     }
-    .btn:hover{ text-decoration:none; background: rgba(255,255,255,0.10); }
+
+    .btn:hover{
+      text-decoration:none;
+      background: rgba(255,255,255,0.10);
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.18);
+    }
+
     .btn.primary{
       border-color: rgba(99,230,226,0.40);
-      background: linear-gradient(135deg, rgba(99,230,226,0.22), rgba(139,92,246,0.18));
+      background: linear-gradient(135deg, rgba(99,230,226,0.26), rgba(139,92,246,0.20));
+      box-shadow: 0 0 34px rgba(99,230,226,0.12);
     }
-    .btn.primary:hover{ background: linear-gradient(135deg, rgba(99,230,226,0.28), rgba(139,92,246,0.22)); }
 
+    .btn.primary:hover{
+      background: linear-gradient(135deg, rgba(99,230,226,0.30), rgba(139,92,246,0.24));
+    }
+
+    /* =========================================================
+       CONTACT CARD
+       ========================================================= */
     .card{
       border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(11,15,20,0.35);
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(8,11,16,0.35);
       padding: 18px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      position: relative;
+      overflow:hidden;
     }
+
+    /* subtle accent glow stripe */
+    .card::before{
+      content:"";
+      position:absolute;
+      top:-60px; right:-60px;
+      width: 170px; height: 170px;
+      background: radial-gradient(circle at 30% 30%, rgba(99,230,226,0.25), transparent 60%);
+      transform: rotate(15deg);
+    }
+
     .card h2{
       margin: 0 0 10px;
       font-size: 16px;
       letter-spacing: -0.2px;
     }
+
     .kv{
       display:grid;
       grid-template-columns: 110px 1fr;
@@ -178,11 +321,13 @@
       margin-top: 10px;
       font-size: 13px;
     }
+
     .k{ color: var(--muted2); }
     .v{ color: var(--text); word-break: break-word; }
 
     .pill{
-      display:inline-flex; align-items:center;
+      display:inline-flex;
+      align-items:center;
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.14);
@@ -193,28 +338,84 @@
       width: fit-content;
     }
 
+    /* =========================================================
+       SECTIONS
+       - “markers” built into the layout
+       ========================================================= */
     section{ margin-top: 22px; }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      margin: 0 0 10px;
+    }
+
+    .section-title .bar{
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--purple), var(--cyan));
+      box-shadow: 0 0 20px rgba(99,230,226,0.16);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .section-title h3{
+      margin:0;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+
     .grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
+
     .panel{
       border-radius: var(--radius);
       border: 1px solid rgba(255,255,255,0.10);
       background: rgba(255,255,255,0.04);
       padding: 18px;
+      position: relative;
+      overflow:hidden;
     }
-    .panel h3{
+
+    /* faint diagonal texture for “design character” */
+    .panel::after{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background: repeating-linear-gradient(
+        135deg,
+        rgba(255,255,255,0.035) 0px,
+        rgba(255,255,255,0.035) 2px,
+        transparent 2px,
+        transparent 10px
+      );
+      opacity: 0.10;
+      pointer-events:none;
+    }
+
+    .panel h4{
       margin: 0 0 8px;
       font-size: 16px;
       letter-spacing: -0.2px;
+      position: relative;
+      z-index: 1;
     }
+
+    .panel p, .panel ul{
+      position: relative;
+      z-index: 1;
+    }
+
     .panel p{
       margin: 0;
       color: var(--muted);
       font-size: 14px;
     }
+
     ul{
       margin: 10px 0 0 18px;
       color: var(--muted);
@@ -229,16 +430,16 @@
       background: rgba(255,255,255,0.04);
       padding: 18px;
     }
-    .full h3{ margin:0 0 8px; font-size: 16px; }
+
     .two-col{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .footer{
-      margin-top: 26px;
+      margin-top: 28px;
       padding-top: 18px;
       border-top: 1px solid rgba(255,255,255,0.10);
       display:flex;
@@ -255,19 +456,25 @@
       .grid{ grid-template-columns: 1fr; }
       .two-col{ grid-template-columns: 1fr; }
       nav{ display:none; }
+      :root{ --logoSize: 58px; --brandNameSize: 19px; }
     }
   </style>
 </head>
 
 <body>
+  <!-- =========================================================
+       HEADER
+       ========================================================= -->
   <header>
     <div class="inner">
       <div class="brand">
         <div class="logo" aria-label="Joly Solutions logo">
-          <!-- Put your logo file beside index.html and name it logo.png -->
+          <!-- EDIT HERE: Keep this file beside index.html and name it logo.png -->
           <img src="logo.png" alt="Joly Solutions logo" />
         </div>
+
         <div class="brand-title">
+          <!-- EDIT HERE: Brand name + tagline -->
           <strong>Joly Solutions</strong>
           <span>Independent engineering and operational advisory</span>
         </div>
@@ -275,20 +482,25 @@
 
       <nav aria-label="Primary">
         <a href="#what">What we do</a>
+        <a href="#capabilities">Capabilities</a>
         <a href="#who">Who we support</a>
-        <a href="#engage">How we engage</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
+    <!-- =========================================================
+         HERO
+         ========================================================= -->
     <div class="hero" id="top">
       <div>
         <div class="kicker"><span class="dot"></span> Portfolio-minded advisory built for consequence</div>
 
+        <!-- EDIT HERE: Main headline -->
         <h1>Energy Solutions and Resilience Planning for Complex, Regulated Asset Portfolios</h1>
 
+        <!-- EDIT HERE: Short positioning paragraph -->
         <p class="subhead">
           Independent engineering and operational advisory for public institutions, regulated industries, and portfolio owners
           where energy, infrastructure, and resilience decisions carry material operational, financial, and governance risk.
@@ -300,32 +512,31 @@
         </p>
 
         <div class="cta-row">
+          <!-- EDIT HERE: Buttons -->
           <a class="btn primary" href="#contact">Request a confidential discussion</a>
           <a class="btn" href="#what">Explore capabilities</a>
         </div>
       </div>
 
+      <!-- =========================================================
+           CONTACT CARD
+           ========================================================= -->
       <aside class="card" id="contact">
         <h2>Contact</h2>
 
+        <!-- EDIT HERE: Contact details -->
         <div class="kv">
           <div class="k">Name</div>
           <div class="v">Marc-Antoine Joly, P.Eng., CEM, CMVP</div>
 
           <div class="k">Email</div>
-          <div class="v">
-            <a href="mailto:marcantoinejpjoly@gmail.com">marcantoinejpjoly@gmail.com</a>
-          </div>
+          <div class="v"><a href="mailto:marcantoinejpjoly@gmail.com">marcantoinejpjoly@gmail.com</a></div>
 
           <div class="k">Mobile</div>
-          <div class="v">
-            <a href="tel:+16132194375">+1 (613) 219-4375</a>
-          </div>
+          <div class="v"><a href="tel:+16132194375">+1 (613) 219-4375</a></div>
 
           <div class="k">LinkedIn</div>
-          <div class="v">
-            <a href="https://www.linkedin.com/in/energyjoly17/" target="_blank" rel="noopener">linkedin.com/in/energyjoly17</a>
-          </div>
+          <div class="v"><a href="https://www.linkedin.com/in/energyjoly17/" target="_blank" rel="noopener">linkedin.com/in/energyjoly17</a></div>
 
           <div class="k">Location</div>
           <div class="v">Ontario, Canada</div>
@@ -333,15 +544,21 @@
 
         <div class="pill">Available for confidential advisory discussions</div>
 
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <div class="cta-row" style="margin-top:14px;">
           <a class="btn primary" href="mailto:marcantoinejpjoly@gmail.com?subject=Joly%20Solutions%20%7C%20Confidential%20Discussion">Email now</a>
-          <a class="btn" href="#what">What we do</a>
+          <a class="btn" href="#capabilities">Capabilities</a>
         </div>
       </aside>
     </div>
 
+    <!-- =========================================================
+         SECTION: Context
+         ========================================================= -->
     <section class="full" id="why">
-      <h3>When energy and infrastructure decisions become institutional risks</h3>
+      <div class="section-title">
+        <div class="bar"></div>
+        <h3>When energy and infrastructure decisions become institutional risks</h3>
+      </div>
       <p style="margin:0; color: var(--muted); font-size:14px;">
         Many organizations face the same challenge: aging infrastructure under capital constraints, energy programs and platforms
         that no longer meet security or governance expectations, growing exposure to disruption and audit, and decisions that are
@@ -353,9 +570,15 @@
       </p>
     </section>
 
+    <!-- =========================================================
+         SECTION: What we do
+         ========================================================= -->
     <section class="grid" id="what">
       <div class="panel">
-        <h3>What we do</h3>
+        <div class="section-title">
+          <div class="bar"></div>
+          <h3>What we do</h3>
+        </div>
         <p>
           Portfolio-scale strategy, program renewal, resilience planning, and governance support.
           Vendor-agnostic, outcome-focused, and built to stand up to scrutiny.
@@ -369,7 +592,10 @@
       </div>
 
       <div class="panel">
-        <h3>A different way of seeing risk</h3>
+        <div class="section-title">
+          <div class="bar"></div>
+          <h3>A different way of seeing risk</h3>
+        </div>
         <p>
           Most advisors approach energy and infrastructure through a single lens (optimization, compliance, or policy).
           Our work is informed by accountability across operations, regulated environments, and executive governance.
@@ -382,19 +608,26 @@
       </div>
     </section>
 
+    <!-- =========================================================
+         SECTION: Capabilities
+         ========================================================= -->
     <section class="full" id="capabilities">
-      <h3>Core capabilities</h3>
+      <div class="section-title">
+        <div class="bar"></div>
+        <h3>Core capabilities</h3>
+      </div>
 
       <div class="two-col">
         <div class="panel">
-          <h3>Energy Solutions and Resilience Planning</h3>
+          <h4>Energy Solutions and Resilience Planning</h4>
           <p>
             Portfolio-scale energy strategy, program renewal, and infrastructure resilience planning
             including legacy program evolution, capital-aware transition pathways, and procurement-ready architectures.
           </p>
         </div>
+
         <div class="panel">
-          <h3>Regulated Food and Critical Production Environments</h3>
+          <h4>Regulated Food and Critical Production Environments</h4>
           <p>
             Engineering and operational advisory for facilities where downtime, contamination, or non-compliance carry
             disproportionate risk integrating energy reliability, production reality, and sustainability.
@@ -402,8 +635,8 @@
         </div>
       </div>
 
-      <div style="margin-top:14px;" class="panel">
-        <h3>Governance, board oversight, and enterprise risk</h3>
+      <div class="panel" style="margin-top:14px;">
+        <h4>Governance, board oversight, and enterprise risk</h4>
         <p>
           Independent technical governance for Boards and Executives including TRAs, BCPs, and program assurance
           translating engineering risk into defensible decisions.
@@ -411,9 +644,15 @@
       </div>
     </section>
 
+    <!-- =========================================================
+         SECTION: Who we support / How we engage
+         ========================================================= -->
     <section class="grid" id="who">
       <div class="panel">
-        <h3>Who we typically support</h3>
+        <div class="section-title">
+          <div class="bar"></div>
+          <h3>Who we typically support</h3>
+        </div>
         <ul>
           <li>Provincial ministries and agencies</li>
           <li>School boards, universities, hospitals, and public institutions</li>
@@ -423,7 +662,10 @@
       </div>
 
       <div class="panel" id="engage">
-        <h3>How we engage</h3>
+        <div class="section-title">
+          <div class="bar"></div>
+          <h3>How we engage</h3>
+        </div>
         <p>
           We act as a prime, independent advisor accountable for clarity and outcomes:
           frame the problem correctly, assess risk and consequence, define viable pathways forward,
@@ -437,8 +679,14 @@
       </div>
     </section>
 
+    <!-- =========================================================
+         FINAL CTA
+         ========================================================= -->
     <section class="full">
-      <h3>Let’s talk before decisions become problems</h3>
+      <div class="section-title">
+        <div class="bar"></div>
+        <h3>Let’s talk before decisions become problems</h3>
+      </div>
       <p style="margin:0; color: var(--muted); font-size:14px;">
         If you are navigating an aging energy or infrastructure program, increasing resilience or governance exposure,
         or a decision that must stand up to scrutiny, we offer confidential, independent advisory support.
@@ -456,6 +704,7 @@
   </main>
 
   <script>
+    // EDIT HERE: Simple dynamic year
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
