@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Joly Solutions — independent engineering and operational advisory for complex, regulated asset portfolios." />
+  <title>Joly Solutions</title>
+
+  <style>
+    :root{
+      --bg: #0b0f14;
+      --panel: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.12);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+      --muted2: rgba(255,255,255,0.60);
+      --accent: #63e6e2;   /* cyan */
+      --accent2:#8b5cf6;   /* purple */
+      --gunmetal:#2a3441;
+      --shadow: 0 18px 50px rgba(0,0,0,0.45);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(139,92,246,0.25), transparent 60%),
+        radial-gradient(900px 500px at 80% 20%, rgba(99,230,226,0.18), transparent 55%),
+        radial-gradient(800px 500px at 60% 90%, rgba(42,52,65,0.35), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      line-height:1.5;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap{ max-width: var(--max); margin:0 auto; padding: 28px 18px 60px; }
+
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+      position: sticky; top:0;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,15,20,0.85), rgba(11,15,20,0.55));
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 10;
+    }
+    header .inner{
+      max-width: var(--max);
+      margin:0 auto;
+      width: 100%;
+      padding: 14px 18px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap: 12px;
+      min-width: 240px;
+    }
+    .logo{
+      width: 40px; height: 40px; flex: 0 0 auto;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      display:grid; place-items:center;
+      overflow:hidden;
+    }
+    .logo img{ width: 100%; height: 100%; object-fit: contain; }
+    .brand-title{
+      display:flex; flex-direction:column;
+      line-height:1.1;
+    }
+    .brand-title strong{ font-size: 15px; letter-spacing: 0.2px; }
+    .brand-title span{ font-size: 12px; color: var(--muted2); }
+
+    nav{
+      display:flex; align-items:center; gap: 14px; flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav a{
+      font-size: 13px;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    nav a:hover{
+      background: rgba(255,255,255,0.06);
+      text-decoration:none;
+      color: var(--text);
+    }
+
+    .hero{
+      margin-top: 26px;
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      box-shadow: var(--shadow);
+      display:grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 18px;
+    }
+
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      font-size: 13px;
+      width: fit-content;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: linear-gradient(45deg, var(--accent2), var(--accent));
+      box-shadow: 0 0 18px rgba(99,230,226,0.25);
+    }
+
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(26px, 3vw, 40px);
+      letter-spacing: -0.4px;
+      line-height: 1.15;
+    }
+    .subhead{
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 70ch;
+      margin: 0 0 14px;
+    }
+    .trust{
+      font-size: 14px;
+      color: var(--muted2);
+      margin: 0 0 20px;
+    }
+
+    .cta-row{ display:flex; gap: 12px; flex-wrap: wrap; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration:none;
+    }
+    .btn:hover{ text-decoration:none; background: rgba(255,255,255,0.10); }
+    .btn.primary{
+      border-color: rgba(99,230,226,0.40);
+      background: linear-gradient(135deg, rgba(99,230,226,0.22), rgba(139,92,246,0.18));
+    }
+    .btn.primary:hover{ background: linear-gradient(135deg, rgba(99,230,226,0.28), rgba(139,92,246,0.22)); }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(11,15,20,0.35);
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+    .card h2{
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+    .kv{
+      display:grid;
+      grid-template-columns: 110px 1fr;
+      gap: 10px 12px;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    .k{ color: var(--muted2); }
+    .v{ color: var(--text); word-break: break-word; }
+
+    .pill{
+      display:inline-flex; align-items:center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      width: fit-content;
+    }
+
+    section{ margin-top: 22px; }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .panel{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      padding: 18px;
+    }
+    .panel h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+    .panel p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    ul{
+      margin: 10px 0 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    li{ margin: 6px 0; }
+
+    .full{
+      margin-top: 16px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      padding: 18px;
+    }
+    .full h3{ margin:0 0 8px; font-size: 16px; }
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .footer{
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted2);
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+      .two-col{ grid-template-columns: 1fr; }
+      nav{ display:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-label="Joly Solutions logo">
+          <!-- Put your logo file beside index.html and name it logo.png -->
+          <img src="logo.png" alt="Joly Solutions logo" />
+        </div>
+        <div class="brand-title">
+          <strong>Joly Solutions</strong>
+          <span>Independent engineering and operational advisory</span>
+        </div>
+      </div>
+
+      <nav aria-label="Primary">
+        <a href="#what">What we do</a>
+        <a href="#who">Who we support</a>
+        <a href="#engage">How we engage</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="hero" id="top">
+      <div>
+        <div class="kicker"><span class="dot"></span> Portfolio-minded advisory built for consequence</div>
+
+        <h1>Energy Solutions and Resilience Planning for Complex, Regulated Asset Portfolios</h1>
+
+        <p class="subhead">
+          Independent engineering and operational advisory for public institutions, regulated industries, and portfolio owners
+          where energy, infrastructure, and resilience decisions carry material operational, financial, and governance risk.
+        </p>
+
+        <p class="trust">
+          We work at the intersection of engineering reality, operational accountability, and board-level oversight,
+          helping leaders make defensible decisions when complexity and consequence are high.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#contact">Request a confidential discussion</a>
+          <a class="btn" href="#what">Explore capabilities</a>
+        </div>
+      </div>
+
+      <aside class="card" id="contact">
+        <h2>Contact</h2>
+
+        <div class="kv">
+          <div class="k">Name</div>
+          <div class="v">Marc-Antoine Joly, P.Eng., CEM, CMVP</div>
+
+          <div class="k">Email</div>
+          <div class="v">
+            <a href="mailto:marcantoinejpjoly@gmail.com">marcantoinejpjoly@gmail.com</a>
+          </div>
+
+          <div class="k">Mobile</div>
+          <div class="v">
+            <a href="tel:+16132194375">+1 (613) 219-4375</a>
+          </div>
+
+          <div class="k">LinkedIn</div>
+          <div class="v">
+            <a href="https://www.linkedin.com/in/energyjoly17/" target="_blank" rel="noopener">linkedin.com/in/energyjoly17</a>
+          </div>
+
+          <div class="k">Location</div>
+          <div class="v">Ontario, Canada</div>
+        </div>
+
+        <div class="pill">Available for confidential advisory discussions</div>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn primary" href="mailto:marcantoinejpjoly@gmail.com?subject=Joly%20Solutions%20%7C%20Confidential%20Discussion">Email now</a>
+          <a class="btn" href="#what">What we do</a>
+        </div>
+      </aside>
+    </div>
+
+    <section class="full" id="why">
+      <h3>When energy and infrastructure decisions become institutional risks</h3>
+      <p style="margin:0; color: var(--muted); font-size:14px;">
+        Many organizations face the same challenge: aging infrastructure under capital constraints, energy programs and platforms
+        that no longer meet security or governance expectations, growing exposure to disruption and audit, and decisions that are
+        technically complex but executive and board-level in consequence.
+      </p>
+      <p style="margin:10px 0 0; color: var(--muted2); font-size:14px;">
+        The issue is rarely a lack of technology or effort. It is a lack of integrated perspective across engineering, operations,
+        governance, and risk. That is where we focus.
+      </p>
+    </section>
+
+    <section class="grid" id="what">
+      <div class="panel">
+        <h3>What we do</h3>
+        <p>
+          Portfolio-scale strategy, program renewal, resilience planning, and governance support.
+          Vendor-agnostic, outcome-focused, and built to stand up to scrutiny.
+        </p>
+        <ul>
+          <li>Energy program evolution and transition pathways</li>
+          <li>Infrastructure resilience and continuity planning</li>
+          <li>Independent architecture and risk review</li>
+          <li>Procurement-ready requirements and assurance frameworks</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>A different way of seeing risk</h3>
+        <p>
+          Most advisors approach energy and infrastructure through a single lens (optimization, compliance, or policy).
+          Our work is informed by accountability across operations, regulated environments, and executive governance.
+        </p>
+        <ul>
+          <li>Identify failure modes early</li>
+          <li>Challenge assumptions constructively</li>
+          <li>Design solutions that survive audit, implementation, and leadership change</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="full" id="capabilities">
+      <h3>Core capabilities</h3>
+
+      <div class="two-col">
+        <div class="panel">
+          <h3>Energy Solutions and Resilience Planning</h3>
+          <p>
+            Portfolio-scale energy strategy, program renewal, and infrastructure resilience planning
+            including legacy program evolution, capital-aware transition pathways, and procurement-ready architectures.
+          </p>
+        </div>
+        <div class="panel">
+          <h3>Regulated Food and Critical Production Environments</h3>
+          <p>
+            Engineering and operational advisory for facilities where downtime, contamination, or non-compliance carry
+            disproportionate risk integrating energy reliability, production reality, and sustainability.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;" class="panel">
+        <h3>Governance, board oversight, and enterprise risk</h3>
+        <p>
+          Independent technical governance for Boards and Executives including TRAs, BCPs, and program assurance
+          translating engineering risk into defensible decisions.
+        </p>
+      </div>
+    </section>
+
+    <section class="grid" id="who">
+      <div class="panel">
+        <h3>Who we typically support</h3>
+        <ul>
+          <li>Provincial ministries and agencies</li>
+          <li>School boards, universities, hospitals, and public institutions</li>
+          <li>Portfolio owners and operators of critical infrastructure</li>
+          <li>Regulated food, agri-food, and manufacturing organizations</li>
+        </ul>
+      </div>
+
+      <div class="panel" id="engage">
+        <h3>How we engage</h3>
+        <p>
+          We act as a prime, independent advisor accountable for clarity and outcomes:
+          frame the problem correctly, assess risk and consequence, define viable pathways forward,
+          and support confident executive and board decisions.
+        </p>
+        <ul>
+          <li>Independent and vendor-agnostic</li>
+          <li>Single-point accountability</li>
+          <li>Specialist partners as needed (while maintaining independence)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="full">
+      <h3>Let’s talk before decisions become problems</h3>
+      <p style="margin:0; color: var(--muted); font-size:14px;">
+        If you are navigating an aging energy or infrastructure program, increasing resilience or governance exposure,
+        or a decision that must stand up to scrutiny, we offer confidential, independent advisory support.
+      </p>
+      <div class="cta-row" style="margin-top: 14px;">
+        <a class="btn primary" href="mailto:marcantoinejpjoly@gmail.com?subject=Joly%20Solutions%20%7C%20Confidential%20Discussion">Request a confidential discussion</a>
+        <a class="btn" href="#top">Back to top</a>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Joly Solutions. Independent. Portfolio-minded. Built for consequence.</div>
+      <div><a href="mailto:marcantoinejpjoly@gmail.com">marcantoinejpjoly@gmail.com</a></div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
