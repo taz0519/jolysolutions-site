@@ -1,15 +1,16 @@
-Below is a **complete, copy-paste-ready `README.md`** for your repository.
-It is written so **future-you** (or any collaborator) can understand:
+/jolysolutions-site
+│
+├── index.html
+├── logo.png
+├── CNAME
+├── README.md
+│
+├── capabilities.html
+│
+├── energy-solutions.html
+├── regulated-food.html
+└── governance-risk.html
 
-* what this site is
-* how it is deployed
-* how GoDaddy DNS is configured (based **exactly** on what you pasted)
-* what *not* to touch (email!)
-* how to safely modify the site going forward
-
-You can paste this directly into a file named **`README.md`** in the root of your GitHub repo.
-
----
 
 # Joly Solutions — Website
 
