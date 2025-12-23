@@ -3,58 +3,57 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <!-- =========================================================
-       EDIT HERE: SEO
-       ========================================================= -->
   <meta name="description" content="Joly Solutions — independent engineering and operational advisory for complex, regulated asset portfolios." />
   <title>Joly Solutions</title>
 
   <style>
     /* =========================================================
-       JOLY SOLUTIONS — HOME PAGE
-       PURPOSE:
-       - Quick, credible single-page site that can grow into multi-page.
-       - Clear contact info + core positioning + resources.
-       - Lots of markers for easy editing.
+       JOLY SOLUTIONS — INDEX (HOME)
+       FULL FILE (copy/paste)
+       - Solid, contrasted colours (no blended/gradient colours)
+       - Free-floating logo (no box)
+       - Section accents alternate: cyan → purple → gunmetal
+       - Subtle icon hover micro-animations
+       - Resources kept curated and moved to end
        ========================================================= */
 
-    /* =========================================================
-       EDIT HERE FIRST: BRAND + LAYOUT TOKENS
-       ========================================================= */
     :root{
-      /* ----- Background (shaded gunmetal grey) ----- */
-      /* If you want a PURE SOLID background instead, set both to same colour. */
-      --bgTop: #141c26;       /* gunmetal shade 1 */
-      --bgBottom: #0b1118;    /* gunmetal shade 2 */
+      /* Background (shaded gunmetal) */
+      --bgTop: #141c26;
+      --bgBottom: #0b1118;
 
-      /* ----- Brand palette (solid colours) ----- */
+      /* Brand palette (solid) */
       --purple: #8b5cf6;
       --cyan:   #63e6e2;
       --gunmetal:#2a3441;
 
-      /* ----- Text ----- */
+      /* Text */
       --text:  rgba(255,255,255,0.92);
       --muted: rgba(255,255,255,0.72);
       --muted2:rgba(255,255,255,0.60);
 
-      /* ----- UI ----- */
+      /* UI */
       --border: rgba(255,255,255,0.14);
       --panel:  rgba(255,255,255,0.06);
       --panel2: rgba(255,255,255,0.04);
       --shadow: 0 18px 60px rgba(0,0,0,0.55);
       --radius: 20px;
 
-      /* ----- Layout ----- */
+      /* Layout */
       --max: 1120px;
 
-      /* ----- Header brand sizing ----- */
-      --logoSize: 88px;
-      --brandNameSize: 46px;
-      --brandTagSize: 12px;
+      /* Brand sizing */
+      --logoWidth: 360px;      /* big logo */
+      --brandNameSize: 54px;
+      --brandTagSize: 13px;
 
-      /* ----- Resource / divider icon sizing ----- */
-      --dividerIcon: 46px;
+      /* Icon sizing */
+      --pepIcon: 44px;
+      --pepIconSmall: 34px;
+
+      /* Accent line thickness */
+      --accentThickness: 4px;
+      --accentThicknessSmall: 3px;
     }
 
     *{ box-sizing:border-box; }
@@ -62,25 +61,20 @@
 
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--text);
       line-height:1.55;
-
-      /* =========================================================
-         EDIT HERE: Background (shaded gunmetal)
-         ========================================================= */
       background: linear-gradient(180deg, var(--bgTop), var(--bgBottom));
       min-height: 100vh;
     }
 
-    a{ color: inherit; text-decoration: none; }
+    a{ color: inherit; text-decoration:none; }
     a:hover{ text-decoration: underline; text-underline-offset: 3px; }
 
     .wrap{ max-width: var(--max); margin:0 auto; padding: 26px 18px 70px; }
 
     /* =========================================================
-       HEADER / TOP BAR
-       - Organized nav that won't wrap awkwardly
+       HEADER
        ========================================================= */
     header{
       position: sticky;
@@ -94,7 +88,7 @@
     header .inner{
       max-width: var(--max);
       margin:0 auto;
-      width: 100%;
+      width:100%;
       padding: 12px 18px;
       display:flex;
       align-items:center;
@@ -102,33 +96,29 @@
       gap: 16px;
     }
 
-    /* =========================================================
-       BRAND (Logo + Name)
-       ========================================================= */
     .brand{
       display:flex;
       align-items:center;
       gap: 18px;
-      min-width: 360px;
+      min-width: 520px;
     }
 
-    /* Logo container (shows full logo) */
+    /* =========================================================
+       LOGO (free-floating, no box)
+       ========================================================= */
     .logo{
-      width: var(--logoSize);
-      height: var(--logoSize);
-      border-radius: 18px;
-      display:grid;
-      place-items:center;
-      overflow:hidden;
-      background: rgba(255,255,255,0.04);
-      border: 2px solid rgba(255,255,255,0.10);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+      width: var(--logoWidth);
+      height: auto;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
     }
     .logo img{
       width: 100%;
-      height: 100%;
-      object-fit: contain;  /* ALWAYS show full logo */
-      padding: 8px;         /* breathing room */
+      height: auto;
+      max-height: 150px; /* keeps header reasonable */
+      object-fit: contain;
+      padding: 0;       /* no inner padding */
       display:block;
     }
 
@@ -138,15 +128,12 @@
       line-height: 1.05;
     }
 
-    /* =========================================================
-       CHANGE #2: Company title on one line
-       ========================================================= */
     .brand-title strong{
       font-size: var(--brandNameSize);
-      letter-spacing: -0.6px;
       font-weight: 900;
+      letter-spacing: -0.6px;
       color: #fff;
-      white-space: nowrap;     /* keep on one line */
+      white-space: nowrap;
     }
 
     .brand-title span{
@@ -156,70 +143,74 @@
       margin-top: 6px;
     }
 
-    /* =========================================================
-       TOP NAV (Logical + evident)
-       STRUCTURE:
-       - About (What we do)
-       - Capabilities (dropdown)
-       - Resources (banner section)
-       - Links (dropdown for external orgs)
-       - Contact
-       ========================================================= */
     nav{
       display:flex;
       align-items:center;
       gap: 10px;
-      flex-wrap: nowrap;
-      justify-content: flex-end;
       white-space: nowrap;
+      flex-wrap: wrap;
+      justify-content:flex-end;
     }
 
-    nav a, .navDrop > button{
+    nav a{
       font-size: 13px;
       color: var(--muted);
       padding: 8px 10px;
       border-radius: 10px;
       border: 1px solid transparent;
-      background: transparent;
-      cursor: pointer;
-      font-family: inherit;
     }
 
-    nav a:hover, .navDrop > button:hover{
+    nav a:hover{
       background: rgba(255,255,255,0.06);
       border-color: rgba(255,255,255,0.12);
       text-decoration:none;
       color: var(--text);
     }
 
-    /* Dropdown base */
-    .navDrop{
+    /* =========================================================
+       SECTION ACCENT SYSTEM
+       - Apply .bannerAccent + an accent class:
+         .accent-cyan, .accent-purple, .accent-gunmetal
+       ========================================================= */
+    .bannerAccent{
       position: relative;
-      display:inline-block;
+      overflow: hidden;
     }
 
-    .navDropMenu{
-      display:none;
+    .bannerAccent::before{
+      content:"";
       position:absolute;
-      right:0;
-      top: 42px;
-      min-width: 260px;
-      background: rgba(11,17,24,0.98);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-      padding: 8px;
+      top:0; left:0; right:0;
+      height: var(--accentThickness);
+      background: var(--cyan); /* default */
+      opacity: 0.95;
+      pointer-events:none;
     }
-    .navDropMenu a{
-      display:block;
-      padding: 10px 10px;
-      border-radius: 10px;
+
+    .bannerAccent::after{
+      content:"";
+      position:absolute;
+      top:0; left:0;
+      width: var(--accentThickness);
+      height: 100%;
+      background: var(--purple); /* default */
+      opacity: 0.95;
+      pointer-events:none;
     }
-    .navDropMenu a:hover{
-      background: rgba(255,255,255,0.06);
-      text-decoration:none;
-    }
-    .navDrop:hover .navDropMenu{ display:block; }
+
+    /* Accent variations (alternating per section) */
+    .accent-cyan::before{ background: var(--cyan); }
+    .accent-cyan::after{ background: var(--purple); }
+
+    .accent-purple::before{ background: var(--purple); }
+    .accent-purple::after{ background: var(--cyan); }
+
+    .accent-gunmetal::before{ background: var(--gunmetal); }
+    .accent-gunmetal::after{ background: var(--cyan); }
+
+    /* Smaller accent thickness on panels */
+    .panel.bannerAccent::before{ height: var(--accentThicknessSmall); }
+    .panel.bannerAccent::after{ width: var(--accentThicknessSmall); }
 
     /* =========================================================
        HERO
@@ -234,32 +225,11 @@
       display:grid;
       grid-template-columns: 1.25fr 0.75fr;
       gap: 18px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Solid accent lines (brand pop without blending) */
-    .hero::before{
-      content:"";
-      position:absolute;
-      top:0; left:0; right:0;
-      height: 4px;
-      background: var(--cyan);
-      opacity: 0.95;
-    }
-    .hero::after{
-      content:"";
-      position:absolute;
-      top:0; left:0;
-      width: 4px;
-      height: 100%;
-      background: var(--purple);
-      opacity: 0.95;
     }
 
     h1{
       margin: 0 0 12px;
-      font-size: clamp(28px, 3.2vw, 44px);
+      font-size: clamp(30px, 3.2vw, 46px);
       letter-spacing: -0.6px;
       line-height: 1.12;
     }
@@ -274,14 +244,12 @@
     .trust{
       font-size: 14px;
       color: var(--muted2);
-      margin: 0 0 20px;
+      margin: 0 0 18px;
     }
 
     .cta-row{ display:flex; gap: 12px; flex-wrap: wrap; }
 
-    /* =========================================================
-       BUTTONS (solid, high impact)
-       ========================================================= */
+    /* Buttons */
     .btn{
       display:inline-flex;
       align-items:center;
@@ -291,23 +259,22 @@
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.16);
       background: rgba(255,255,255,0.06);
-      color: var(--text);
+      color: #fff;
       font-weight: 800;
       font-size: 14px;
-      transition: transform 120ms ease, background 120ms ease;
+      transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
     }
     .btn:hover{
       text-decoration:none;
       transform: translateY(-1px);
       background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.22);
     }
-
     .btn.primary{
       background: var(--cyan);
       color: #061014;
       border-color: rgba(99,230,226,0.75);
     }
-
     .btn.secondary{
       border-color: rgba(139,92,246,0.85);
       background: transparent;
@@ -316,8 +283,6 @@
 
     /* =========================================================
        CONTACT CARD
-       - Fix: label alignment
-       - Fix: email markup (stacked)
        ========================================================= */
     .card{
       border-radius: var(--radius);
@@ -326,7 +291,6 @@
       padding: 18px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.35);
       position: relative;
-      overflow:hidden;
     }
 
     .card h2{
@@ -344,24 +308,9 @@
       font-size: 13px;
       align-items: start;
     }
-
-    /* CHANGE #3 marker: alignment requested */
-    .k{
-      color: var(--muted2);
-      text-align: right; /* makes the left labels line up neatly */
-      padding-top: 2px;
-    }
-
-    .v{
-      color: #fff;
-      word-break: break-word;
-    }
-
-    .vStack{
-      display:flex;
-      flex-direction:column;
-      gap: 6px;
-    }
+    .k{ color: var(--muted2); text-align:right; padding-top:2px; }
+    .v{ color:#fff; word-break: break-word; }
+    .vStack{ display:flex; flex-direction:column; gap:6px; }
 
     .pill{
       display:inline-flex;
@@ -377,7 +326,7 @@
     }
 
     /* =========================================================
-       SECTION LAYOUT HELPERS
+       SECTIONS + PANELS
        ========================================================= */
     section{ margin-top: 22px; }
 
@@ -393,14 +342,12 @@
       background: rgba(255,255,255,0.04);
       padding: 18px;
       position: relative;
-      overflow:hidden;
     }
 
-    .panel h4{
-      margin: 0 0 8px;
+    .panel h3{
+      margin: 0 0 10px;
       font-size: 16px;
       letter-spacing: -0.2px;
-      color:#fff;
     }
 
     .panel p{
@@ -409,11 +356,7 @@
       font-size: 14px;
     }
 
-    ul{
-      margin: 10px 0 0 18px;
-      color: var(--muted);
-      font-size: 14px;
-    }
+    ul{ margin: 10px 0 0 18px; color: var(--muted); font-size: 14px; }
     li{ margin: 6px 0; }
 
     .full{
@@ -422,45 +365,82 @@
       border: 1px solid rgba(255,255,255,0.10);
       background: rgba(255,255,255,0.04);
       padding: 18px;
-    }
-
-    .two-col{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 10px;
+      position: relative;
     }
 
     /* =========================================================
-       ICON DIVIDER (breaks up text-heavy sections)
-       Requires these files beside index.html:
+       PEP ICONS (your streamlined 3-icon set)
+       Files expected in repo root:
+       - leaf-cyan.png
+       - bolt-gunmetal.png
        - gear-purple.png
-       - bolt-cyan.png
-       - leaf-gunmetal.png
        ========================================================= */
-    .iconDivider{
-      margin: 18px 0 6px;
+
+    /* Divider row with icons */
+    .pepRow{
+      margin: 14px 0 6px;
       display:flex;
       align-items:center;
       justify-content:center;
-      gap: 18px;
-      opacity: 0.92;
+      gap: 14px;
+      opacity: 0.98;
     }
-    .iconDivider img{
-      width: var(--dividerIcon);
-      height: var(--dividerIcon);
-      object-fit: contain;
-      opacity: 0.40; /* increase to ~0.65 if you want them bolder */
-    }
-    .iconDivider .line{
+    .pepRow .line{
       height: 1px;
       flex: 1;
-      background: rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.14);
       max-width: 260px;
     }
 
+    /* Subtle hover animation */
+    .pepRow img,
+    .pepCorner img{
+      width: var(--pepIcon);
+      height: var(--pepIcon);
+      object-fit: contain;
+      opacity: 0.92;
+      transition: transform 160ms ease, opacity 160ms ease;
+      will-change: transform;
+    }
+
+    /* Micro-animations (very subtle) */
+    .pepRow img:hover,
+    .pepCorner img:hover{
+      transform: translateY(-2px) rotate(-2deg) scale(1.03);
+      opacity: 1;
+    }
+
+    /* Corner cluster inside sections */
+    .pepCorner{
+      position:absolute;
+      right: 16px;
+      bottom: 14px;
+      display:flex;
+      gap: 10px;
+      opacity: 0.98;
+      pointer-events:auto; /* allow hover */
+    }
+    .pepCorner img{
+      width: var(--pepIconSmall);
+      height: var(--pepIconSmall);
+      opacity: 0.95;
+    }
+
     /* =========================================================
-       RESOURCES BANNER (mid-page)
+       WHAT WE DO — buttons under banner
+       ========================================================= */
+    .capButtons{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .capButtons a{
+      flex: 1 1 220px;
+    }
+
+    /* =========================================================
+       RESOURCES (curated list) — moved to end
        ========================================================= */
     .resourcesBanner{
       margin-top: 18px;
@@ -469,32 +449,17 @@
       background: rgba(255,255,255,0.05);
       padding: 18px;
       position: relative;
-      overflow:hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.30);
-    }
-
-    .resourcesBanner::before{
-      content:"";
-      position:absolute;
-      top:0; left:0; right:0;
-      height: 4px;
-      background: var(--purple);
-      opacity: 0.95;
     }
 
     .resourcesHeader{
       display:flex;
-      align-items: center;
+      align-items:center;
       justify-content: space-between;
       gap: 14px;
       flex-wrap: wrap;
     }
-
-    .resourcesHeader h3{
-      margin:0;
-      font-size: 16px;
-      letter-spacing: -0.2px;
-    }
+    .resourcesHeader h3{ margin:0; font-size: 16px; letter-spacing: -0.2px; }
 
     .resourceGrid{
       margin-top: 14px;
@@ -508,6 +473,7 @@
       border: 1px solid rgba(255,255,255,0.12);
       background: rgba(11,17,24,0.45);
       padding: 14px;
+      position: relative;
     }
 
     .resourceItem .tag{
@@ -522,19 +488,16 @@
 
     .resourceItem a{
       display:block;
-      font-weight: 800;
+      font-weight: 900;
       margin-bottom: 4px;
     }
-
     .resourceItem p{
       margin:0;
       color: var(--muted2);
       font-size: 13px;
     }
 
-    /* =========================================================
-       FOOTER
-       ========================================================= */
+    /* Footer */
     .footer{
       margin-top: 28px;
       padding-top: 18px;
@@ -548,28 +511,24 @@
       font-size: 12px;
     }
 
-    /* =========================================================
-       RESPONSIVE
-       ========================================================= */
     @media (max-width: 980px){
       .hero{ grid-template-columns: 1fr; }
       .grid{ grid-template-columns: 1fr; }
-      .two-col{ grid-template-columns: 1fr; }
       .resourceGrid{ grid-template-columns: 1fr; }
-      nav{ display:none; } /* keep mobile clean for now */
-      :root{ --logoSize: 72px; --brandNameSize: 36px; }
+      nav{ display:none; }
+      :root{
+        --logoWidth: 260px;
+        --brandNameSize: 38px;
+      }
+      .logo img{ max-height: 120px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- =========================================================
-       HEADER
-       ========================================================= -->
   <header>
     <div class="inner">
       <div class="brand">
-        <!-- EDIT HERE: keep logo beside index.html named "logo.png" -->
         <div class="logo" aria-label="Joly Solutions logo">
           <img src="logo.png" alt="Joly Solutions logo" />
         </div>
@@ -580,39 +539,11 @@
         </div>
       </div>
 
-      <!-- =========================================================
-           TOP NAV (logical + evident)
-           NOTE: use RELATIVE links for GitHub Pages (no leading slash)
-           ========================================================= -->
       <nav aria-label="Primary">
         <a href="#what">What we do</a>
         <a href="#who">Who we support</a>
-
-        <div class="navDrop" aria-label="Capabilities menu">
-          <button type="button">Capabilities ▾</button>
-          <div class="navDropMenu">
-            <a href="#capabilities">Capabilities (on this page)</a>
-            <a href="capabilities.html">Core capabilities page</a>
-            <a href="energy-solutions.html">Energy & Resilience</a>
-            <a href="regulated-food.html">Regulated Food</a>
-            <a href="governance-risk.html">Governance & Risk</a>
-          </div>
-        </div>
-
+        <a href="capabilities.html">Capabilities</a>
         <a href="#resources">Resources</a>
-
-        <!-- External org links -->
-        <div class="navDrop" aria-label="Links menu">
-          <button type="button">Links ▾</button>
-          <div class="navDropMenu">
-            <a href="https://www.aeecenter.org/" target="_blank" rel="noopener">AEE (Association of Energy Engineers)</a>
-            <a href="https://aeeswoc.org/" target="_blank" rel="noopener">AEE Southwestern Ontario Chapter</a>
-            <a href="https://www.aeegta.org/" target="_blank" rel="noopener">AEE Greater Toronto Area Chapter</a>
-            <a href="https://oeca.ca/" target="_blank" rel="noopener">OECA</a>
-            <a href="https://waterloointuition.com/" target="_blank" rel="noopener">Waterloo Intuition</a>
-          </div>
-        </div>
-
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -620,9 +551,9 @@
 
   <main class="wrap">
     <!-- =========================================================
-         HERO
+         HERO (Accent: CYAN)
          ========================================================= -->
-    <div class="hero" id="top">
+    <div class="hero bannerAccent accent-cyan" id="top">
       <div>
         <h1>Energy Solutions and Resilience Planning for Complex, Regulated Asset Portfolios</h1>
 
@@ -638,13 +569,10 @@
 
         <div class="cta-row">
           <a class="btn primary" href="#contact">Request a confidential discussion</a>
-          <a class="btn secondary" href="#capabilities">Explore capabilities</a>
+          <a class="btn secondary" href="#what">Explore capabilities</a>
         </div>
       </div>
 
-      <!-- =========================================================
-           CONTACT CARD
-           ========================================================= -->
       <aside class="card" id="contact">
         <h2>Contact</h2>
 
@@ -672,28 +600,27 @@
 
         <div class="pill">Available for confidential advisory discussions</div>
 
-        <div class="cta-row" style="margin-top:14px;">
-          <a class="btn primary" href="mailto:marcantoinejpjoly@gmail.com?subject=Joly%20Solutions%20%7C%20Confidential%20Discussion">Email now</a>
-          <a class="btn" href="#resources">Energy resources</a>
+        <div class="pepCorner" aria-hidden="false" title="Hover me">
+          <img src="gear-purple.png" alt="Gear icon">
+          <img src="leaf-cyan.png" alt="Leaf icon">
+          <img src="bolt-gunmetal.png" alt="Bolt icon">
         </div>
       </aside>
     </div>
 
-    <!-- =========================================================
-         ICON DIVIDER (requires icon PNGs)
-         ========================================================= -->
-    <div class="iconDivider" aria-hidden="true">
+    <!-- Pep divider -->
+    <div class="pepRow" aria-label="Decorative icons (hover for micro-motion)">
       <span class="line"></span>
-      <img src="gear-purple.png" alt="">
-      <img src="bolt-cyan.png" alt="">
-      <img src="leaf-gunmetal.png" alt="">
+      <img src="gear-purple.png" alt="Gear icon">
+      <img src="leaf-cyan.png" alt="Leaf icon">
+      <img src="bolt-gunmetal.png" alt="Bolt icon">
       <span class="line"></span>
     </div>
 
     <!-- =========================================================
-         CONTEXT
+         CONTEXT (Accent: PURPLE)
          ========================================================= -->
-    <section class="full" id="why">
+    <section class="full bannerAccent accent-purple" id="why">
       <h3 style="margin:0 0 10px;">When energy and infrastructure decisions become institutional risks</h3>
       <p style="margin:0; color: var(--muted); font-size:14px;">
         Many organizations face the same challenge: aging infrastructure under capital constraints, energy programs and platforms
@@ -704,14 +631,29 @@
         The issue is rarely a lack of technology or effort. It is a lack of integrated perspective across engineering, operations,
         governance, and risk. That is where we focus.
       </p>
+
+      <div class="pepCorner" aria-label="Decorative icons (hover for micro-motion)">
+        <img src="leaf-cyan.png" alt="Leaf icon">
+        <img src="bolt-gunmetal.png" alt="Bolt icon">
+        <img src="gear-purple.png" alt="Gear icon">
+      </div>
     </section>
 
+    <!-- Pep divider -->
+    <div class="pepRow" aria-label="Decorative icons (hover for micro-motion)">
+      <span class="line"></span>
+      <img src="leaf-cyan.png" alt="Leaf icon">
+      <img src="gear-purple.png" alt="Gear icon">
+      <img src="bolt-gunmetal.png" alt="Bolt icon">
+      <span class="line"></span>
+    </div>
+
     <!-- =========================================================
-         WHAT WE DO
+         WHAT WE DO (Accent: GUNMETAL)
          ========================================================= -->
     <section class="grid" id="what">
-      <div class="panel">
-        <h3 style="margin:0 0 10px;">What we do</h3>
+      <div class="panel bannerAccent accent-gunmetal">
+        <h3>What we do</h3>
         <p>
           Portfolio-scale strategy, program renewal, resilience planning, and governance support.
           Vendor-agnostic, outcome-focused, and built to stand up to scrutiny.
@@ -722,10 +664,23 @@
           <li>Independent architecture and risk review</li>
           <li>Procurement-ready requirements and assurance frameworks</li>
         </ul>
+
+        <!-- Three capability buttons (no truncation on homepage) -->
+        <div class="capButtons">
+          <a class="btn primary" href="energy-solutions.html">Energy & Resilience</a>
+          <a class="btn secondary" href="regulated-food.html">Regulated Food</a>
+          <a class="btn" href="governance-risk.html">Governance & Risk</a>
+        </div>
+
+        <div class="pepCorner" aria-label="Decorative icons (hover for micro-motion)">
+          <img src="gear-purple.png" alt="Gear icon">
+          <img src="leaf-cyan.png" alt="Leaf icon">
+          <img src="bolt-gunmetal.png" alt="Bolt icon">
+        </div>
       </div>
 
-      <div class="panel">
-        <h3 style="margin:0 0 10px;">A different way of seeing risk</h3>
+      <div class="panel bannerAccent accent-cyan">
+        <h3>A different way of seeing risk</h3>
         <p>
           Most advisors approach energy and infrastructure through a single lens (optimization, compliance, or policy).
           Our work is informed by accountability across operations, regulated environments, and executive governance.
@@ -735,25 +690,67 @@
           <li>Challenge assumptions constructively</li>
           <li>Design solutions that survive audit, implementation, and leadership change</li>
         </ul>
+
+        <div class="pepCorner" aria-label="Decorative icons (hover for micro-motion)">
+          <img src="leaf-cyan.png" alt="Leaf icon">
+          <img src="bolt-gunmetal.png" alt="Bolt icon">
+          <img src="gear-purple.png" alt="Gear icon">
+        </div>
       </div>
     </section>
 
     <!-- =========================================================
-         RESOURCES BANNER (mid page)
+         WHO (Accent alternation continues)
          ========================================================= -->
-    <section class="resourcesBanner" id="resources">
-      <div class="resourcesHeader">
-        <h3>Resources: energy incentives, regulators, and assistance</h3>
-        <div class="pill">Bookmark these for quick reference</div>
+    <section class="grid" id="who">
+      <div class="panel bannerAccent accent-purple">
+        <h3>Who we typically support</h3>
+        <ul>
+          <li>Provincial ministries and agencies</li>
+          <li>School boards, universities, hospitals, and public institutions</li>
+          <li>Portfolio owners and operators of critical infrastructure</li>
+          <li>Regulated food, agri-food, and manufacturing organizations</li>
+        </ul>
+
+        <div class="pepCorner" aria-label="Decorative icons (hover for micro-motion)">
+          <img src="gear-purple.png" alt="Gear icon">
+          <img src="bolt-gunmetal.png" alt="Bolt icon">
+          <img src="leaf-cyan.png" alt="Leaf icon">
+        </div>
       </div>
 
-      <!--
-        EDIT HERE:
-        - Add/remove resource cards.
-        - Keep the “tag” short so it reads well.
-      -->
+      <div class="panel bannerAccent accent-gunmetal">
+        <h3>How we engage</h3>
+        <p>
+          We act as a prime, independent advisor accountable for clarity and outcomes:
+          frame the problem correctly, assess risk and consequence, define viable pathways forward,
+          and support confident executive and board decisions.
+        </p>
+        <ul>
+          <li>Independent and vendor-agnostic</li>
+          <li>Single-point accountability</li>
+          <li>Specialist partners as needed (while maintaining independence)</li>
+        </ul>
+
+        <div class="pepCorner" aria-label="Decorative icons (hover for micro-motion)">
+          <img src="leaf-cyan.png" alt="Leaf icon">
+          <img src="gear-purple.png" alt="Gear icon">
+          <img src="bolt-gunmetal.png" alt="Bolt icon">
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         RESOURCES (curated) — END OF PAGE (Accent: CYAN)
+         NOTE: We'll create a dedicated resources.html later.
+         ========================================================= -->
+    <section class="resourcesBanner bannerAccent accent-cyan" id="resources">
+      <div class="resourcesHeader">
+        <h3>Resources: energy incentives, regulators, and assistance</h3>
+        <div class="pill">Curated essentials</div>
+      </div>
+
       <div class="resourceGrid">
-        <!-- Ontario / system + regulator -->
         <div class="resourceItem">
           <span class="tag">Ontario system operator</span>
           <a href="https://www.ieso.ca/" target="_blank" rel="noopener">IESO</a>
@@ -772,17 +769,10 @@
           <p>Ontario’s main hub for energy efficiency incentives for homes and businesses.</p>
         </div>
 
-        <!-- Canada / national programs -->
         <div class="resourceItem">
           <span class="tag">Canada programs</span>
           <a href="https://natural-resources.canada.ca/energy-efficiency" target="_blank" rel="noopener">NRCan: Energy efficiency</a>
-          <p>Federal info on energy efficiency programs, tools, and program links.</p>
-        </div>
-
-        <div class="resourceItem">
-          <span class="tag">Canada directory</span>
-          <a href="https://oee.nrcan.gc.ca/corporate/statistics/neud/dpa/policy_e/programs.cfm" target="_blank" rel="noopener">NRCan program directory</a>
-          <p>Searchable directory of energy efficiency programs across Canada.</p>
+          <p>Federal info on energy efficiency programs and tools.</p>
         </div>
 
         <div class="resourceItem">
@@ -791,126 +781,31 @@
           <p>Financing and advisory services for Canadian entrepreneurs and SMEs.</p>
         </div>
 
-        <!-- Ontario government pages -->
-        <div class="resourceItem">
-          <span class="tag">Ontario guidance</span>
-          <a href="https://www.ontario.ca/page/manage-energy-costs-your-business" target="_blank" rel="noopener">Ontario: manage energy costs (business)</a>
-          <p>Ontario government program summaries and pointers for business energy cost relief.</p>
-        </div>
-
         <div class="resourceItem">
           <span class="tag">Home rebates hub</span>
           <a href="https://www.homerenovationsavings.ca/" target="_blank" rel="noopener">Home Renovation Savings</a>
           <p>Ontario program hub for home upgrades (heat pumps, insulation, solar, and more).</p>
         </div>
-
-        <div class="resourceItem">
-          <span class="tag">Gas utility rebates</span>
-          <a href="https://www.enbridgegas.com/ontario/rebates-energy-conservation" target="_blank" rel="noopener">Enbridge Gas rebates</a>
-          <p>Program finder and rebates for Ontario gas customers (varies by eligibility).</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================
-         CAPABILITIES (with click-through to subpages)
-         ========================================================= -->
-    <section class="full" id="capabilities">
-      <h3 style="margin:0 0 10px;">Core capabilities</h3>
-
-      <div class="two-col">
-        <div class="panel">
-          <h4>Energy Solutions and Resilience Planning</h4>
-          <p>
-            Portfolio-scale energy strategy, program renewal, and infrastructure resilience planning including legacy program evolution,
-            capital-aware transition pathways, and procurement-ready architectures.
-          </p>
-          <p style="margin-top:10px;"><a href="energy-solutions.html">Read more →</a></p>
-        </div>
-
-        <div class="panel">
-          <h4>Regulated Food and Critical Production Environments</h4>
-          <p>
-            Engineering and operational advisory for facilities where downtime, contamination, or non-compliance carry disproportionate risk
-            integrating energy reliability, production reality, and sustainability.
-          </p>
-          <p style="margin-top:10px;"><a href="regulated-food.html">Read more →</a></p>
-        </div>
       </div>
 
-      <div class="panel" style="margin-top:14px;">
-        <h4>Governance, board oversight, and enterprise risk</h4>
-        <p>
-          Independent technical governance for Boards and Executives including TRAs, BCPs, and program assurance translating engineering risk
-          into defensible decisions.
-        </p>
-        <p style="margin-top:10px;"><a href="governance-risk.html">Read more →</a></p>
-      </div>
-    </section>
-
-    <!-- =========================================================
-         WHO WE SUPPORT / HOW WE ENGAGE
-         ========================================================= -->
-    <section class="grid" id="who">
-      <div class="panel">
-        <h3 style="margin:0 0 10px;">Who we typically support</h3>
-        <ul>
-          <li>Provincial ministries and agencies</li>
-          <li>School boards, universities, hospitals, and public institutions</li>
-          <li>Portfolio owners and operators of critical infrastructure</li>
-          <li>Regulated food, agri-food, and manufacturing organizations</li>
-        </ul>
+      <div class="pepCorner" aria-label="Decorative icons (hover for micro-motion)">
+        <img src="gear-purple.png" alt="Gear icon">
+        <img src="leaf-cyan.png" alt="Leaf icon">
+        <img src="bolt-gunmetal.png" alt="Bolt icon">
       </div>
 
-      <div class="panel" id="engage">
-        <h3 style="margin:0 0 10px;">How we engage</h3>
-        <p>
-          We act as a prime, independent advisor accountable for clarity and outcomes:
-          frame the problem correctly, assess risk and consequence, define viable pathways forward,
-          and support confident executive and board decisions.
-        </p>
-        <ul>
-          <li>Independent and vendor-agnostic</li>
-          <li>Single-point accountability</li>
-          <li>Specialist partners as needed (while maintaining independence)</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- =========================================================
-         FINAL CTA
-         ========================================================= -->
-    <section class="full">
-      <h3 style="margin:0 0 10px;">Let’s talk before decisions become problems</h3>
-      <p style="margin:0; color: var(--muted); font-size:14px;">
-        If you are navigating an aging energy or infrastructure program, increasing resilience or governance exposure,
-        or a decision that must stand up to scrutiny, we offer confidential, independent advisory support.
+      <p style="margin:14px 0 0; color: var(--muted2); font-size: 13px;">
+        Next step: we’ll add a dedicated Resources page and keep the homepage list intentionally short.
       </p>
-      <div class="cta-row" style="margin-top: 14px;">
-        <a class="btn primary" href="mailto:marcantoinejpjoly@gmail.com?subject=Joly%20Solutions%20%7C%20Confidential%20Discussion">Request a confidential discussion</a>
-        <a class="btn" href="#top">Back to top</a>
-      </div>
     </section>
 
-    <!-- =========================================================
-         FOOTER (with external org links too)
-         ========================================================= -->
     <div class="footer">
       <div>© <span id="year"></span> Joly Solutions.</div>
-      <div>
-        <a href="https://www.aeecenter.org/" target="_blank" rel="noopener">AEE</a> ·
-        <a href="https://aeeswoc.org/" target="_blank" rel="noopener">AEE SW</a> ·
-        <a href="https://www.aeegta.org/" target="_blank" rel="noopener">AEE GTA</a> ·
-        <a href="https://oeca.ca/" target="_blank" rel="noopener">OECA</a> ·
-        <a href="https://waterloointuition.com/" target="_blank" rel="noopener">Waterloo Intuition</a>
-      </div>
+      <div><a href="mailto:marcantoinejpjoly@gmail.com">marcantoinejpjoly@gmail.com</a></div>
     </div>
   </main>
 
   <script>
-    // =========================================================
-    // EDIT HERE: Simple dynamic year
-    // =========================================================
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
