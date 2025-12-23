@@ -7,51 +7,30 @@
   <title>Joly Solutions</title>
 
   <style>
-    /* =========================================================
-       JOLY SOLUTIONS — INDEX (HOME)
-       FULL FILE (copy/paste)
-       - Solid, contrasted colours (no blended/gradient colours)
-       - Free-floating logo (no box)
-       - Section accents alternate: cyan → purple → gunmetal
-       - Subtle icon hover micro-animations
-       - Resources kept curated and moved to end
-       ========================================================= */
-
     :root{
-      /* Background (shaded gunmetal) */
       --bgTop: #141c26;
       --bgBottom: #0b1118;
 
-      /* Brand palette (solid) */
       --purple: #8b5cf6;
       --cyan:   #63e6e2;
       --gunmetal:#2a3441;
 
-      /* Text */
       --text:  rgba(255,255,255,0.92);
       --muted: rgba(255,255,255,0.72);
       --muted2:rgba(255,255,255,0.60);
 
-      /* UI */
-      --border: rgba(255,255,255,0.14);
-      --panel:  rgba(255,255,255,0.06);
-      --panel2: rgba(255,255,255,0.04);
       --shadow: 0 18px 60px rgba(0,0,0,0.55);
       --radius: 20px;
-
-      /* Layout */
       --max: 1120px;
 
-      /* Brand sizing */
-      --logoWidth: 360px;      /* big logo */
+      /* (4) DOUBLE LOGO SIZE AGAIN */
+      --logoWidth: 720px;         /* was 360px */
       --brandNameSize: 54px;
       --brandTagSize: 13px;
 
-      /* Icon sizing */
       --pepIcon: 44px;
       --pepIconSmall: 34px;
 
-      /* Accent line thickness */
       --accentThickness: 4px;
       --accentThicknessSmall: 3px;
     }
@@ -73,9 +52,6 @@
 
     .wrap{ max-width: var(--max); margin:0 auto; padding: 26px 18px 70px; }
 
-    /* =========================================================
-       HEADER
-       ========================================================= */
     header{
       position: sticky;
       top:0;
@@ -103,22 +79,21 @@
       min-width: 520px;
     }
 
-    /* =========================================================
-       LOGO (free-floating, no box)
-       ========================================================= */
+    /* Free-floating logo (no box) */
     .logo{
       width: var(--logoWidth);
       height: auto;
       display:flex;
       align-items:center;
       justify-content:flex-start;
+      flex: 0 0 auto;
     }
     .logo img{
       width: 100%;
       height: auto;
-      max-height: 150px; /* keeps header reasonable */
+      max-height: 220px;  /* increased to match bigger logo */
       object-fit: contain;
-      padding: 0;       /* no inner padding */
+      padding: 0;
       display:block;
     }
 
@@ -126,6 +101,7 @@
       display:flex;
       flex-direction:column;
       line-height: 1.05;
+      min-width: 280px;
     }
 
     .brand-title strong{
@@ -167,38 +143,27 @@
       color: var(--text);
     }
 
-    /* =========================================================
-       SECTION ACCENT SYSTEM
-       - Apply .bannerAccent + an accent class:
-         .accent-cyan, .accent-purple, .accent-gunmetal
-       ========================================================= */
-    .bannerAccent{
-      position: relative;
-      overflow: hidden;
-    }
-
+    /* Accent system */
+    .bannerAccent{ position: relative; overflow: hidden; }
     .bannerAccent::before{
       content:"";
       position:absolute;
       top:0; left:0; right:0;
       height: var(--accentThickness);
-      background: var(--cyan); /* default */
+      background: var(--cyan);
       opacity: 0.95;
       pointer-events:none;
     }
-
     .bannerAccent::after{
       content:"";
       position:absolute;
       top:0; left:0;
       width: var(--accentThickness);
       height: 100%;
-      background: var(--purple); /* default */
+      background: var(--purple);
       opacity: 0.95;
       pointer-events:none;
     }
-
-    /* Accent variations (alternating per section) */
     .accent-cyan::before{ background: var(--cyan); }
     .accent-cyan::after{ background: var(--purple); }
 
@@ -208,13 +173,9 @@
     .accent-gunmetal::before{ background: var(--gunmetal); }
     .accent-gunmetal::after{ background: var(--cyan); }
 
-    /* Smaller accent thickness on panels */
     .panel.bannerAccent::before{ height: var(--accentThicknessSmall); }
     .panel.bannerAccent::after{ width: var(--accentThicknessSmall); }
 
-    /* =========================================================
-       HERO
-       ========================================================= */
     .hero{
       margin-top: 22px;
       padding: 28px;
@@ -249,7 +210,6 @@
 
     .cta-row{ display:flex; gap: 12px; flex-wrap: wrap; }
 
-    /* Buttons */
     .btn{
       display:inline-flex;
       align-items:center;
@@ -281,9 +241,6 @@
       color: #fff;
     }
 
-    /* =========================================================
-       CONTACT CARD
-       ========================================================= */
     .card{
       border-radius: var(--radius);
       border: 1px solid rgba(255,255,255,0.16);
@@ -325,9 +282,6 @@
       width: fit-content;
     }
 
-    /* =========================================================
-       SECTIONS + PANELS
-       ========================================================= */
     section{ margin-top: 22px; }
 
     .grid{
@@ -336,47 +290,37 @@
       gap: 16px;
     }
 
+    /* IMPORTANT FIX (2): reserve space so icons never cover buttons/content */
+    .panel, .full, .card{
+      padding-top: 56px; /* room for top-right icon cluster */
+    }
+    .panel h3, .full h3, .card h2{
+      margin-top: 0;
+    }
+
     .panel{
       border-radius: var(--radius);
       border: 1px solid rgba(255,255,255,0.10);
       background: rgba(255,255,255,0.04);
-      padding: 18px;
+      padding: 56px 18px 18px; /* top padding included */
       position: relative;
     }
-
-    .panel h3{
-      margin: 0 0 10px;
-      font-size: 16px;
-      letter-spacing: -0.2px;
-    }
-
-    .panel p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    ul{ margin: 10px 0 0 18px; color: var(--muted); font-size: 14px; }
-    li{ margin: 6px 0; }
 
     .full{
       margin-top: 16px;
       border-radius: var(--radius);
       border: 1px solid rgba(255,255,255,0.10);
       background: rgba(255,255,255,0.04);
-      padding: 18px;
+      padding: 56px 18px 18px; /* top padding included */
       position: relative;
     }
 
-    /* =========================================================
-       PEP ICONS (your streamlined 3-icon set)
-       Files expected in repo root:
-       - leaf-cyan.png
-       - bolt-gunmetal.png
-       - gear-purple.png
-       ========================================================= */
+    .panel p{ margin: 0; color: var(--muted); font-size: 14px; }
 
-    /* Divider row with icons */
+    ul{ margin: 10px 0 0 18px; color: var(--muted); font-size: 14px; }
+    li{ margin: 6px 0; }
+
+    /* Divider row */
     .pepRow{
       margin: 14px 0 6px;
       display:flex;
@@ -392,7 +336,7 @@
       max-width: 260px;
     }
 
-    /* Subtle hover animation */
+    /* Icon micro animations (subtle) */
     .pepRow img,
     .pepCorner img{
       width: var(--pepIcon);
@@ -402,23 +346,21 @@
       transition: transform 160ms ease, opacity 160ms ease;
       will-change: transform;
     }
-
-    /* Micro-animations (very subtle) */
     .pepRow img:hover,
     .pepCorner img:hover{
       transform: translateY(-2px) rotate(-2deg) scale(1.03);
       opacity: 1;
     }
 
-    /* Corner cluster inside sections */
+    /* IMPORTANT FIX (2): top-right cluster, no overlap, no click stealing */
     .pepCorner{
       position:absolute;
-      right: 16px;
-      bottom: 14px;
+      right: 14px;
+      top: 10px;            /* moved to TOP so it never sits on buttons */
       display:flex;
       gap: 10px;
       opacity: 0.98;
-      pointer-events:auto; /* allow hover */
+      pointer-events:none;  /* icons cannot block button clicks */
     }
     .pepCorner img{
       width: var(--pepIconSmall);
@@ -426,28 +368,30 @@
       opacity: 0.95;
     }
 
-    /* =========================================================
-       WHAT WE DO — buttons under banner
-       ========================================================= */
+    /* (3) Bigger "What we do" buttons */
     .capButtons{
       display:flex;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
-      margin-top: 14px;
+      margin-top: 16px;
     }
     .capButtons a{
-      flex: 1 1 220px;
+      flex: 1 1 260px;
+    }
+    .capButtons .btn{
+      width: 100%;
+      padding: 16px 16px; /* bigger */
+      font-size: 16px;    /* bigger */
+      border-radius: 16px;
     }
 
-    /* =========================================================
-       RESOURCES (curated list) — moved to end
-       ========================================================= */
+    /* Resources */
     .resourcesBanner{
       margin-top: 18px;
       border-radius: var(--radius);
       border: 1px solid rgba(255,255,255,0.14);
       background: rgba(255,255,255,0.05);
-      padding: 18px;
+      padding: 56px 18px 18px;
       position: relative;
       box-shadow: 0 10px 30px rgba(0,0,0,0.30);
     }
@@ -497,7 +441,6 @@
       font-size: 13px;
     }
 
-    /* Footer */
     .footer{
       margin-top: 28px;
       padding-top: 18px;
@@ -517,10 +460,10 @@
       .resourceGrid{ grid-template-columns: 1fr; }
       nav{ display:none; }
       :root{
-        --logoWidth: 260px;
+        --logoWidth: 420px;   /* mobile size */
         --brandNameSize: 38px;
       }
-      .logo img{ max-height: 120px; }
+      .logo img{ max-height: 160px; }
     }
   </style>
 </head>
@@ -550,9 +493,6 @@
   </header>
 
   <main class="wrap">
-    <!-- =========================================================
-         HERO (Accent: CYAN)
-         ========================================================= -->
     <div class="hero bannerAccent accent-cyan" id="top">
       <div>
         <h1>Energy Solutions and Resilience Planning for Complex, Regulated Asset Portfolios</h1>
@@ -573,7 +513,7 @@
         </div>
       </div>
 
-      <aside class="card" id="contact">
+      <aside class="card bannerAccent accent-purple" id="contact">
         <h2>Contact</h2>
 
         <div class="kv">
@@ -600,16 +540,15 @@
 
         <div class="pill">Available for confidential advisory discussions</div>
 
-        <div class="pepCorner" aria-hidden="false" title="Hover me">
-          <img src="gear-purple.png" alt="Gear icon">
-          <img src="leaf-cyan.png" alt="Leaf icon">
-          <img src="bolt-gunmetal.png" alt="Bolt icon">
+        <div class="pepCorner" aria-hidden="true">
+          <img src="gear-purple.png" alt="">
+          <img src="leaf-cyan.png" alt="">
+          <img src="bolt-gunmetal.png" alt="">
         </div>
       </aside>
     </div>
 
-    <!-- Pep divider -->
-    <div class="pepRow" aria-label="Decorative icons (hover for micro-motion)">
+    <div class="pepRow" aria-label="Decorative icons">
       <span class="line"></span>
       <img src="gear-purple.png" alt="Gear icon">
       <img src="leaf-cyan.png" alt="Leaf icon">
@@ -617,9 +556,6 @@
       <span class="line"></span>
     </div>
 
-    <!-- =========================================================
-         CONTEXT (Accent: PURPLE)
-         ========================================================= -->
     <section class="full bannerAccent accent-purple" id="why">
       <h3 style="margin:0 0 10px;">When energy and infrastructure decisions become institutional risks</h3>
       <p style="margin:0; color: var(--muted); font-size:14px;">
@@ -632,15 +568,14 @@
         governance, and risk. That is where we focus.
       </p>
 
-      <div class="pepCorner" aria-label="Decorative icons (hover for micro-motion)">
-        <img src="leaf-cyan.png" alt="Leaf icon">
-        <img src="bolt-gunmetal.png" alt="Bolt icon">
-        <img src="gear-purple.png" alt="Gear icon">
+      <div class="pepCorner" aria-hidden="true">
+        <img src="leaf-cyan.png" alt="">
+        <img src="bolt-gunmetal.png" alt="">
+        <img src="gear-purple.png" alt="">
       </div>
     </section>
 
-    <!-- Pep divider -->
-    <div class="pepRow" aria-label="Decorative icons (hover for micro-motion)">
+    <div class="pepRow" aria-label="Decorative icons">
       <span class="line"></span>
       <img src="leaf-cyan.png" alt="Leaf icon">
       <img src="gear-purple.png" alt="Gear icon">
@@ -648,9 +583,6 @@
       <span class="line"></span>
     </div>
 
-    <!-- =========================================================
-         WHAT WE DO (Accent: GUNMETAL)
-         ========================================================= -->
     <section class="grid" id="what">
       <div class="panel bannerAccent accent-gunmetal">
         <h3>What we do</h3>
@@ -665,17 +597,16 @@
           <li>Procurement-ready requirements and assurance frameworks</li>
         </ul>
 
-        <!-- Three capability buttons (no truncation on homepage) -->
         <div class="capButtons">
           <a class="btn primary" href="energy-solutions.html">Energy & Resilience</a>
           <a class="btn secondary" href="regulated-food.html">Regulated Food</a>
           <a class="btn" href="governance-risk.html">Governance & Risk</a>
         </div>
 
-        <div class="pepCorner" aria-label="Decorative icons (hover for micro-motion)">
-          <img src="gear-purple.png" alt="Gear icon">
-          <img src="leaf-cyan.png" alt="Leaf icon">
-          <img src="bolt-gunmetal.png" alt="Bolt icon">
+        <div class="pepCorner" aria-hidden="true">
+          <img src="gear-purple.png" alt="">
+          <img src="leaf-cyan.png" alt="">
+          <img src="bolt-gunmetal.png" alt="">
         </div>
       </div>
 
@@ -691,17 +622,14 @@
           <li>Design solutions that survive audit, implementation, and leadership change</li>
         </ul>
 
-        <div class="pepCorner" aria-label="Decorative icons (hover for micro-motion)">
-          <img src="leaf-cyan.png" alt="Leaf icon">
-          <img src="bolt-gunmetal.png" alt="Bolt icon">
-          <img src="gear-purple.png" alt="Gear icon">
+        <div class="pepCorner" aria-hidden="true">
+          <img src="leaf-cyan.png" alt="">
+          <img src="bolt-gunmetal.png" alt="">
+          <img src="gear-purple.png" alt="">
         </div>
       </div>
     </section>
 
-    <!-- =========================================================
-         WHO (Accent alternation continues)
-         ========================================================= -->
     <section class="grid" id="who">
       <div class="panel bannerAccent accent-purple">
         <h3>Who we typically support</h3>
@@ -712,10 +640,10 @@
           <li>Regulated food, agri-food, and manufacturing organizations</li>
         </ul>
 
-        <div class="pepCorner" aria-label="Decorative icons (hover for micro-motion)">
-          <img src="gear-purple.png" alt="Gear icon">
-          <img src="bolt-gunmetal.png" alt="Bolt icon">
-          <img src="leaf-cyan.png" alt="Leaf icon">
+        <div class="pepCorner" aria-hidden="true">
+          <img src="gear-purple.png" alt="">
+          <img src="bolt-gunmetal.png" alt="">
+          <img src="leaf-cyan.png" alt="">
         </div>
       </div>
 
@@ -732,18 +660,14 @@
           <li>Specialist partners as needed (while maintaining independence)</li>
         </ul>
 
-        <div class="pepCorner" aria-label="Decorative icons (hover for micro-motion)">
-          <img src="leaf-cyan.png" alt="Leaf icon">
-          <img src="gear-purple.png" alt="Gear icon">
-          <img src="bolt-gunmetal.png" alt="Bolt icon">
+        <div class="pepCorner" aria-hidden="true">
+          <img src="leaf-cyan.png" alt="">
+          <img src="gear-purple.png" alt="">
+          <img src="bolt-gunmetal.png" alt="">
         </div>
       </div>
     </section>
 
-    <!-- =========================================================
-         RESOURCES (curated) — END OF PAGE (Accent: CYAN)
-         NOTE: We'll create a dedicated resources.html later.
-         ========================================================= -->
     <section class="resourcesBanner bannerAccent accent-cyan" id="resources">
       <div class="resourcesHeader">
         <h3>Resources: energy incentives, regulators, and assistance</h3>
@@ -788,10 +712,10 @@
         </div>
       </div>
 
-      <div class="pepCorner" aria-label="Decorative icons (hover for micro-motion)">
-        <img src="gear-purple.png" alt="Gear icon">
-        <img src="leaf-cyan.png" alt="Leaf icon">
-        <img src="bolt-gunmetal.png" alt="Bolt icon">
+      <div class="pepCorner" aria-hidden="true">
+        <img src="gear-purple.png" alt="">
+        <img src="leaf-cyan.png" alt="">
+        <img src="bolt-gunmetal.png" alt="">
       </div>
 
       <p style="margin:14px 0 0; color: var(--muted2); font-size: 13px;">
