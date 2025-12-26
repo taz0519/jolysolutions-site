@@ -8,8 +8,9 @@
 
   <!--
     FONT SETUP
-    - Headings: Roboto (medium)  → structured, technical, data-oriented
-    - Body:     Open Sans        → clean, readable, neutral
+    - Headings: Roboto (Medium)
+    - Body:    Open Sans (Regular)
+    - These match your “Data-Driven & Clean” preference.
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,19 +18,18 @@
 
   <style>
     /* ===========================
-       CORE THEME VARIABLES
+       THEME VARIABLES
        =========================== */
     :root{
-      /* Dark background & base text colours */
-      --bg: #020617;                 /* near-black blue */
-      --panel: rgba(15,23,42,0.96);  /* slate-ish panels */
+      --bg: #020617;                 /* background */
+      --panel: rgba(15,23,42,0.96);  /* dark panels */
       --panelAlt: rgba(15,23,42,0.90);
       --border: rgba(148,163,184,0.55);
       --text: #f9fafb;
       --muted: #e5e7eb;
       --muted2: #9ca3af;
 
-      /* Solid accent colours for tiles (no gradients / blends) */
+      /* Solid accent colours */
       --blue:   #1f6feb;
       --yellow: #f7c948;
       --green:  #2bbf6a;
@@ -39,7 +39,7 @@
     }
 
     /* ===========================
-       GLOBAL RESET & TYPOGRAPHY
+       GLOBAL & TYPOGRAPHY
        =========================== */
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
@@ -47,8 +47,8 @@
     body{
       margin:0;
       font-family: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size:16px;          /* Body size within the 16–18px guidance */
-      line-height:1.5;         /* 1.2–1.4 is your preference; 1.5 is safe for long text */
+      font-size:16px;
+      line-height:1.5;
       color: var(--text);
       background:
         radial-gradient(900px 500px at 20% 0%, rgba(31,111,235,0.22), transparent 55%),
@@ -57,14 +57,13 @@
         var(--bg);
     }
 
-    /* Headings all use Roboto so the hierarchy feels consistent */
     h1,h2,h3,h4,h5,h6,
     .brand-title strong{
       font-family: "Roboto", "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
       font-weight: 500;
     }
 
-    /* H1 size: in the 36–44px band you requested */
+    /* H1 within the 36–44px band */
     h1{
       margin: 14px 0 10px;
       font-size: clamp(36px, 3.4vw, 44px);
@@ -81,19 +80,15 @@
       text-underline-offset: 3px;
     }
 
-    /*
-      WRAP
-      - This is the main layout container.
-      - We remove any max-width so the hero and tiles can use the full screen width.
-    */
+    /* Main wrapper – no max-width so hero can run full-width */
     .wrap{
-      max-width: none;              /* full width of viewport */
+      max-width: none;
       margin: 0;
-      padding: 28px 18px 60px;      /* side padding to keep content off the extreme edges */
+      padding: 28px 18px 60px;
     }
 
     /* ===========================
-       HEADER & NAVIGATION
+       HEADER & NAV
        =========================== */
     header{
       position: sticky;
@@ -105,7 +100,6 @@
     }
 
     header .inner{
-      /* full width header; no centered max-width container */
       max-width: none;
       margin:0;
       width:100%;
@@ -123,13 +117,9 @@
       min-width: 260px;
     }
 
-    /*
-      LOGO
-      - Only the image, no surrounding tile.
-      - 160px width, auto height (keeps proportions of your PNG).
-    */
+    /* Logo – plain image, 220px wide as requested */
     .logo{
-      width:160px;
+      width:220px;
       height:auto;
       display:block;
       flex-shrink:0;
@@ -148,7 +138,6 @@
       line-height:1.1;
     }
     .brand-title strong{
-      /* Slightly larger and bolder so it anchors the header visually */
       font-size: clamp(26px, 2.4vw, 32px);
       letter-spacing: 0.15px;
     }
@@ -158,21 +147,17 @@
       margin-top: 6px;
     }
 
-    /*
-      NAVIGATION LINKS
-      - Increased font-size & weight so "Services / Projects / About" pop more.
-      - nowrap + no flex-wrap to keep them on a single line on desktop.
-    */
+    /* Header nav – Services / Projects / About / Contact */
     nav{
       display:flex;
       align-items:center;
       justify-content:flex-end;
       gap: 14px;
-      flex-wrap: nowrap;     /* keep nav on a single row */
+      flex-wrap: nowrap;
       white-space: nowrap;
     }
     nav a{
-      font-size: 15px;       /* larger than before */
+      font-size: 15px;
       font-weight: 600;
       color: var(--muted2);
       padding: 8px 12px;
@@ -189,14 +174,11 @@
     /* ===========================
        HERO BANNER (FULL WIDTH)
        =========================== */
-    /*
-      The hero uses negative side margins to span the full width of the page,
-      ignoring the .wrap side padding. This gives you an edge-to-edge banner.
-    */
     .hero{
-      margin: 26px -18px 0;       /* negative left/right match .wrap padding */
+      /* Negative margins match .wrap padding so the banner goes edge-to-edge */
+      margin: 26px -18px 0;
       padding: 26px 22px 26px;
-      border-radius: 0;           /* square edges to align with viewport edges */
+      border-radius: 0;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       background: var(--panel);
@@ -205,56 +187,31 @@
       overflow:hidden;
     }
 
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.7);
-      background: rgba(15,23,42,0.9);
-      color: var(--muted2);
-      font-size: 13px;
-    }
-    .dot{
-      width:10px;
-      height:10px;
-      border-radius:99px;
-      background: var(--green);
-      box-shadow: 0 0 18px rgba(43,191,106,0.65);
-    }
-
     .subhead{
       font-size: 16px;
       color: var(--muted);
-      max-width: 72ch;
-      margin: 0 0 14px;
+      max-width: 70ch;
+      margin: 0 0 12px;
     }
 
     .trust{
       font-size: 14px;
       color: var(--muted2);
-      margin: 0 0 20px;
+      margin: 0 0 18px;
     }
 
+    /* Single CTA – no duplication with nav labels */
     .cta-row{
       display:flex;
       flex-wrap: wrap;
       gap: 12px;
     }
-
-    /*
-      CTA BUTTONS
-      - Primary: solid blue
-      - Secondary: subtle outline
-      - Text kept short & professional: “Services / Projects / About”
-    */
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap: 8px;
-      padding: 11px 16px;
+      padding: 11px 18px;
       border-radius: 999px;
       border: 1px solid rgba(148,163,184,0.7);
       background: transparent;
@@ -277,7 +234,7 @@
     }
 
     /* ===========================
-       PANELS & TILES
+       TILES / PANELS
        =========================== */
     section{
       margin-top: 22px;
@@ -293,10 +250,7 @@
       box-shadow: 0 12px 32px rgba(0,0,0,0.45);
     }
 
-    /*
-      Color-coded tile helpers.
-      We alternate these to keep the vertical flow visually interesting.
-    */
+    /* Colour helpers (no gradients) */
     .tile-blue{
       border-color: var(--blue);
       background-color: rgba(31,111,235,0.18);
@@ -307,13 +261,19 @@
     }
     .tile-yellow{
       border-color: var(--yellow);
-      background-color: rgba(247,201,72,0.22);
+      background-color: var(--yellow);
+      color: #111827;
+    }
+    .tile-yellow p,
+    .tile-yellow li,
+    .tile-yellow a{
+      color: #111827;
     }
 
     .full h3,
     .panel h3{
       margin: 0 0 8px;
-      font-size: 22px;       /* H2/H3 band (26–32px is guideline; 22px looks good here) */
+      font-size: 22px;
     }
     .full p,
     .panel p{
@@ -322,9 +282,7 @@
       color: var(--muted);
     }
 
-    /*
-      Two-column grid used for Services, Capabilities, and Who/How.
-    */
+    /* Two-column layouts */
     .grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -346,7 +304,7 @@
       margin-top: 10px;
     }
 
-    /* CONTACT LAYOUT AT BOTTOM */
+    /* Contact tile layout */
     .contact-grid{
       display:flex;
       flex-wrap:wrap;
@@ -362,7 +320,7 @@
       flex:1;
     }
 
-    /* FOOTER */
+    /* Footer */
     .footer{
       margin-top: 26px;
       padding-top: 18px;
@@ -385,9 +343,9 @@
         align-items:flex-start;
       }
 
-      /* Slightly reduce logo size on smaller screens to keep header tidy */
+      /* Slightly reduce logo on smaller screens */
       .logo{
-        width: 120px;
+        width: 160px;
       }
 
       .grid{
@@ -413,24 +371,22 @@
 
 <body>
   <!-- ===========================
-       HEADER WITH LOGO & NAV
+       HEADER
        =========================== -->
   <header>
     <div class="inner">
-      <!-- Brand block: logo + company name -->
+      <!-- Brand: logo + company line -->
       <div class="brand">
-        <!-- Logo only (no tile) at 160px -->
         <div class="logo" aria-label="Joly Solutions logo">
           <img src="logo.png" alt="Joly Solutions logo">
         </div>
-
         <div class="brand-title">
           <strong>Joly Solutions</strong>
           <span>Independent engineering and operational advisory</span>
         </div>
       </div>
 
-      <!-- Primary navigation for the hero banner -->
+      <!-- Hero nav headings: Services / Projects / About / Contact -->
       <nav aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#projects">Projects</a>
@@ -441,108 +397,50 @@
   </header>
 
   <!-- ===========================
-       MAIN CONTENT
+       MAIN
        =========================== -->
   <main class="wrap">
-    <!-- HERO BANNER (EDGE-TO-EDGE) -->
+    <!-- HERO (full width) -->
     <section class="hero" id="top">
-      <div class="kicker">
-        <span class="dot"></span>
-        Portfolio-minded advisory for complex, regulated environments
-      </div>
-
-      <h1>Energy solutions and resilience planning for complex, regulated asset portfolios</h1>
+      <!-- No top “button”; straight into H1 + concise copy -->
+      <h1>Energy and resilience advisory for consequential decisions</h1>
 
       <p class="subhead">
-        Independent engineering and operational advisory for public institutions, regulated industries, and portfolio owners
-        where energy, infrastructure, and resilience decisions carry material operational, financial, and governance risk.
+        Independent, portfolio-focused support for organizations where energy, infrastructure, and continuity decisions
+        carry material operational and governance risk.
       </p>
 
       <p class="trust">
-        We work at the intersection of engineering reality, operational accountability, and board-level oversight,
-        helping leaders make defensible decisions when complexity and consequence are high.
+        We help leaders test assumptions, structure options, and make decisions that stand up to audit, scrutiny,
+        and long-term operation.
       </p>
 
-      <!-- CTAs labelled exactly as requested: Services / Projects / About -->
+      <!-- Single CTA that is not a duplicate of header labels -->
       <div class="cta-row">
-        <a class="btn primary" href="#services">Services</a>
-        <a class="btn" href="#projects">Projects</a>
-        <a class="btn" href="about.html">About</a>
+        <a class="btn primary" href="#contact">Schedule a consultation</a>
       </div>
     </section>
 
     <!-- ===========================
-         ABOUT TILE (NEAR TOP)
-         - Placed immediately after the hero
+         MAIN / ABOUT (COMBINED TILE)
+         - Combines the About + “institutional risk” content,
+           shorter and tighter.
          =========================== -->
     <section class="full tile-blue" id="about">
-      <h3>About Joly Solutions</h3>
+      <h3>Joly Solutions</h3>
       <p>
-        Joly Solutions was created to provide independent, technically grounded advisory support where energy,
-        infrastructure, and continuity decisions have material consequence for operations, governance, and reputation.
-        The focus is on programs and portfolios that must stand up to audit, public scrutiny, and leadership change.
+        Joly Solutions provides independent engineering and operational advisory for assets and programs that cannot fail
+        quietly – where downtime, non-compliance, or platform failure carries disproportionate consequence.
+      </p>
+      <p style="margin-top:8px;">
+        Work focuses on energy, metering, and infrastructure programs that must balance capital limits, regulatory
+        expectations, and real operating constraints.
       </p>
     </section>
 
     <!-- ===========================
-         MAIN CONTEXT TILE
-         - “When energy and infrastructure decisions become institutional risks”
-         - Placed directly under About, with a different colour to alternate visually
-         =========================== -->
-    <section class="full tile-green" id="context">
-      <h3>When energy and infrastructure decisions become institutional risks</h3>
-      <p>
-        Many organizations now face aging infrastructure under capital constraints; energy platforms that no longer meet
-        security, data, or governance expectations; and growing exposure to disruption and audit. These are not just
-        technical projects – they are board-level issues.
-      </p>
-      <p style="margin-top:10px;">
-        Joly Solutions also contributes to sector-wide collaboration through initiatives such as the
-        <a href="https://oeca.ca/ontario-energy-symposium-2026/" target="_blank" rel="noopener">
-          Ontario Energy Symposium (OECA) on January 14
-        </a>,
-        bringing utilities, public institutions, and policy leaders together around practical, risk-informed pathways forward.
-      </p>
-    </section>
-
-    <!-- ===========================
-         SERVICES TILE GROUP (2-COLUMN)
-         - Colours alternated (yellow / blue)
-         =========================== -->
-    <section class="grid" id="services">
-      <!-- Services overview -->
-      <div class="panel tile-yellow">
-        <h3>Services</h3>
-        <p>
-          Portfolio-scale energy, infrastructure, and resilience advisory – vendor-agnostic and aligned with operational
-          and governance realities.
-        </p>
-        <ul>
-          <li>Energy program reset and legacy platform replacement</li>
-          <li>Infrastructure resilience and continuity planning</li>
-          <li>Capital-aware transition roadmaps and options analysis</li>
-          <li>Procurement-ready technical architectures and requirements</li>
-        </ul>
-      </div>
-
-      <!-- Risk thinking -->
-      <div class="panel tile-blue">
-        <h3>How we think about risk</h3>
-        <p>
-          Most advisors approach energy and infrastructure through a single lens – optimization, compliance, or policy.
-          Our work integrates engineering, operations, governance, and risk.
-        </p>
-        <ul>
-          <li>Identify critical failure modes and dependencies early</li>
-          <li>Translate technical risk into board-ready language</li>
-          <li>Design solutions that survive audit and implementation</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===========================
-         CORE CAPABILITIES
-         - Alternating colours across tiles (green / yellow / blue)
+         CORE CAPABILITIES (MOVED UP)
+         - Immediately follows the main tile.
          =========================== -->
     <section class="full" id="capabilities">
       <h3>Core capabilities</h3>
@@ -558,52 +456,113 @@
         </div>
 
         <!-- Regulated food & production -->
-        <div class="panel tile-yellow">
+        <div class="panel tile-blue">
           <h3>Regulated food and critical production environments</h3>
           <p>
             Engineering and operational advisory for facilities where downtime, contamination, or non-compliance carry
-            disproportionate risk – integrating energy reliability, production reality, and sustainability.
+            outsized risk, aligning production reality, biosecurity, and energy reliability.
           </p>
         </div>
       </div>
 
       <!-- Governance / board-facing advisory -->
-      <div style="margin-top:14px;" class="panel tile-blue">
+      <div style="margin-top:14px;" class="panel tile-green">
         <h3>Governance, board oversight, and enterprise risk</h3>
         <p>
           Independent technical governance for Boards and Executives, including risk assessments, business continuity
-          planning, and program assurance frameworks aligned with ISO and regulatory expectations.
+          planning, and assurance frameworks aligned with ISO and sector guidance.
         </p>
       </div>
     </section>
 
     <!-- ===========================
+         OECA TILE (HIGHLY VISIBLE, YELLOW)
+         - Uses OECA logo and stronger call-out.
+         - Make sure an image called "oeca-logo.png" is in the same folder.
+         =========================== -->
+    <section class="full tile-yellow" id="oeca">
+      <h3>Ontario Energy Collaborative Association (OECA)</h3>
+
+      <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:center; margin-top:6px;">
+        <!-- OECA logo block -->
+        <div style="flex:0 0 auto;">
+          <img src="oeca-logo.png" alt="OECA logo" style="height:56px; width:auto; display:block;">
+        </div>
+
+        <div style="flex:1 1 220px; font-size:14px;">
+          <p style="margin:0;">
+            Marc-Antoine Joly is a founding member of the
+            <a href="https://oeca.ca/" target="_blank" rel="noopener">Ontario Energy Collaborative Association</a>,
+            a volunteer-led forum focused on practical collaboration between utilities, municipalities, and provincial partners.
+          </p>
+          <p style="margin-top:6px;">
+            Joly Solutions supports initiatives such as the
+            <a href="https://oeca.ca/ontario-energy-symposium-2026/" target="_blank" rel="noopener">
+              Ontario Energy Symposium – January 14
+            </a>,
+            where leaders compare plans, surface risks early, and align on next steps for Ontario’s energy system.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================
+         SERVICES (2-COLUMN)
+         =========================== -->
+    <section class="grid" id="services">
+      <!-- Services overview -->
+      <div class="panel tile-green">
+        <h3>Services</h3>
+        <p>
+          Portfolio-scale energy, infrastructure, and resilience advisory – vendor-agnostic and grounded in operating reality.
+        </p>
+        <ul>
+          <li>Energy program reset and legacy platform replacement</li>
+          <li>Infrastructure resilience and continuity planning</li>
+          <li>Capital-aware roadmaps and options analysis</li>
+          <li>Procurement-ready technical architectures and requirements</li>
+        </ul>
+      </div>
+
+      <!-- How risk is framed -->
+      <div class="panel tile-blue">
+        <h3>How risk is approached</h3>
+        <p>
+          Advisory work integrates engineering, operations, and governance rather than treating them separately.
+        </p>
+        <ul>
+          <li>Surface critical dependencies and failure modes early</li>
+          <li>Translate technical risk into executive and board language</li>
+          <li>Design solutions that survive audit, implementation, and turnover</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===========================
          PROJECTS SUMMARY
-         - Green tile to keep the colour alternation going
          =========================== -->
     <section class="full tile-green" id="projects">
       <h3>Representative programs and projects</h3>
       <p>
-        Joly Solutions focuses on multi-year programs and complex portfolios where engineering, operations, and governance
-        must move together – for example:
+        Typical engagements involve multi-year programs and portfolios where decisions affect production, continuity,
+        and governance, for example:
       </p>
       <ul>
-        <li>Energy and infrastructure program resets in regulated production environments</li>
-        <li>Portfolio-wide metering and data platform renewals under capital constraints</li>
-        <li>Business continuity and resilience planning for critical facilities</li>
+        <li>Program resets for metering, monitoring, and energy data platforms</li>
+        <li>Resilience and continuity planning for regulated production facilities</li>
+        <li>Portfolio-level prioritization under capital and staffing constraints</li>
       </ul>
-      <p style="margin-top:10px;">
-        Detailed case descriptions can be provided on request under appropriate confidentiality.
+      <p style="margin-top:8px;">
+        Specific case examples can be shared under appropriate confidentiality.
       </p>
     </section>
 
     <!-- ===========================
-         WHO / HOW (2-COLUMN)
-         - Colours: yellow / blue for contrast
+         WHO / HOW
          =========================== -->
     <section class="grid" id="who">
-      <div class="panel tile-yellow">
-        <h3>Who we support</h3>
+      <div class="panel tile-blue">
+        <h3>Who is supported</h3>
         <ul>
           <li>Provincial ministries, agencies, and Crown corporations</li>
           <li>School boards, universities, hospitals, and public institutions</li>
@@ -612,26 +571,24 @@
         </ul>
       </div>
 
-      <div class="panel tile-blue" id="engage">
-        <h3>How engagements work</h3>
+      <div class="panel tile-green" id="engage">
+        <h3>How engagements are structured</h3>
         <p>
-          Joly Solutions acts as a prime, independent advisor accountable for clarity and outcomes:
+          Joly Solutions acts as an independent advisor with clear accountability for advice and outcomes:
         </p>
         <ul>
-          <li>Frame the problem and decision context correctly</li>
-          <li>Assess risk, consequence, and practical options</li>
-          <li>Support confident executive and board decisions</li>
-          <li>Remain independent and vendor-agnostic</li>
+          <li>Clarify scope, constraints, and decision-makers</li>
+          <li>Develop options with risk, cost, and practicality in view</li>
+          <li>Support implementation and changeover as needed</li>
+          <li>Maintain vendor and product independence</li>
         </ul>
       </div>
     </section>
 
     <!-- ===========================
-         CONTACT TILE
-         - Kept at the bottom so users scroll to reach it
-         - Uses green to close the colour cycle
+         CONTACT (BOTTOM)
          =========================== -->
-    <section class="card tile-green" id="contact">
+    <section class="card tile-blue" id="contact">
       <h3>Contact Joly Solutions</h3>
 
       <div class="contact-grid">
@@ -676,7 +633,7 @@
     </footer>
   </main>
 
-  <!-- Simple script to keep the year current -->
+  <!-- Dynamic year -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
