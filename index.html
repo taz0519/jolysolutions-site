@@ -1,480 +1,29 @@
 <!doctype html>
 <html lang="en">
-<link rel="stylesheet" href="styles.css">
 <head>
   <meta charset="utf-8" />
+  <title>Joly Solutions | Independent Engineering & Operational Advisory</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Joly Solutions — independent engineering and operational advisory for complex, regulated asset portfolios." />
-  <title>Joly Solutions</title>
+  <meta name="description" content="Independent engineering and operational advisory for complex, regulated asset portfolios across Ontario and Canada." />
 
-  <style>
-    :root{
-      --bgTop: #141c26;
-      --bgBottom: #0b1118;
-
-      --purple: #8b5cf6;
-      --cyan:   #63e6e2;
-      --gunmetal:#2a3441;
-
-      --text:  rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.72);
-      --muted2:rgba(255,255,255,0.60);
-
-      --shadow: 0 18px 60px rgba(0,0,0,0.55);
-      --radius: 20px;
-      --max: 1120px;
-
-      /* (4) DOUBLE LOGO SIZE AGAIN */
-      --logoWidth: 240px;         /* was 360px */
-      --brandNameSize: 54px;
-      --brandTagSize: 13px;
-
-      --pepIcon: 44px;
-      --pepIconSmall: 34px;
-
-      --accentThickness: 4px;
-      --accentThicknessSmall: 3px;
-    }
-
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color: var(--text);
-      line-height:1.55;
-      background: linear-gradient(180deg, var(--bgTop), var(--bgBottom));
-      min-height: 100vh;
-    }
-
-    a{ color: inherit; text-decoration:none; }
-    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
-
-    .wrap{ max-width: var(--max); margin:0 auto; padding: 26px 18px 70px; }
-
-    header{
-      position: sticky;
-      top:0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-      background: rgba(11,17,24,0.88);
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-    }
-
-    header .inner{
-      max-width: var(--max);
-      margin:0 auto;
-      width:100%;
-      padding: 12px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 16px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 18px;
-      min-width: 520px;
-    }
-
-    /* Free-floating logo (no box) */
-    .logo{
-      width: var(--logoWidth);
-      height: auto;
-      display:flex;
-      align-items:center;
-      justify-content:flex-start;
-      flex: 0 0 auto;
-    }
-    .logo img{
-      width: 100%;
-      height: auto;
-      max-height: 220px;  /* increased to match bigger logo */
-      object-fit: contain;
-      padding: 0;
-      display:block;
-    }
-
-    .brand-title{
-      display:flex;
-      flex-direction:column;
-      line-height: 1.05;
-      min-width: 280px;
-    }
-
-    .brand-title strong{
-      font-size: var(--brandNameSize);
-      font-weight: 900;
-      letter-spacing: -0.6px;
-      color: #fff;
-      white-space: nowrap;
-    }
-
-    .brand-title span{
-      font-size: var(--brandTagSize);
-      color: var(--muted2);
-      letter-spacing: 0.2px;
-      margin-top: 6px;
-    }
-
-    nav{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      white-space: nowrap;
-      flex-wrap: wrap;
-      justify-content:flex-end;
-    }
-
-    nav a{
-      font-size: 13px;
-      color: var(--muted);
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: 1px solid transparent;
-    }
-
-    nav a:hover{
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.12);
-      text-decoration:none;
-      color: var(--text);
-    }
-
-    /* Accent system */
-    .bannerAccent{ position: relative; overflow: hidden; }
-    .bannerAccent::before{
-      content:"";
-      position:absolute;
-      top:0; left:0; right:0;
-      height: var(--accentThickness);
-      background: var(--cyan);
-      opacity: 0.95;
-      pointer-events:none;
-    }
-    .bannerAccent::after{
-      content:"";
-      position:absolute;
-      top:0; left:0;
-      width: var(--accentThickness);
-      height: 100%;
-      background: var(--purple);
-      opacity: 0.95;
-      pointer-events:none;
-    }
-    .accent-cyan::before{ background: var(--cyan); }
-    .accent-cyan::after{ background: var(--purple); }
-
-    .accent-purple::before{ background: var(--purple); }
-    .accent-purple::after{ background: var(--cyan); }
-
-    .accent-gunmetal::before{ background: var(--gunmetal); }
-    .accent-gunmetal::after{ background: var(--cyan); }
-
-    .panel.bannerAccent::before{ height: var(--accentThicknessSmall); }
-    .panel.bannerAccent::after{ width: var(--accentThicknessSmall); }
-
-    .hero{
-      margin-top: 22px;
-      padding: 28px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: var(--shadow);
-      background: rgba(255,255,255,0.05);
-      display:grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 18px;
-    }
-
-    h1{
-      margin: 0 0 12px;
-      font-size: clamp(30px, 3.2vw, 46px);
-      letter-spacing: -0.6px;
-      line-height: 1.12;
-    }
-
-    .subhead{
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 74ch;
-      margin: 0 0 14px;
-    }
-
-    .trust{
-      font-size: 14px;
-      color: var(--muted2);
-      margin: 0 0 18px;
-    }
-
-    .cta-row{ display:flex; gap: 12px; flex-wrap: wrap; }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.06);
-      color: #fff;
-      font-weight: 800;
-      font-size: 14px;
-      transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
-    }
-    .btn:hover{
-      text-decoration:none;
-      transform: translateY(-1px);
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.22);
-    }
-    .btn.primary{
-      background: var(--cyan);
-      color: #061014;
-      border-color: rgba(99,230,226,0.75);
-    }
-    .btn.secondary{
-      border-color: rgba(139,92,246,0.85);
-      background: transparent;
-      color: #fff;
-    }
-
-    .card{
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(11,17,24,0.50);
-      padding: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-      position: relative;
-    }
-
-    .card h2{
-      margin: 0 0 12px;
-      font-size: 16px;
-      letter-spacing: -0.2px;
-      color: #fff;
-    }
-
-    .kv{
-      display:grid;
-      grid-template-columns: 92px 1fr;
-      gap: 10px 14px;
-      margin-top: 10px;
-      font-size: 13px;
-      align-items: start;
-    }
-    .k{ color: var(--muted2); text-align:right; padding-top:2px; }
-    .v{ color:#fff; word-break: break-word; }
-    .vStack{ display:flex; flex-direction:column; gap:6px; }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.05);
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 12px;
-      width: fit-content;
-    }
-
-    section{ margin-top: 22px; }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    /* IMPORTANT FIX (2): reserve space so icons never cover buttons/content */
-    .panel, .full, .card{
-      padding-top: 56px; /* room for top-right icon cluster */
-    }
-    .panel h3, .full h3, .card h2{
-      margin-top: 0;
-    }
-
-    .panel{
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-      padding: 56px 18px 18px; /* top padding included */
-      position: relative;
-    }
-
-    .full{
-      margin-top: 16px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-      padding: 56px 18px 18px; /* top padding included */
-      position: relative;
-    }
-
-    .panel p{ margin: 0; color: var(--muted); font-size: 14px; }
-
-    ul{ margin: 10px 0 0 18px; color: var(--muted); font-size: 14px; }
-    li{ margin: 6px 0; }
-
-    /* Divider row */
-    .pepRow{
-      margin: 14px 0 6px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap: 14px;
-      opacity: 0.98;
-    }
-    .pepRow .line{
-      height: 1px;
-      flex: 1;
-      background: rgba(255,255,255,0.14);
-      max-width: 260px;
-    }
-
-    /* Icon micro animations (subtle) */
-    .pepRow img,
-    .pepCorner img{
-      width: var(--pepIcon);
-      height: var(--pepIcon);
-      object-fit: contain;
-      opacity: 0.92;
-      transition: transform 160ms ease, opacity 160ms ease;
-      will-change: transform;
-    }
-    .pepRow img:hover,
-    .pepCorner img:hover{
-      transform: translateY(-2px) rotate(-2deg) scale(1.03);
-      opacity: 1;
-    }
-
-    /* IMPORTANT FIX (2): top-right cluster, no overlap, no click stealing */
-    .pepCorner{
-      position:absolute;
-      right: 14px;
-      top: 10px;            /* moved to TOP so it never sits on buttons */
-      display:flex;
-      gap: 10px;
-      opacity: 0.98;
-      pointer-events:none;  /* icons cannot block button clicks */
-    }
-    .pepCorner img{
-      width: var(--pepIconSmall);
-      height: var(--pepIconSmall);
-      opacity: 0.95;
-    }
-
-    /* (3) Bigger "What we do" buttons */
-    .capButtons{
-      display:flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-    .capButtons a{
-      flex: 1 1 260px;
-    }
-    .capButtons .btn{
-      width: 100%;
-      padding: 16px 16px; /* bigger */
-      font-size: 16px;    /* bigger */
-      border-radius: 16px;
-    }
-
-    /* Resources */
-    .resourcesBanner{
-      margin-top: 18px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.05);
-      padding: 56px 18px 18px;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.30);
-    }
-
-    .resourcesHeader{
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .resourcesHeader h3{ margin:0; font-size: 16px; letter-spacing: -0.2px; }
-
-    .resourceGrid{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .resourceItem{
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(11,17,24,0.45);
-      padding: 14px;
-      position: relative;
-    }
-
-    .resourceItem .tag{
-      display:inline-block;
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14);
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .resourceItem a{
-      display:block;
-      font-weight: 900;
-      margin-bottom: 4px;
-    }
-    .resourceItem p{
-      margin:0;
-      color: var(--muted2);
-      font-size: 13px;
-    }
-
-    .footer{
-      margin-top: 28px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.10);
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      color: var(--muted2);
-      font-size: 12px;
-    }
-
-    @media (max-width: 980px){
-      .hero{ grid-template-columns: 1fr; }
-      .grid{ grid-template-columns: 1fr; }
-      .resourceGrid{ grid-template-columns: 1fr; }
-      nav{ display:none; }
-      :root{
-        --logoWidth: 420px;   /* mobile size */
-        --brandNameSize: 38px;
-      }
-      .logo img{ max-height: 160px; }
-    }
-  </style>
+  <!-- Shared stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <header>
+  <!-- Skip to content (for accessibility) -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- =========================================================
+       HEADER — Brand left / Nav + Social right
+       ========================================================= -->
+  <header role="banner">
     <div class="inner">
+
+      <!-- LEFT: Logo + Title -->
       <div class="brand">
-        <div class="logo" aria-label="Joly Solutions logo">
-          <img src="logo.png" alt="Joly Solutions logo" />
+        <div class="logo" aria-hidden="true">
+          <img src="logo.png" alt="Joly Solutions logo">
         </div>
 
         <div class="brand-title">
@@ -483,251 +32,211 @@
         </div>
       </div>
 
-      <nav aria-label="Primary">
+      <!-- RIGHT: Nav + Social -->
+      <nav aria-label="Primary navigation" class="top-nav">
         <a href="#what">What we do</a>
         <a href="#who">Who we support</a>
         <a href="capabilities.html">Capabilities</a>
         <a href="#resources">Resources</a>
         <a href="#contact">Contact</a>
+
+        <!-- Divider -->
+        <span class="divider" aria-hidden="true"></span>
+
+        <!-- Social -->
+        <a
+          href="https://www.linkedin.com/in/energyjoly17/"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn profile"
+        >
+          LinkedIn
+        </a>
+
+        <a
+          href="https://www.instagram.com"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram profile"
+        >
+          Instagram
+        </a>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <div class="hero bannerAccent accent-cyan" id="top">
-      <div>
-        <h1>Energy Solutions and Resilience Planning for Complex, Regulated Asset Portfolios</h1>
+  <!-- =========================================================
+       MAIN
+       ========================================================= -->
+  <main id="main" class="wrap">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <h1 id="hero-title">
+          Energy solutions and resilience planning for complex, regulated asset portfolios
+        </h1>
 
         <p class="subhead">
-          Independent engineering and operational advisory for public institutions, regulated industries, and portfolio owners
-          where energy, infrastructure, and resilience decisions carry material operational, financial, and governance risk.
+          Independent engineering and operational advisory for public institutions, regulated industries,
+          and portfolio owners where decisions carry material operational, financial, and governance risk.
         </p>
 
         <p class="trust">
-          We work at the intersection of engineering reality, operational accountability, and board-level oversight,
-          helping leaders make defensible decisions when complexity and consequence are high.
+          We help leaders make defensible decisions when complexity — and consequence — are high.
         </p>
 
-        <div class="cta-row">
-          <a class="btn primary" href="#contact">Request a confidential discussion</a>
-          <a class="btn secondary" href="#what">Explore capabilities</a>
+        <div class="cta-row" role="group">
+          <a class="btn btn-primary" href="#contact">Request a confidential discussion</a>
+          <a class="btn btn-outline" href="#what">Explore what we do</a>
         </div>
       </div>
 
-      <aside class="card bannerAccent accent-purple" id="contact">
-        <h2>Contact</h2>
+      <!-- CONTACT CARD -->
+      <aside class="contact-card" id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Connect with Marc-Antoine</h2>
 
         <div class="kv">
           <div class="k">Name</div>
-          <div class="v">Marc-Antoine Joly, P.Eng., CEM, CMVP, EBCP, CDSM, CEA</div>
+          <div class="v">
+            Marc-Antoine Joly, P.Eng., CEM, CMVP, EBCP, CDSM, CEA
+          </div>
 
           <div class="k">Email</div>
-          <div class="v">
-            <div class="vStack">
-              <a href="mailto:marcantoinejpjoly@gmail.com">marcantoinejpjoly@gmail.com</a>
-              <a href="mailto:marc-antoine@jolysolutions.ca">marc-antoine@jolysolutions.ca</a>
-            </div>
+          <div class="v vStack">
+            <a href="mailto:marcantoinejpjoly@gmail.com">marcantoinejpjoly@gmail.com</a>
+            <a href="mailto:marc-antoine@jolysolutions.ca">marc-antoine@jolysolutions.ca</a>
           </div>
 
           <div class="k">Mobile</div>
           <div class="v"><a href="tel:+16132194375">+1 (613) 219-4375</a></div>
 
           <div class="k">LinkedIn</div>
-          <div class="v"><a href="https://www.linkedin.com/in/energyjoly17/" target="_blank" rel="noopener">linkedin.com/in/energyjoly17</a></div>
+          <div class="v">
+            <a href="https://www.linkedin.com/in/energyjoly17/" target="_blank" rel="noopener">
+              linkedin.com/in/energyjoly17
+            </a>
+          </div>
 
           <div class="k">Location</div>
           <div class="v">Ontario, Canada</div>
         </div>
 
-        <div class="pill">Available for confidential advisory discussions</div>
+        <div class="contact-pill">Confidential advisory available</div>
 
-        <div class="pepCorner" aria-hidden="true">
-          <img src="gear-purple.png" alt="">
-          <img src="leaf-cyan.png" alt="">
-          <img src="bolt-gunmetal.png" alt="">
+        <div class="contact-cta-row">
+          <a class="btn btn-secondary" href="mailto:marcantoinejpjoly@gmail.com">Email now</a>
+          <a class="btn btn-outline" href="tel:+16132194375">Call or text</a>
         </div>
       </aside>
-    </div>
-
-    <div class="pepRow" aria-label="Decorative icons">
-      <span class="line"></span>
-      <img src="gear-purple.png" alt="Gear icon">
-      <img src="leaf-cyan.png" alt="Leaf icon">
-      <img src="bolt-gunmetal.png" alt="Bolt icon">
-      <span class="line"></span>
-    </div>
-
-    <section class="full bannerAccent accent-purple" id="why">
-      <h3 style="margin:0 0 10px;">When energy and infrastructure decisions become institutional risks</h3>
-      <p style="margin:0; color: var(--muted); font-size:14px;">
-        Many organizations face the same challenge: aging infrastructure under capital constraints, energy programs and platforms
-        that no longer meet security or governance expectations, growing exposure to disruption and audit, and decisions that are
-        technically complex but executive and board-level in consequence.
-      </p>
-      <p style="margin:10px 0 0; color: var(--muted2); font-size:14px;">
-        The issue is rarely a lack of technology or effort. It is a lack of integrated perspective across engineering, operations,
-        governance, and risk. That is where we focus.
-      </p>
-
-      <div class="pepCorner" aria-hidden="true">
-        <img src="leaf-cyan.png" alt="">
-        <img src="bolt-gunmetal.png" alt="">
-        <img src="gear-purple.png" alt="">
-      </div>
     </section>
 
-    <div class="pepRow" aria-label="Decorative icons">
-      <span class="line"></span>
-      <img src="leaf-cyan.png" alt="Leaf icon">
-      <img src="gear-purple.png" alt="Gear icon">
-      <img src="bolt-gunmetal.png" alt="Bolt icon">
-      <span class="line"></span>
-    </div>
+    <!-- =========================================================
+         CONTEXT
+         ========================================================= -->
+    <section class="full-panel accent-blue">
+      <h2>When energy and infrastructure decisions become institutional risks</h2>
+      <p>
+        Aging assets, complex programs, and evolving governance requirements create risk exposure that
+        must be managed at the executive and board level — not just through project execution.
+      </p>
+      <p style="margin-top:10px; color:var(--muted2);">
+        We integrate engineering, operations, governance, and risk to support informed, accountable decisions.
+      </p>
+    </section>
 
+    <!-- =========================================================
+         WHAT WE DO / RISK
+         ========================================================= -->
     <section class="grid" id="what">
-      <div class="panel bannerAccent accent-gunmetal">
+      <article class="panel accent-green">
         <h3>What we do</h3>
-        <p>
-          Portfolio-scale strategy, program renewal, resilience planning, and governance support.
-          Vendor-agnostic, outcome-focused, and built to stand up to scrutiny.
-        </p>
         <ul>
-          <li>Energy program evolution and transition pathways</li>
+          <li>Energy program renewal and transition planning</li>
           <li>Infrastructure resilience and continuity planning</li>
           <li>Independent architecture and risk review</li>
-          <li>Procurement-ready requirements and assurance frameworks</li>
+          <li>Procurement-ready technical and governance frameworks</li>
         </ul>
 
-        <div class="capButtons">
-          <a class="btn primary" href="energy-solutions.html">Energy & Resilience</a>
-          <a class="btn secondary" href="regulated-food.html">Regulated Food</a>
-          <a class="btn" href="governance-risk.html">Governance & Risk</a>
+        <div class="cta-row" style="margin-top:14px;">
+          <a class="btn btn-primary" href="energy-solutions.html">Energy &amp; resilience</a>
+          <a class="btn btn-secondary" href="regulated-food.html">Regulated food</a>
+          <a class="btn btn-outline" href="governance-risk.html">Governance &amp; risk</a>
         </div>
+      </article>
 
-        <div class="pepCorner" aria-hidden="true">
-          <img src="gear-purple.png" alt="">
-          <img src="leaf-cyan.png" alt="">
-          <img src="bolt-gunmetal.png" alt="">
-        </div>
-      </div>
-
-      <div class="panel bannerAccent accent-cyan">
+      <article class="panel accent-blue">
         <h3>A different way of seeing risk</h3>
-        <p>
-          Most advisors approach energy and infrastructure through a single lens (optimization, compliance, or policy).
-          Our work is informed by accountability across operations, regulated environments, and executive governance.
-        </p>
         <ul>
-          <li>Identify failure modes early</li>
-          <li>Challenge assumptions constructively</li>
-          <li>Design solutions that survive audit, implementation, and leadership change</li>
+          <li>Failure modes identified early</li>
+          <li>Constructive challenge, not obstacle-finding</li>
+          <li>Decisions that survive audit and leadership change</li>
         </ul>
-
-        <div class="pepCorner" aria-hidden="true">
-          <img src="leaf-cyan.png" alt="">
-          <img src="bolt-gunmetal.png" alt="">
-          <img src="gear-purple.png" alt="">
-        </div>
-      </div>
+      </article>
     </section>
 
+    <!-- =========================================================
+         WHO WE SUPPORT
+         ========================================================= -->
     <section class="grid" id="who">
-      <div class="panel bannerAccent accent-purple">
-        <h3>Who we typically support</h3>
+      <article class="panel accent-yellow">
+        <h3>Who we support</h3>
         <ul>
           <li>Provincial ministries and agencies</li>
-          <li>School boards, universities, hospitals, and public institutions</li>
+          <li>Public institutions: schools, universities, hospitals</li>
           <li>Portfolio owners and operators of critical infrastructure</li>
-          <li>Regulated food, agri-food, and manufacturing organizations</li>
+          <li>Regulated food and advanced manufacturing</li>
         </ul>
+      </article>
 
-        <div class="pepCorner" aria-hidden="true">
-          <img src="gear-purple.png" alt="">
-          <img src="bolt-gunmetal.png" alt="">
-          <img src="leaf-cyan.png" alt="">
-        </div>
-      </div>
-
-      <div class="panel bannerAccent accent-gunmetal">
+      <article class="panel accent-green">
         <h3>How we engage</h3>
         <p>
-          We act as a prime, independent advisor accountable for clarity and outcomes:
-          frame the problem correctly, assess risk and consequence, define viable pathways forward,
-          and support confident executive and board decisions.
+          Independent, accountable, and outcome-focused — with specialist partners when needed,
+          while maintaining independence and governance clarity.
         </p>
-        <ul>
-          <li>Independent and vendor-agnostic</li>
-          <li>Single-point accountability</li>
-          <li>Specialist partners as needed (while maintaining independence)</li>
-        </ul>
-
-        <div class="pepCorner" aria-hidden="true">
-          <img src="leaf-cyan.png" alt="">
-          <img src="gear-purple.png" alt="">
-          <img src="bolt-gunmetal.png" alt="">
-        </div>
-      </div>
+      </article>
     </section>
 
-    <section class="resourcesBanner bannerAccent accent-cyan" id="resources">
-      <div class="resourcesHeader">
-        <h3>Resources: energy incentives, regulators, and assistance</h3>
-        <div class="pill">Curated essentials</div>
+    <!-- =========================================================
+         RESOURCES (unchanged)
+         ========================================================= -->
+    <section class="resources" id="resources">
+      <div class="resources-header">
+        <h2>Energy &amp; infrastructure resources</h2>
+        <span style="font-size:13px; color:var(--muted2);">
+          A curated starting point for Ontario and Canada
+        </span>
       </div>
 
-      <div class="resourceGrid">
-        <div class="resourceItem">
+      <div class="resource-grid">
+        <article class="resource-item">
           <span class="tag">Ontario system operator</span>
-          <a href="https://www.ieso.ca/" target="_blank" rel="noopener">IESO</a>
-          <p>Ontario electricity system planning, market operations, and conservation programs.</p>
-        </div>
+          <a href="https://www.ieso.ca/" target="_blank" rel="noopener">Independent Electricity System Operator</a>
+          <p>Planning, market operations, and incentive programs.</p>
+        </article>
 
-        <div class="resourceItem">
-          <span class="tag">Ontario regulator</span>
-          <a href="https://www.oeb.ca/" target="_blank" rel="noopener">Ontario Energy Board (OEB)</a>
-          <p>Regulation of electricity and natural gas sectors; consumer protection and filings.</p>
-        </div>
+        <article class="resource-item">
+          <span class="tag">Regulator</span>
+          <a href="https://www.oeb.ca/" target="_blank" rel="noopener">Ontario Energy Board</a>
+          <p>Electricity and natural gas regulation.</p>
+        </article>
 
-        <div class="resourceItem">
-          <span class="tag">Ontario incentives</span>
+        <article class="resource-item">
+          <span class="tag">Incentives</span>
           <a href="https://www.saveonenergy.ca/" target="_blank" rel="noopener">Save on Energy</a>
-          <p>Ontario’s main hub for energy efficiency incentives for homes and businesses.</p>
-        </div>
-
-        <div class="resourceItem">
-          <span class="tag">Canada programs</span>
-          <a href="https://natural-resources.canada.ca/energy-efficiency" target="_blank" rel="noopener">NRCan: Energy efficiency</a>
-          <p>Federal info on energy efficiency programs and tools.</p>
-        </div>
-
-        <div class="resourceItem">
-          <span class="tag">Financing + advisory</span>
-          <a href="https://www.bdc.ca/en" target="_blank" rel="noopener">BDC</a>
-          <p>Financing and advisory services for Canadian entrepreneurs and SMEs.</p>
-        </div>
-
-        <div class="resourceItem">
-          <span class="tag">Home rebates hub</span>
-          <a href="https://www.homerenovationsavings.ca/" target="_blank" rel="noopener">Home Renovation Savings</a>
-          <p>Ontario program hub for home upgrades (heat pumps, insulation, solar, and more).</p>
-        </div>
+          <p>Ontario efficiency incentives.</p>
+        </article>
       </div>
-
-      <div class="pepCorner" aria-hidden="true">
-        <img src="gear-purple.png" alt="">
-        <img src="leaf-cyan.png" alt="">
-        <img src="bolt-gunmetal.png" alt="">
-      </div>
-
-      <p style="margin:14px 0 0; color: var(--muted2); font-size: 13px;">
-        Next step: we’ll add a dedicated Resources page and keep the homepage list intentionally short.
-      </p>
     </section>
 
-    <div class="footer">
-      <div>© <span id="year"></span> Joly Solutions.</div>
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+    <footer class="footer">
+      <div>© <span id="year"></span> Joly Solutions</div>
       <div><a href="mailto:marcantoinejpjoly@gmail.com">marcantoinejpjoly@gmail.com</a></div>
-    </div>
+    </footer>
   </main>
 
   <script>
@@ -735,6 +244,3 @@
   </script>
 </body>
 </html>
-
-
-
