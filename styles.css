@@ -41,26 +41,19 @@
 *{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
 
-body{
-  margin:0;
-  font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  color: var(--text);
-  line-height:1.6;
+body {
+  font-family: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 16px;
-
-  /* Light, optimistic background with subtle brand wash */
-  background:
-    radial-gradient(circle at -10% 0%,  rgba(139,92,246,0.18), transparent 45%),
-    radial-gradient(circle at 110% 0%, rgba(99,230,226,0.22), transparent 48%),
-    radial-gradient(circle at 10% 110%, rgba(250,204,21,0.22), transparent 45%),
-    #ffffff;
-  min-height:100vh;
+  line-height: 1.5;
 }
 
-/* Headings: Roboto (clean / “data-driven”) */
-h1, h2, h3, h4{
-  font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+h1, h2, h3, h4, h5, h6,
+.brand-title strong {
+  font-family: "Roboto", "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 500;
 }
+
+
 
 /* Links + focus styles (accessibility) */
 a{ color: inherit; text-decoration:none; }
@@ -671,3 +664,4 @@ li{ margin:4px 0; }
     --logoSize: 120px;
   }
 }
+
