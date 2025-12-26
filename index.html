@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Independent engineering and operational advisory for complex, regulated asset portfolios across Ontario and Canada." />
 
-  <!-- Fonts: Roboto (headings), Open Sans (body) -->
+  <!-- Fonts: Open Sans (body), Roboto (headings) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
@@ -16,28 +16,33 @@
 </head>
 
 <body>
+  <!-- Keyboard accessibility: skip directly to main content -->
   <a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- HEADER -->
+  <!-- =========================================================
+       HEADER
+       ========================================================= -->
   <header role="banner">
     <div class="inner">
 
-      <!-- LEFT: Logo + Title -->
+      <!-- BRAND BLOCK (logo + name + tagline) -->
       <div class="brand">
+        <!-- LOGO: image only, no tile -->
         <div class="logo" aria-hidden="true">
           <img src="logo.png" alt="Joly Solutions logo">
         </div>
 
+        <!-- Brand text: name + slogan -->
         <div class="brand-title">
           <strong>Joly Solutions</strong>
           <span>Independent engineering and operational advisory</span>
         </div>
       </div>
 
-      <!-- RIGHT: Nav only (no social here) -->
+      <!-- NAVIGATION (top right) -->
       <nav aria-label="Primary navigation" class="top-nav">
         <a href="#what">Services</a>
-        <a href="#who">About</a>
+        <a href="#about">About</a>
         <a href="capabilities.html">Capabilities</a>
         <a href="#resources">Resources</a>
         <a href="#contact">Contact</a>
@@ -45,34 +50,155 @@
     </div>
   </header>
 
-  <!-- MAIN -->
+  <!-- =========================================================
+       MAIN CONTENT
+       ========================================================= -->
   <main id="main" class="wrap">
 
-    <!-- HERO -->
+    <!-- =======================================================
+         HERO SECTION
+         ======================================================= -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
         <h1 id="hero-title">
-          Energy solutions and resilience planning for complex, infrastructure asset portfolios
+          Energy solutions and resilience planning for complex, regulated asset portfolios
         </h1>
 
         <p class="subhead">
-          Independent engineering and operational advisory for public institutions, private industries,
-          and portfolio owners where decisions carry material operational, financial, and compliance risk.
+          Independent engineering and operational advisory for public institutions, regulated industries,
+          and portfolio owners where decisions carry material operational, financial, and governance risk.
         </p>
 
         <p class="trust">
-          We help leaders make defensible decisions when complexity — and consequence — are high.
+          We help leaders make defensible decisions when complexity and consequences are high.
         </p>
 
         <div class="cta-row" role="group">
-          <a class="btn btn-primary" href="#contact">Request a confidential discussion</a>
+          <a class="btn btn-primary" href="#contact">Contact the CEO</a>
           <a class="btn btn-outline" href="#what">View services</a>
         </div>
       </div>
+    </section>
 
-      <!-- CONTACT CARD -->
-      <aside class="contact-card" id="contact" aria-labelledby="contact-heading">
-        <h2 id="contact-heading">Connect with Marc-Antoine</h2>
+    <!-- =======================================================
+         CONTEXT SECTION
+         ======================================================= -->
+    <section class="full-panel accent-blue">
+      <h2>When energy and infrastructure decisions become institutional risks</h2>
+      <p>
+        Aging assets, complex programs, and evolving governance requirements create risk exposure that
+        must be managed at the executive and board level — not just through project execution.
+      </p>
+      <p style="margin-top:10px; color:var(--muted2);">
+        Joly Solutions integrates engineering, operations, governance, and risk to support informed, accountable decisions
+        that can withstand audit, scrutiny, and leadership change.
+      </p>
+    </section>
+
+    <!-- =======================================================
+         SERVICES / WHAT WE DO
+         ======================================================= -->
+    <section class="grid" id="what">
+      <article class="panel accent-green">
+        <h3>Services</h3>
+        <ul>
+          <li>Energy program renewal and transition planning</li>
+          <li>Infrastructure resilience and continuity planning</li>
+          <li>Independent architecture and risk review</li>
+          <li>Procurement-ready technical and governance frameworks</li>
+        </ul>
+
+        <!-- Buttons linking to each core capability page -->
+        <div class="cta-row" style="margin-top:14px;">
+          <a class="btn btn-primary" href="energy-solutions.html">Energy &amp; resilience</a>
+          <a class="btn btn-secondary" href="regulated-food.html">Regulated food</a>
+          <a class="btn btn-outline" href="governance-risk.html">Governance &amp; risk</a>
+        </div>
+      </article>
+
+      <article class="panel accent-blue">
+        <h3>A different way of seeing risk</h3>
+        <ul>
+          <li>Failure modes identified early and framed clearly</li>
+          <li>Constructive challenge, not obstacle-finding</li>
+          <li>Decisions that survive implementation and leadership change</li>
+          <li>Alignment with governance expectations and regulatory context</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- =======================================================
+         ABOUT SECTION (COMPANY + BOD)
+         ======================================================= -->
+    <section class="grid" id="about">
+      <article class="panel accent-yellow">
+        <h3>About Joly Solutions</h3>
+        <p>
+          Joly Solutions is an independent engineering and operational advisory focused on environments
+          where energy, infrastructure, and continuity decisions carry material consequence. The firm
+          operates at the intersection of technical reality, operational accountability, and board oversight.
+        </p>
+        <p style="margin-top:10px;">
+          Engagements are structured to be vendor-agnostic, transparent, and aligned with recognized standards,
+          ensuring decisions are both practical and defensible over time.
+        </p>
+        <div class="cta-row" style="margin-top:14px;">
+          <a class="btn btn-outline" href="about.html">Learn more about governance and leadership</a>
+        </div>
+      </article>
+
+      <article class="panel accent-green">
+        <h3>Board and governance</h3>
+        <p>
+          Joly Solutions is designed to support organizations where board-level visibility into technical
+          risk is essential. An independent governance and advisory structure allows the firm to:
+        </p>
+        <ul>
+          <li>Translate engineering complexity into clear risk narratives</li>
+          <li>Support committees responsible for oversight and assurance</li>
+          <li>Align technical pathways with enterprise risk frameworks</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- =======================================================
+         RESOURCES: Public agencies / incentive programs
+         ======================================================= -->
+    <section class="resources" id="resources">
+      <div class="resources-header">
+        <h2>Energy &amp; infrastructure resources</h2>
+        <span style="font-size:13px; color:var(--muted2);">
+          A curated starting point for Ontario and Canada
+        </span>
+      </div>
+
+      <div class="resource-grid">
+        <article class="resource-item">
+          <span class="tag">Ontario system operator</span>
+          <a href="https://www.ieso.ca/" target="_blank" rel="noopener">Independent Electricity System Operator</a>
+          <p>Planning, market operations, and selected programs.</p>
+        </article>
+
+        <article class="resource-item">
+          <span class="tag">Regulator</span>
+          <a href="https://www.oeb.ca/" target="_blank" rel="noopener">Ontario Energy Board</a>
+          <p>Electricity and natural gas regulation.</p>
+        </article>
+
+        <article class="resource-item">
+          <span class="tag">Incentives</span>
+          <a href="https://www.saveonenergy.ca/" target="_blank" rel="noopener">Save on Energy</a>
+          <p>Efficiency incentives for Ontario organizations.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         CONTACT SECTION (LOWER ON PAGE)
+         ======================================================= -->
+    <section class="contact-section" id="contact">
+      <div class="contact-card" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact the CEO</h2>
 
         <div class="kv">
           <div class="k">Name</div>
@@ -100,107 +226,20 @@
           <div class="v">Ontario, Canada</div>
         </div>
 
-        <div class="contact-pill">Confidential advisory available</div>
+        <div class="contact-pill">
+          Confidential advisory for boards, executives, and asset owners
+        </div>
 
         <div class="contact-cta-row">
           <a class="btn btn-secondary" href="mailto:marcantoinejpjoly@gmail.com">Email now</a>
           <a class="btn btn-outline" href="tel:+16132194375">Call or text</a>
         </div>
-      </aside>
-    </section>
-
-    <!-- CONTEXT -->
-    <section class="full-panel accent-blue">
-      <h2>When energy and infrastructure decisions become institutional risks</h2>
-      <p>
-        Aging assets, complex programs, and evolving governance requirements create risk exposure that
-        must be managed at the executive and board level — not just through project execution.
-      </p>
-      <p style="margin-top:10px; color:var(--muted2);">
-        We integrate engineering, operations, governance, and risk to support informed, accountable decisions.
-      </p>
-    </section>
-
-    <!-- SERVICES / WHAT WE DO -->
-    <section class="grid" id="what">
-      <article class="panel accent-green">
-        <h3>Services</h3>
-        <ul>
-          <li>Energy program renewal and transition planning</li>
-          <li>Infrastructure resilience and continuity planning</li>
-          <li>Independent architecture and risk review</li>
-          <li>Procurement-ready technical and governance frameworks</li>
-        </ul>
-
-        <div class="cta-row" style="margin-top:14px;">
-          <a class="btn btn-primary" href="energy-solutions.html">Energy &amp; resilience</a>
-          <a class="btn btn-secondary" href="regulated-food.html">Regulated food</a>
-          <a class="btn btn-outline" href="governance-risk.html">Governance &amp; risk</a>
-        </div>
-      </article>
-
-      <article class="panel accent-blue">
-        <h3>A different way of seeing risk</h3>
-        <ul>
-          <li>Failure modes identified early</li>
-          <li>Constructive challenge, not obstacle-finding</li>
-          <li>Decisions that survive audit and leadership change</li>
-        </ul>
-      </article>
-    </section>
-
-    <!-- ABOUT / WHO WE SUPPORT -->
-    <section class="grid" id="who">
-      <article class="panel accent-yellow">
-        <h3>About the organizations we support</h3>
-        <ul>
-          <li>Provincial ministries and agencies</li>
-          <li>Public institutions: schools, universities, hospitals</li>
-          <li>Portfolio owners and operators of critical infrastructure</li>
-          <li>Regulated food and advanced manufacturing</li>
-        </ul>
-      </article>
-
-      <article class="panel accent-green">
-        <h3>How we engage</h3>
-        <p>
-          Independent, accountable, and outcome-focused — with specialist partners when needed,
-          while maintaining independence and governance clarity.
-        </p>
-      </article>
-    </section>
-
-    <!-- RESOURCES -->
-    <section class="resources" id="resources">
-      <div class="resources-header">
-        <h2>Energy &amp; infrastructure resources</h2>
-        <span style="font-size:13px; color:var(--muted2);">
-          A curated starting point for Ontario and Canada
-        </span>
-      </div>
-
-      <div class="resource-grid">
-        <article class="resource-item">
-          <span class="tag">Ontario system operator</span>
-          <a href="https://www.ieso.ca/" target="_blank" rel="noopener">Independent Electricity System Operator</a>
-          <p>Planning, market operations, and incentive programs.</p>
-        </article>
-
-        <article class="resource-item">
-          <span class="tag">Regulator</span>
-          <a href="https://www.oeb.ca/" target="_blank" rel="noopener">Ontario Energy Board</a>
-          <p>Electricity and natural gas regulation.</p>
-        </article>
-
-        <article class="resource-item">
-          <span class="tag">Incentives</span>
-          <a href="https://www.saveonenergy.ca/" target="_blank" rel="noopener">Save on Energy</a>
-          <p>Ontario efficiency incentives.</p>
-        </article>
       </div>
     </section>
 
-    <!-- FOOTER WITH SOCIALS -->
+    <!-- =======================================================
+         FOOTER
+         ======================================================= -->
     <footer class="footer">
       <div class="footer-left">
         <span>© <span id="year"></span> Joly Solutions</span>
@@ -220,11 +259,9 @@
     </footer>
   </main>
 
+  <!-- Simple script to keep the year current -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
-
-
