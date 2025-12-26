@@ -1,43 +1,43 @@
 /* =========================================================
-   JOLY SOLUTIONS — CORPORATE COLOURS, LARGE LOGO, LEGIBLE NAV
-   Shared stylesheet for index + sub-pages
+   JOLY SOLUTIONS — SHARED STYLES (ALL PAGES)
    ========================================================= */
 
 :root{
-  /* Corporate brand colours */
-  --purple:   #8b5cf6;  /* primary */
-  --cyan:     #63e6e2;  /* secondary */
-  --gunmetal: #2a3441;  /* deep accent */
-  --yellow:   #facc15;  /* highlight */
+  /* --- Corporate brand colours -------------------------------- */
+  --purple:   #8b5cf6;  /* primary accent */
+  --cyan:     #63e6e2;  /* secondary accent */
+  --gunmetal: #2a3441;  /* deep neutral accent */
+  --yellow:   #facc15;  /* highlight for tags, labels */
 
-  /* For existing rules that used blue/green */
+  /* Used by some rules that referenced blue/green */
   --blue:  var(--purple);
   --green: var(--cyan);
 
-  /* Text */
+  /* --- Text colours ------------------------------------------- */
   --text:   #0f172a;
   --muted:  #475569;
   --muted2: #64748b;
 
-  /* UI */
+  /* --- UI primitives ------------------------------------------ */
   --border: rgba(15,23,42,0.18);
   --panel:  #ffffff;
   --shadow: 0 18px 40px rgba(15,23,42,0.18);
   --radius: 20px;
 
-  /* Layout */
+  /* --- Layout ------------------------------------------------- */
   --max: 1120px;
 
-  /* Brand sizing — BIG LOGO + TITLE */
-  --logoSize: 160px;
+  /* --- Brand sizing (header) ---------------------------------- */
+  --logoSize: 160px;   /* master logo height in header */
   --brandNameSize: 48px;
   --brandTagSize: 14px;
 
-  /* Accent thickness */
-  --accent-thick: 14px;
-  --accent-medium: 8px;
+  /* --- Accent “frame” thickness ------------------------------- */
+  --accent-thick: 14px;    /* hero frame */
+  --accent-medium: 8px;    /* section panel stripes */
 }
 
+/* Basic setup */
 *{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
 
@@ -48,7 +48,7 @@ body{
   line-height:1.6;
   font-size: 16px;
 
-  /* Light background with visible brand colour wash */
+  /* Light, optimistic background with subtle brand wash */
   background:
     radial-gradient(circle at -10% 0%,  rgba(139,92,246,0.18), transparent 45%),
     radial-gradient(circle at 110% 0%, rgba(99,230,226,0.22), transparent 48%),
@@ -57,12 +57,12 @@ body{
   min-height:100vh;
 }
 
-/* Headings: Roboto (Data-driven, clean) */
+/* Headings: Roboto (clean / “data-driven”) */
 h1, h2, h3, h4{
   font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/* Links + focus */
+/* Links + focus styles (accessibility) */
 a{ color: inherit; text-decoration:none; }
 a:hover{ text-decoration: underline; text-underline-offset: 3px; }
 
@@ -73,13 +73,14 @@ button:focus-visible{
   box-shadow: 0 0 0 2px rgba(255,255,255,0.9);
 }
 
+/* Page wrapper: keeps content in a readable column */
 .wrap{
   max-width: var(--max);
   margin:0 auto;
   padding: 30px 18px 70px;
 }
 
-/* Optional skip-link */
+/* Skip-link for keyboard users */
 .skip-link{
   position:absolute;
   top:-40px;
@@ -98,8 +99,9 @@ button:focus-visible{
 }
 
 /* =========================================================
-   HEADER — TITLE LEFT, NAV RIGHT (BIGGER, INTERACTIVE)
+   HEADER (NAV BAR + LOGO + BRAND NAME)
    ========================================================= */
+
 header{
   position: sticky;
   top:0;
@@ -119,48 +121,52 @@ header .inner{
   gap: 18px;
 }
 
+/* Group holding logo + brand text */
 .brand{
   display:flex;
   align-items:center;
   gap: 18px;
-  min-width: 160px;
+  min-width: 360px;
 }
 
-/* Large logo card */
+/* LOGO: free image (no tile) */
 .logo{
-  width: var(--logoSize);
-  height: var(--logoSize);
-  border-radius: 28px;
-  background:#ffffff;
-  border:2px solid rgba(15,23,42,0.18);
-  box-shadow: 0 10px 30px rgba(15,23,42,0.22);
-  display:grid;
-  place-items:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height: var(--logoSize);  /* master height; tweak here to resize logo */
 }
 .logo img{
-  width:100%;
   height:100%;
+  width:auto;
+  display:block;
   object-fit:contain;
-  padding:12px;
+  padding:0;
 }
 
+/* BRAND TEXT (title + tagline) */
 .brand-title{
   display:flex;
   flex-direction:column;
-  line-height: 1.05;
+  justify-content:center;
+  line-height: 1.1;
+  margin-top: 4px;  /* tiny creative offset */
 }
 .brand-title strong{
-  font-size: var(--brandNameSize); /* ~48px desktop */
+  font-size: var(--brandNameSize);
   font-weight:900;
   color:#0f172a;
   white-space:nowrap;
+  letter-spacing: -0.5px;
 }
 .brand-title span{
   font-size: var(--brandTagSize);
   color: var(--muted2);
+  margin-top: 8px;    /* spacing between name and slogan */
+  max-width: 22rem;   /* keeps lines from stretching too wide */
 }
 
-/* Top navigation */
+/* TOP NAVIGATION (top right) */
 nav[aria-label],
 nav.top-nav{
   display:flex;
@@ -169,7 +175,7 @@ nav.top-nav{
   justify-content:flex-end;
 }
 
-/* Larger, clearer, more interactive menu */
+/* Larger, clear, interactive menu items */
 nav[aria-label] a,
 nav.top-nav a{
   position:relative;
@@ -182,7 +188,7 @@ nav.top-nav a{
   border:1px solid transparent;
 }
 
-/* animated gradient underline + pill background on hover */
+/* Animated gradient underline + pill on hover */
 nav[aria-label] a::after,
 nav.top-nav a::after{
   content:"";
@@ -212,10 +218,19 @@ nav.top-nav a:hover::after{
 }
 
 /* =========================================================
-   HERO — CORPORATE-COLOUR FRAME
+   HERO SECTION (MAIN BANNER)
+   ---------------------------------------------------------
+   - Full-width inside viewport (extends to edges of wrap).
+   - Left: positioning + CTAs.
    ========================================================= */
+
 .hero{
+  /* “Full-bleed” inside the page: stretch hero wider than .wrap */
   margin-top:26px;
+  margin-left: -18px;           /* cancel the .wrap side padding */
+  margin-right: -18px;
+  width: calc(100% + 36px);     /* 18px left + 18px right */
+
   padding:34px 30px;
   border-radius:var(--radius);
   position:relative;
@@ -231,7 +246,7 @@ nav.top-nav a:hover::after{
   box-shadow: var(--shadow);
 }
 
-/* Thick gradient top + gunmetal side */
+/* Thick top + side accents in corporate colours */
 .hero::before{
   content:"";
   position:absolute;
@@ -253,9 +268,10 @@ nav.top-nav a:hover::after{
   z-index:1;
 }
 
+/* Hero heading sizing */
 h1{
   margin:0 0 12px;
-  font-size:clamp(36px,3.2vw,44px); /* within your 36–44px guidance */
+  font-size:clamp(36px,3.2vw,44px);
   color:#0f172a;
 }
 .subhead{
@@ -276,13 +292,18 @@ h1{
 }
 
 /* =========================================================
-   CONTACT CARD — PURPLE/CYAN POP
+   CONTACT CARD (USED LOWER ON THE PAGE)
    ========================================================= */
+
+.contact-section{
+  margin-top: 32px;
+}
+
 .contact-card{
   position:relative;
   z-index:1;
   border-radius:var(--radius);
-  padding:24px 20px 20px;
+  padding:28px 22px 22px;
 
   background:
     linear-gradient(135deg, rgba(99,230,226,0.35), rgba(139,92,246,0.25)),
@@ -291,31 +312,33 @@ h1{
   box-shadow:0 16px 40px rgba(15,23,42,0.35);
 }
 
-/* yellow label tab */
+/* Yellow “Contact the CEO” label TAB — larger now */
 .contact-card::before{
-  content:"Contact";
+  content:"Contact the CEO";
   position:absolute;
-  top:-16px;
-  left:18px;
-  padding:4px 10px;
+  top:-20px;
+  left:20px;
+  padding:6px 14px;
   background:var(--yellow);
   color:#3b2f00;
   border-radius:999px;
-  font-size:12px;
-  font-weight:700;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:0.02em;
   box-shadow:0 6px 16px rgba(15,23,42,0.30);
 }
 
 .contact-card h2{
-  margin:4px 0 10px;
-  font-size:20px;
+  margin:6px 0 12px;
+  font-size:22px;
   color:#020617;
 }
 
+/* Key-value layout for contact info */
 .kv{
   display:grid;
-  grid-template-columns: 95px 1fr;
-  gap:10px 14px;
+  grid-template-columns: 100px 1fr;
+  gap:8px 16px;
   align-items:flex-start;
   font-size:14px;
 }
@@ -339,7 +362,7 @@ h1{
   margin-top:12px;
   display:inline-flex;
   align-items:center;
-  padding:6px 10px;
+  padding:6px 12px;
   border-radius:999px;
   background:rgba(99,230,226,0.12);
   border:1px solid rgba(99,230,226,0.9);
@@ -357,6 +380,7 @@ h1{
 /* =========================================================
    BUTTONS
    ========================================================= */
+
 .btn{
   display:inline-flex;
   align-items:center;
@@ -392,8 +416,9 @@ h1{
 }
 
 /* =========================================================
-   PANELS / GRID
+   PANELS / GRID (INDEX + SUBPAGES)
    ========================================================= */
+
 section{ margin-top:26px; }
 
 .full-panel{
@@ -405,7 +430,7 @@ section{ margin-top:26px; }
   position:relative;
 }
 
-/* coloured top stripes for full panels using corporate colours */
+/* Top stripes for “full-width” panels */
 .full-panel.accent-blue::before,
 .full-panel.accent-green::before{
   content:"";
@@ -423,8 +448,9 @@ section{ margin-top:26px; }
 }
 
 .full-panel h2{
-  margin:8px 0 10px;
+  margin:8px 0 8px;
   font-size:26px;
+  line-height:1.2;   /* tighter heading lines */
 }
 .full-panel p{
   margin:0;
@@ -432,7 +458,7 @@ section{ margin-top:26px; }
   font-size:16px;
 }
 
-/* shared grid layout */
+/* Two-column layout, collapses on mobile */
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -440,9 +466,9 @@ section{ margin-top:26px; }
   margin-top:18px;
 }
 
-/* smaller panels (used on index + subpages) */
+/* Smaller “card” panels */
 .panel{
-  padding:20px;
+  padding:18px 18px 20px;
   border-radius:var(--radius);
   background:#ffffff;
   border:1px solid var(--border);
@@ -450,7 +476,7 @@ section{ margin-top:26px; }
   position:relative;
 }
 
-/* tinted banners using corporate colours */
+/* Tinted panels in corporate colours */
 .panel.accent-blue{
   background: linear-gradient(180deg, rgba(139,92,246,0.08), #ffffff 60%);
 }
@@ -461,7 +487,7 @@ section{ margin-top:26px; }
   background: linear-gradient(180deg, rgba(250,204,21,0.12), #ffffff 60%);
 }
 
-/* top stripes */
+/* Top stripes for smaller panels */
 .panel.accent-blue::before,
 .panel.accent-green::before,
 .panel.accent-yellow::before{
@@ -482,10 +508,12 @@ section{ margin-top:26px; }
   background: var(--yellow);
 }
 
+/* TITLE SPACING in tiles — tighter line height, less margin */
 .panel h3{
-  margin:12px 0 10px;
+  margin:8px 0 6px;
   font-size:22px;
   color:#0f172a;
+  line-height:1.2;  /* reduces vertical space, esp. when wrapping */
 }
 .panel p,
 .panel li{
@@ -493,14 +521,14 @@ section{ margin-top:26px; }
   font-size:15px;
 }
 
-/* lists */
+/* Lists */
 ul{
-  margin:10px 0 0 18px;
+  margin:8px 0 0 18px;
   padding:0;
 }
-li{ margin:6px 0; }
+li{ margin:4px 0; }
 
-/* clickable headings/links inside panels */
+/* Clickable headings / links inside panels */
 .panel a{
   text-decoration:none;
 }
@@ -510,8 +538,9 @@ li{ margin:6px 0; }
 }
 
 /* =========================================================
-   RESOURCES SECTION
+   RESOURCES SECTION (INDEX)
    ========================================================= */
+
 .resources{
   border-radius:var(--radius);
   background:#ffffff;
@@ -524,13 +553,13 @@ li{ margin:6px 0; }
 .resources::before{
   content:"Resources";
   position:absolute;
-  top:-16px;
-  left:18px;
-  padding:4px 10px;
+  top:-20px;
+  left:20px;
+  padding:6px 12px;
   background:var(--yellow);
   color:#3b2f00;
   border-radius:999px;
-  font-size:12px;
+  font-size:13px;
   font-weight:700;
   box-shadow:0 6px 16px rgba(15,23,42,0.30);
 }
@@ -582,8 +611,9 @@ li{ margin:6px 0; }
 }
 
 /* =========================================================
-   FOOTER — with socials at the bottom
+   FOOTER
    ========================================================= */
+
 .footer{
   margin-top:30px;
   padding-top:18px;
@@ -617,15 +647,16 @@ li{ margin:6px 0; }
 }
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE (TABLET / MOBILE)
    ========================================================= */
+
 @media(max-width: 980px){
   .hero{
     grid-template-columns:1fr;
   }
   nav[aria-label],
   nav.top-nav{
-    display:none;
+    display:none;  /* simple for now on mobile */
   }
   .grid{
     grid-template-columns:1fr;
@@ -633,11 +664,10 @@ li{ margin:6px 0; }
   .resource-grid{
     grid-template-columns:1fr;
   }
+
+  /* Slightly smaller brand mark on small screens */
   :root{
-    --brandNameSize:40px;
-    --logoSize: 140px;
+    --brandNameSize:36px;
+    --logoSize: 120px;
   }
 }
-
-
-
