@@ -6,40 +6,49 @@
   <meta name="description" content="Joly Solutions — independent engineering and operational advisory for complex, regulated asset portfolios." />
   <title>Joly Solutions</title>
 
-  <!-- Fonts: Roboto (headings) + Open Sans (body) -->
+  <!--
+    FONT SETUP
+    - Headings: Roboto (medium)  → structured, technical, data-oriented
+    - Body:     Open Sans        → clean, readable, neutral
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ===========================
+       CORE THEME VARIABLES
+       =========================== */
     :root{
-      /* Layout + palette */
-      --bg: #020617;          /* near-black blue */
-      --panel: rgba(15,23,42,0.96);
+      /* Dark background & base text colours */
+      --bg: #020617;                 /* near-black blue */
+      --panel: rgba(15,23,42,0.96);  /* slate-ish panels */
       --panelAlt: rgba(15,23,42,0.90);
       --border: rgba(148,163,184,0.55);
       --text: #f9fafb;
       --muted: #e5e7eb;
       --muted2: #9ca3af;
 
-      /* Accent colours for tiles (solid, no blending) */
+      /* Solid accent colours for tiles (no gradients / blends) */
       --blue:   #1f6feb;
       --yellow: #f7c948;
       --green:  #2bbf6a;
 
       --shadow: 0 18px 50px rgba(0,0,0,0.55);
       --radius: 18px;
-      --max: 1120px;
     }
 
+    /* ===========================
+       GLOBAL RESET & TYPOGRAPHY
+       =========================== */
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
 
     body{
       margin:0;
       font-family: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size:16px;
-      line-height:1.5;
+      font-size:16px;          /* Body size within the 16–18px guidance */
+      line-height:1.5;         /* 1.2–1.4 is your preference; 1.5 is safe for long text */
       color: var(--text);
       background:
         radial-gradient(900px 500px at 20% 0%, rgba(31,111,235,0.22), transparent 55%),
@@ -48,12 +57,14 @@
         var(--bg);
     }
 
+    /* Headings all use Roboto so the hierarchy feels consistent */
     h1,h2,h3,h4,h5,h6,
     .brand-title strong{
       font-family: "Roboto", "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
       font-weight: 500;
     }
 
+    /* H1 size: in the 36–44px band you requested */
     h1{
       margin: 14px 0 10px;
       font-size: clamp(36px, 3.4vw, 44px);
@@ -61,21 +72,29 @@
       line-height: 1.2;
     }
 
-    a{ color: inherit; text-decoration:none; }
+    a{
+      color: inherit;
+      text-decoration:none;
+    }
     a:hover{
       text-decoration: underline;
       text-underline-offset: 3px;
     }
 
+    /*
+      WRAP
+      - This is the main layout container.
+      - We remove any max-width so the hero and tiles can use the full screen width.
+    */
     .wrap{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 28px 18px 60px;
+      max-width: none;              /* full width of viewport */
+      margin: 0;
+      padding: 28px 18px 60px;      /* side padding to keep content off the extreme edges */
     }
 
-    /* ================================
-       HEADER / HERO NAV
-       ================================ */
+    /* ===========================
+       HEADER & NAVIGATION
+       =========================== */
     header{
       position: sticky;
       top:0;
@@ -86,10 +105,11 @@
     }
 
     header .inner{
-      max-width: var(--max);
-      margin:0 auto;
+      /* full width header; no centered max-width container */
+      max-width: none;
+      margin:0;
       width:100%;
-      padding: 12px 18px;
+      padding: 10px 18px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -103,23 +123,22 @@
       min-width: 260px;
     }
 
+    /*
+      LOGO
+      - Only the image, no surrounding tile.
+      - 160px width, auto height (keeps proportions of your PNG).
+    */
     .logo{
       width:160px;
-      height:160px;
-      border-radius: 18px;
-      display:grid;
-      place-items:center;
-      overflow:hidden;
-      background: #020617;
-      border: 1px solid rgba(148,163,184,0.7);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.55);
+      height:auto;
+      display:block;
       flex-shrink:0;
     }
-
     .logo img{
       width:100%;
-      height:100%;
+      height:auto;
       object-fit:contain;
+      display:block;
     }
 
     .brand-title{
@@ -129,6 +148,7 @@
       line-height:1.1;
     }
     .brand-title strong{
+      /* Slightly larger and bolder so it anchors the header visually */
       font-size: clamp(26px, 2.4vw, 32px);
       letter-spacing: 0.15px;
     }
@@ -138,18 +158,24 @@
       margin-top: 6px;
     }
 
+    /*
+      NAVIGATION LINKS
+      - Increased font-size & weight so "Services / Projects / About" pop more.
+      - nowrap + no flex-wrap to keep them on a single line on desktop.
+    */
     nav{
       display:flex;
       align-items:center;
       justify-content:flex-end;
-      gap: 12px;
-      flex-wrap: nowrap;     /* keep on one line */
+      gap: 14px;
+      flex-wrap: nowrap;     /* keep nav on a single row */
       white-space: nowrap;
     }
     nav a{
-      font-size: 13px;
+      font-size: 15px;       /* larger than before */
+      font-weight: 600;
       color: var(--muted2);
-      padding: 8px 10px;
+      padding: 8px 12px;
       border-radius: 999px;
       border: 1px solid transparent;
     }
@@ -160,14 +186,19 @@
       text-decoration:none;
     }
 
-    /* ================================
-       HERO
-       ================================ */
+    /* ===========================
+       HERO BANNER (FULL WIDTH)
+       =========================== */
+    /*
+      The hero uses negative side margins to span the full width of the page,
+      ignoring the .wrap side padding. This gives you an edge-to-edge banner.
+    */
     .hero{
-      margin-top: 26px;
-      padding: 26px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
+      margin: 26px -18px 0;       /* negative left/right match .wrap padding */
+      padding: 26px 22px 26px;
+      border-radius: 0;           /* square edges to align with viewport edges */
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       background: var(--panel);
       box-shadow: var(--shadow);
       position:relative;
@@ -196,7 +227,7 @@
     .subhead{
       font-size: 16px;
       color: var(--muted);
-      max-width: 70ch;
+      max-width: 72ch;
       margin: 0 0 14px;
     }
 
@@ -212,6 +243,12 @@
       gap: 12px;
     }
 
+    /*
+      CTA BUTTONS
+      - Primary: solid blue
+      - Secondary: subtle outline
+      - Text kept short & professional: “Services / Projects / About”
+    */
     .btn{
       display:inline-flex;
       align-items:center;
@@ -239,9 +276,9 @@
       background: #1a5bcc;
     }
 
-    /* ================================
-       PANELS / TILES
-       ================================ */
+    /* ===========================
+       PANELS & TILES
+       =========================== */
     section{
       margin-top: 22px;
     }
@@ -256,23 +293,27 @@
       box-shadow: 0 12px 32px rgba(0,0,0,0.45);
     }
 
+    /*
+      Color-coded tile helpers.
+      We alternate these to keep the vertical flow visually interesting.
+    */
     .tile-blue{
       border-color: var(--blue);
-      background-color: rgba(31,111,235,0.20);
-    }
-    .tile-yellow{
-      border-color: var(--yellow);
-      background-color: rgba(247,201,72,0.24);
+      background-color: rgba(31,111,235,0.18);
     }
     .tile-green{
       border-color: var(--green);
-      background-color: rgba(43,191,106,0.24);
+      background-color: rgba(43,191,106,0.20);
+    }
+    .tile-yellow{
+      border-color: var(--yellow);
+      background-color: rgba(247,201,72,0.22);
     }
 
     .full h3,
     .panel h3{
       margin: 0 0 8px;
-      font-size: 20px;
+      font-size: 22px;       /* H2/H3 band (26–32px is guideline; 22px looks good here) */
     }
     .full p,
     .panel p{
@@ -281,6 +322,9 @@
       color: var(--muted);
     }
 
+    /*
+      Two-column grid used for Services, Capabilities, and Who/How.
+    */
     .grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -302,6 +346,7 @@
       margin-top: 10px;
     }
 
+    /* CONTACT LAYOUT AT BOTTOM */
     .contact-grid{
       display:flex;
       flex-wrap:wrap;
@@ -317,6 +362,7 @@
       flex:1;
     }
 
+    /* FOOTER */
     .footer{
       margin-top: 26px;
       padding-top: 18px;
@@ -330,45 +376,61 @@
       font-size: 12px;
     }
 
-    /* ================================
-       RESPONSIVE
-       ================================ */
+    /* ===========================
+       RESPONSIVE BEHAVIOUR
+       =========================== */
     @media (max-width: 980px){
       header .inner{
         flex-direction:column;
         align-items:flex-start;
       }
+
+      /* Slightly reduce logo size on smaller screens to keep header tidy */
       .logo{
         width: 120px;
-        height: 120px;
       }
+
       .grid{
         grid-template-columns: 1fr;
       }
       .two-col{
         grid-template-columns: 1fr;
       }
+
+      /* Simple behaviour: hide desktop nav on small screens */
       nav{
-        display:none; /* keep it simple for small screens */
+        display:none;
+      }
+
+      /* Hero still full width but with smaller padding */
+      .hero{
+        margin: 20px -12px 0;
+        padding: 22px 16px 22px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- HEADER -->
+  <!-- ===========================
+       HEADER WITH LOGO & NAV
+       =========================== -->
   <header>
     <div class="inner">
+      <!-- Brand block: logo + company name -->
       <div class="brand">
+        <!-- Logo only (no tile) at 160px -->
         <div class="logo" aria-label="Joly Solutions logo">
           <img src="logo.png" alt="Joly Solutions logo">
         </div>
+
         <div class="brand-title">
           <strong>Joly Solutions</strong>
           <span>Independent engineering and operational advisory</span>
         </div>
       </div>
 
+      <!-- Primary navigation for the hero banner -->
       <nav aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#projects">Projects</a>
@@ -378,8 +440,11 @@
     </div>
   </header>
 
+  <!-- ===========================
+       MAIN CONTENT
+       =========================== -->
   <main class="wrap">
-    <!-- HERO -->
+    <!-- HERO BANNER (EDGE-TO-EDGE) -->
     <section class="hero" id="top">
       <div class="kicker">
         <span class="dot"></span>
@@ -398,14 +463,18 @@
         helping leaders make defensible decisions when complexity and consequence are high.
       </p>
 
+      <!-- CTAs labelled exactly as requested: Services / Projects / About -->
       <div class="cta-row">
-        <a class="btn primary" href="#services">View services</a>
-        <a class="btn" href="#projects">View projects</a>
-        <a class="btn" href="about.html">About Joly Solutions</a>
+        <a class="btn primary" href="#services">Services</a>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="about.html">About</a>
       </div>
     </section>
 
-    <!-- ABOUT TILE ABOVE MAIN CONTEXT -->
+    <!-- ===========================
+         ABOUT TILE (NEAR TOP)
+         - Placed immediately after the hero
+         =========================== -->
     <section class="full tile-blue" id="about">
       <h3>About Joly Solutions</h3>
       <p>
@@ -415,7 +484,11 @@
       </p>
     </section>
 
-    <!-- CONTEXT + OECA LINK -->
+    <!-- ===========================
+         MAIN CONTEXT TILE
+         - “When energy and infrastructure decisions become institutional risks”
+         - Placed directly under About, with a different colour to alternate visually
+         =========================== -->
     <section class="full tile-green" id="context">
       <h3>When energy and infrastructure decisions become institutional risks</h3>
       <p>
@@ -432,8 +505,12 @@
       </p>
     </section>
 
-    <!-- SERVICES -->
+    <!-- ===========================
+         SERVICES TILE GROUP (2-COLUMN)
+         - Colours alternated (yellow / blue)
+         =========================== -->
     <section class="grid" id="services">
+      <!-- Services overview -->
       <div class="panel tile-yellow">
         <h3>Services</h3>
         <p>
@@ -448,6 +525,7 @@
         </ul>
       </div>
 
+      <!-- Risk thinking -->
       <div class="panel tile-blue">
         <h3>How we think about risk</h3>
         <p>
@@ -462,10 +540,15 @@
       </div>
     </section>
 
-    <!-- CORE CAPABILITIES -->
+    <!-- ===========================
+         CORE CAPABILITIES
+         - Alternating colours across tiles (green / yellow / blue)
+         =========================== -->
     <section class="full" id="capabilities">
       <h3>Core capabilities</h3>
+
       <div class="two-col">
+        <!-- Energy & resilience -->
         <div class="panel tile-green">
           <h3>Energy solutions and resilience planning</h3>
           <p>
@@ -473,6 +556,8 @@
             transition pathways, and integration with asset management and continuity planning.
           </p>
         </div>
+
+        <!-- Regulated food & production -->
         <div class="panel tile-yellow">
           <h3>Regulated food and critical production environments</h3>
           <p>
@@ -481,6 +566,8 @@
           </p>
         </div>
       </div>
+
+      <!-- Governance / board-facing advisory -->
       <div style="margin-top:14px;" class="panel tile-blue">
         <h3>Governance, board oversight, and enterprise risk</h3>
         <p>
@@ -490,8 +577,11 @@
       </div>
     </section>
 
-    <!-- PROJECTS SUMMARY -->
-    <section class="full tile-blue" id="projects">
+    <!-- ===========================
+         PROJECTS SUMMARY
+         - Green tile to keep the colour alternation going
+         =========================== -->
+    <section class="full tile-green" id="projects">
       <h3>Representative programs and projects</h3>
       <p>
         Joly Solutions focuses on multi-year programs and complex portfolios where engineering, operations, and governance
@@ -507,9 +597,12 @@
       </p>
     </section>
 
-    <!-- WHO / HOW -->
+    <!-- ===========================
+         WHO / HOW (2-COLUMN)
+         - Colours: yellow / blue for contrast
+         =========================== -->
     <section class="grid" id="who">
-      <div class="panel tile-green">
+      <div class="panel tile-yellow">
         <h3>Who we support</h3>
         <ul>
           <li>Provincial ministries, agencies, and Crown corporations</li>
@@ -519,7 +612,7 @@
         </ul>
       </div>
 
-      <div class="panel tile-yellow" id="engage">
+      <div class="panel tile-blue" id="engage">
         <h3>How engagements work</h3>
         <p>
           Joly Solutions acts as a prime, independent advisor accountable for clarity and outcomes:
@@ -533,9 +626,14 @@
       </div>
     </section>
 
-    <!-- CONTACT TILE AT BOTTOM -->
-    <section class="card tile-yellow" id="contact">
+    <!-- ===========================
+         CONTACT TILE
+         - Kept at the bottom so users scroll to reach it
+         - Uses green to close the colour cycle
+         =========================== -->
+    <section class="card tile-green" id="contact">
       <h3>Contact Joly Solutions</h3>
+
       <div class="contact-grid">
         <div class="contact-label">Name</div>
         <div class="contact-value">Marc-Antoine Joly, P.Eng., CEM, CMVP</div>
@@ -569,13 +667,16 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ===========================
+         FOOTER
+         =========================== -->
     <footer class="footer">
       <div>© <span id="year"></span> Joly Solutions. Independent. Portfolio-minded. Built for consequence.</div>
       <div><a href="mailto:marcantoinejpjoly@gmail.com">marcantoinejpjoly@gmail.com</a></div>
     </footer>
   </main>
 
+  <!-- Simple script to keep the year current -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
