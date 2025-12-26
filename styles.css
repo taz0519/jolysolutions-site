@@ -1,5 +1,5 @@
 /* =========================================================
-   JOLY SOLUTIONS — CORPORATE COLOURS, BIGGER LOGO, INTERACTIVE NAV
+   JOLY SOLUTIONS — CORPORATE COLOURS, LARGE LOGO, LEGIBLE NAV
    Shared stylesheet for index + sub-pages
    ========================================================= */
 
@@ -15,9 +15,9 @@
   --green: var(--cyan);
 
   /* Text */
-  --text:   #0f172a;  /* slate-900 */
-  --muted:  #475569;  /* slate-600 */
-  --muted2: #64748b;  /* slate-500 */
+  --text:   #0f172a;
+  --muted:  #475569;
+  --muted2: #64748b;
 
   /* UI */
   --border: rgba(15,23,42,0.18);
@@ -28,14 +28,14 @@
   /* Layout */
   --max: 1120px;
 
-  /* Brand sizing — BIGGER LOGO & TITLE */
-  --logoSize: 120px;
+  /* Brand sizing — BIG LOGO + TITLE */
+  --logoSize: 160px;
   --brandNameSize: 48px;
   --brandTagSize: 14px;
 
   /* Accent thickness */
-  --accent-thick: 14px;   /* hero + key frames */
-  --accent-medium: 8px;   /* section panels */
+  --accent-thick: 14px;
+  --accent-medium: 8px;
 }
 
 *{ box-sizing:border-box; }
@@ -43,7 +43,7 @@ html{ scroll-behavior:smooth; }
 
 body{
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   color: var(--text);
   line-height:1.6;
   font-size: 16px;
@@ -55,6 +55,11 @@ body{
     radial-gradient(circle at 10% 110%, rgba(250,204,21,0.22), transparent 45%),
     #ffffff;
   min-height:100vh;
+}
+
+/* Headings: Roboto (Data-driven, clean) */
+h1, h2, h3, h4{
+  font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 /* Links + focus */
@@ -118,14 +123,14 @@ header .inner{
   display:flex;
   align-items:center;
   gap: 18px;
-  min-width: 340px;
+  min-width: 360px;
 }
 
-/* Bigger logo card */
+/* Large logo card */
 .logo{
   width: var(--logoSize);
   height: var(--logoSize);
-  border-radius: 24px;
+  border-radius: 28px;
   background:#ffffff;
   border:2px solid rgba(15,23,42,0.18);
   box-shadow: 0 10px 30px rgba(15,23,42,0.22);
@@ -136,7 +141,7 @@ header .inner{
   width:100%;
   height:100%;
   object-fit:contain;
-  padding:10px;
+  padding:12px;
 }
 
 .brand-title{
@@ -145,7 +150,7 @@ header .inner{
   line-height: 1.05;
 }
 .brand-title strong{
-  font-size: var(--brandNameSize);
+  font-size: var(--brandNameSize); /* ~48px desktop */
   font-weight:900;
   color:#0f172a;
   white-space:nowrap;
@@ -159,31 +164,31 @@ header .inner{
 nav[aria-label],
 nav.top-nav{
   display:flex;
-  gap:14px;
+  gap:16px;
   flex-wrap:wrap;
   justify-content:flex-end;
 }
 
-/* >>> LARGER, CLEARER, MORE INTERACTIVE MENU <<< */
+/* Larger, clearer, more interactive menu */
 nav[aria-label] a,
 nav.top-nav a{
   position:relative;
-  padding:10px 14px;
+  padding:10px 16px;
   border-radius:999px;
-  font-size:16px;
+  font-size:17px;
   font-weight:700;
   letter-spacing:0.01em;
   color:#0f172a;
   border:1px solid transparent;
 }
 
-/* animated underline + pill background on hover */
+/* animated gradient underline + pill background on hover */
 nav[aria-label] a::after,
 nav.top-nav a::after{
   content:"";
   position:absolute;
-  left:14px;
-  right:14px;
+  left:16px;
+  right:16px;
   bottom:6px;
   height:3px;
   border-radius:999px;
@@ -197,7 +202,7 @@ nav[aria-label] a:hover,
 nav.top-nav a:hover{
   text-decoration:none;
   background: rgba(139,92,246,0.08);
-  border-color: rgba(139,92,246,0.4);
+  border-color: rgba(139,92,246,0.45);
 }
 
 nav[aria-label] a:hover::after,
@@ -219,8 +224,8 @@ nav.top-nav a:hover::after{
   gap:26px;
 
   background:
-    radial-gradient(circle at 6% -10%, rgba(250,204,21,0.35), transparent 55%),
-    radial-gradient(circle at 110% 0%, rgba(99,230,226,0.32), transparent 55%),
+    radial-gradient(circle at 6% -10%, rgba(250,204,21,0.32), transparent 55%),
+    radial-gradient(circle at 110% 0%, rgba(99,230,226,0.30), transparent 55%),
     linear-gradient(135deg, #eef2ff 0%, #e0f2fe 55%, #f9fafb 100%);
   border:2px solid rgba(139,92,246,0.7);
   box-shadow: var(--shadow);
@@ -250,7 +255,7 @@ nav.top-nav a:hover::after{
 
 h1{
   margin:0 0 12px;
-  font-size:clamp(32px,3.4vw,52px);
+  font-size:clamp(36px,3.2vw,44px); /* within your 36–44px guidance */
   color:#0f172a;
 }
 .subhead{
@@ -303,7 +308,7 @@ h1{
 
 .contact-card h2{
   margin:4px 0 10px;
-  font-size:18px;
+  font-size:20px;
   color:#020617;
 }
 
@@ -387,7 +392,7 @@ h1{
 }
 
 /* =========================================================
-   PANELS / GRID (INDEX + SUB-PAGES)
+   PANELS / GRID
    ========================================================= */
 section{ margin-top:26px; }
 
@@ -419,12 +424,12 @@ section{ margin-top:26px; }
 
 .full-panel h2{
   margin:8px 0 10px;
-  font-size:20px;
+  font-size:26px;
 }
 .full-panel p{
   margin:0;
   color:var(--muted);
-  font-size:15px;
+  font-size:16px;
 }
 
 /* shared grid layout */
@@ -479,13 +484,13 @@ section{ margin-top:26px; }
 
 .panel h3{
   margin:12px 0 10px;
-  font-size:18px;
+  font-size:22px;
   color:#0f172a;
 }
 .panel p,
 .panel li{
   color:var(--muted);
-  font-size:14px;
+  font-size:15px;
 }
 
 /* lists */
@@ -505,7 +510,7 @@ li{ margin:6px 0; }
 }
 
 /* =========================================================
-   RESOURCES SECTION (INDEX)
+   RESOURCES SECTION
    ========================================================= */
 .resources{
   border-radius:var(--radius);
@@ -539,7 +544,7 @@ li{ margin:6px 0; }
 }
 .resources-header h2{
   margin:8px 0;
-  font-size:18px;
+  font-size:22px;
 }
 
 .resource-grid{
@@ -629,7 +634,9 @@ li{ margin:6px 0; }
     grid-template-columns:1fr;
   }
   :root{
-    --brandNameSize:34px;
-    --logoSize: 96px;
+    --brandNameSize:36px;
+    --logoSize: 120px;
   }
 }
+
+
