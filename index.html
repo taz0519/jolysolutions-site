@@ -1,640 +1,229 @@
-/* =========================================================
-   JOLY SOLUTIONS — CORPORATE COLOURS, LARGE LOGO, LEGIBLE NAV
-   Shared stylesheet for index + sub-pages
-   ========================================================= */
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Joly Solutions | Independent Engineering & Operational Advisory</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Independent engineering and operational advisory for complex, regulated asset portfolios across Ontario and Canada." />
 
-:root{
-  /* Corporate brand colours */
-  --purple:   #8b5cf6;  /* primary */
-  --cyan:     #63e6e2;  /* secondary */
-  --gunmetal: #2a3441;  /* deep accent */
-  --yellow:   #facc15;  /* highlight */
+  <!-- Fonts: Roboto (headings), Open Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
 
-  /* For existing rules that used blue/green */
-  --blue:  var(--purple);
-  --green: var(--cyan);
+  <!-- Shared stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
 
-  /* Text */
-  --text:   #0f172a;
-  --muted:  #475569;
-  --muted2: #64748b;
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-  /* UI */
-  --border: rgba(15,23,42,0.18);
-  --panel:  #ffffff;
-  --shadow: 0 18px 40px rgba(15,23,42,0.18);
-  --radius: 20px;
+  <!-- HEADER -->
+  <header role="banner">
+    <div class="inner">
 
-  /* Layout */
-  --max: 1120px;
+      <!-- LEFT: Logo + Title -->
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <img src="logo.png" alt="Joly Solutions logo">
+        </div>
 
-  /* Brand sizing — BIG LOGO + TITLE */
-  --logoSize: 160px;
-  --brandNameSize: 48px;
-  --brandTagSize: 14px;
+        <div class="brand-title">
+          <strong>Joly Solutions</strong>
+          <span>Independent engineering and operational advisory</span>
+        </div>
+      </div>
 
-  /* Accent thickness */
-  --accent-thick: 14px;
-  --accent-medium: 8px;
-}
+      <!-- RIGHT: Nav only (no social here) -->
+      <nav aria-label="Primary navigation" class="top-nav">
+        <a href="#what">Services</a>
+        <a href="#who">About</a>
+        <a href="capabilities.html">Capabilities</a>
+        <a href="#resources">Resources</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-*{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+  <!-- MAIN -->
+  <main id="main" class="wrap">
 
-body{
-  margin:0;
-  font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  color: var(--text);
-  line-height:1.6;
-  font-size: 16px;
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <h1 id="hero-title">
+          Energy solutions and resilience planning for complex, regulated asset portfolios
+        </h1>
 
-  /* Light background with visible brand colour wash */
-  background:
-    radial-gradient(circle at -10% 0%,  rgba(139,92,246,0.18), transparent 45%),
-    radial-gradient(circle at 110% 0%, rgba(99,230,226,0.22), transparent 48%),
-    radial-gradient(circle at 10% 110%, rgba(250,204,21,0.22), transparent 45%),
-    #ffffff;
-  min-height:100vh;
-}
+        <p class="subhead">
+          Independent engineering and operational advisory for public institutions, regulated industries,
+          and portfolio owners where decisions carry material operational, financial, and governance risk.
+        </p>
 
-/* Headings: Roboto (Data-driven, clean) */
-h1, h2, h3, h4{
-  font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
+        <p class="trust">
+          We help leaders make defensible decisions when complexity — and consequence — are high.
+        </p>
 
-/* Links + focus */
-a{ color: inherit; text-decoration:none; }
-a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+        <div class="cta-row" role="group">
+          <a class="btn btn-primary" href="#contact">Request a confidential discussion</a>
+          <a class="btn btn-outline" href="#what">View services</a>
+        </div>
+      </div>
 
-a:focus-visible,
-button:focus-visible{
-  outline: 3px solid var(--purple);
-  outline-offset: 3px;
-  box-shadow: 0 0 0 2px rgba(255,255,255,0.9);
-}
+      <!-- CONTACT CARD -->
+      <aside class="contact-card" id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Connect with Marc-Antoine</h2>
 
-.wrap{
-  max-width: var(--max);
-  margin:0 auto;
-  padding: 30px 18px 70px;
-}
+        <div class="kv">
+          <div class="k">Name</div>
+          <div class="v">
+            Marc-Antoine Joly, P.Eng., CEM, CMVP, EBCP, CDSM, CEA
+          </div>
 
-/* Optional skip-link */
-.skip-link{
-  position:absolute;
-  top:-40px;
-  left:12px;
-  padding:8px 12px;
-  background:#ffffff;
-  color:var(--purple);
-  border-radius:999px;
-  border:1px solid var(--purple);
-  font-size:14px;
-  z-index:100;
-  transition: top 0.15s ease;
-}
-.skip-link:focus{
-  top:10px;
-}
+          <div class="k">Email</div>
+          <div class="v vStack">
+            <a href="mailto:marcantoinejpjoly@gmail.com">marcantoinejpjoly@gmail.com</a>
+            <a href="mailto:marc-antoine@jolysolutions.ca">marc-antoine@jolysolutions.ca</a>
+          </div>
 
-/* =========================================================
-   HEADER — TITLE LEFT, NAV RIGHT (BIGGER, INTERACTIVE)
-   ========================================================= */
-header{
-  position: sticky;
-  top:0;
-  z-index: 10;
-  backdrop-filter: blur(14px);
-  background: rgba(255,255,255,0.96);
-  border-bottom: 2px solid rgba(148,163,184,0.7);
-}
+          <div class="k">Mobile</div>
+          <div class="v"><a href="tel:+16132194375">+1 (613) 219-4375</a></div>
 
-header .inner{
-  max-width: var(--max);
-  margin:0 auto;
-  padding: 14px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 18px;
-}
+          <div class="k">LinkedIn</div>
+          <div class="v">
+            <a href="https://www.linkedin.com/in/energyjoly17/" target="_blank" rel="noopener">
+              linkedin.com/in/energyjoly17
+            </a>
+          </div>
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap: 18px;
-  min-width: 360px;
-}
+          <div class="k">Location</div>
+          <div class="v">Ontario, Canada</div>
+        </div>
 
-/* Large logo card */
-.logo{
-  width: var(--logoSize);
-  height: var(--logoSize);
-  border-radius: 28px;
-  background:#ffffff;
-  border:2px solid rgba(15,23,42,0.18);
-  box-shadow: 0 10px 30px rgba(15,23,42,0.22);
-  display:grid;
-  place-items:center;
-}
-.logo img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  padding:12px;
-}
+        <div class="contact-pill">Confidential advisory available</div>
 
-.brand-title{
-  display:flex;
-  flex-direction:column;
-  line-height: 1.05;
-}
-.brand-title strong{
-  font-size: var(--brandNameSize); /* ~48px desktop */
-  font-weight:900;
-  color:#0f172a;
-  white-space:nowrap;
-}
-.brand-title span{
-  font-size: var(--brandTagSize);
-  color: var(--muted2);
-}
+        <div class="contact-cta-row">
+          <a class="btn btn-secondary" href="mailto:marcantoinejpjoly@gmail.com">Email now</a>
+          <a class="btn btn-outline" href="tel:+16132194375">Call or text</a>
+        </div>
+      </aside>
+    </section>
 
-/* Top navigation */
-nav[aria-label],
-nav.top-nav{
-  display:flex;
-  gap:16px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-}
+    <!-- CONTEXT -->
+    <section class="full-panel accent-blue">
+      <h2>When energy and infrastructure decisions become institutional risks</h2>
+      <p>
+        Aging assets, complex programs, and evolving governance requirements create risk exposure that
+        must be managed at the executive and board level — not just through project execution.
+      </p>
+      <p style="margin-top:10px; color:var(--muted2);">
+        We integrate engineering, operations, governance, and risk to support informed, accountable decisions.
+      </p>
+    </section>
 
-/* Larger, clearer, more interactive menu */
-nav[aria-label] a,
-nav.top-nav a{
-  position:relative;
-  padding:10px 16px;
-  border-radius:999px;
-  font-size:17px;
-  font-weight:700;
-  letter-spacing:0.01em;
-  color:#0f172a;
-  border:1px solid transparent;
-}
+    <!-- SERVICES / WHAT WE DO -->
+    <section class="grid" id="what">
+      <article class="panel accent-green">
+        <h3>Services</h3>
+        <ul>
+          <li>Energy program renewal and transition planning</li>
+          <li>Infrastructure resilience and continuity planning</li>
+          <li>Independent architecture and risk review</li>
+          <li>Procurement-ready technical and governance frameworks</li>
+        </ul>
 
-/* animated gradient underline + pill background on hover */
-nav[aria-label] a::after,
-nav.top-nav a::after{
-  content:"";
-  position:absolute;
-  left:16px;
-  right:16px;
-  bottom:6px;
-  height:3px;
-  border-radius:999px;
-  background: linear-gradient(90deg, var(--purple), var(--cyan));
-  opacity:0;
-  transform: translateY(3px);
-  transition: opacity .15s ease, transform .15s ease;
-}
+        <div class="cta-row" style="margin-top:14px;">
+          <a class="btn btn-primary" href="energy-solutions.html">Energy &amp; resilience</a>
+          <a class="btn btn-secondary" href="regulated-food.html">Regulated food</a>
+          <a class="btn btn-outline" href="governance-risk.html">Governance &amp; risk</a>
+        </div>
+      </article>
 
-nav[aria-label] a:hover,
-nav.top-nav a:hover{
-  text-decoration:none;
-  background: rgba(139,92,246,0.08);
-  border-color: rgba(139,92,246,0.45);
-}
+      <article class="panel accent-blue">
+        <h3>A different way of seeing risk</h3>
+        <ul>
+          <li>Failure modes identified early</li>
+          <li>Constructive challenge, not obstacle-finding</li>
+          <li>Decisions that survive audit and leadership change</li>
+        </ul>
+      </article>
+    </section>
 
-nav[aria-label] a:hover::after,
-nav.top-nav a:hover::after{
-  opacity:1;
-  transform: translateY(0);
-}
+    <!-- ABOUT / WHO WE SUPPORT -->
+    <section class="grid" id="who">
+      <article class="panel accent-yellow">
+        <h3>About the organizations we support</h3>
+        <ul>
+          <li>Provincial ministries and agencies</li>
+          <li>Public institutions: schools, universities, hospitals</li>
+          <li>Portfolio owners and operators of critical infrastructure</li>
+          <li>Regulated food and advanced manufacturing</li>
+        </ul>
+      </article>
 
-/* =========================================================
-   HERO — CORPORATE-COLOUR FRAME
-   ========================================================= */
-.hero{
-  margin-top:26px;
-  padding:34px 30px;
-  border-radius:var(--radius);
-  position:relative;
-  display:grid;
-  grid-template-columns: 1.25fr 0.9fr;
-  gap:26px;
+      <article class="panel accent-green">
+        <h3>How we engage</h3>
+        <p>
+          Independent, accountable, and outcome-focused — with specialist partners when needed,
+          while maintaining independence and governance clarity.
+        </p>
+      </article>
+    </section>
 
-  background:
-    radial-gradient(circle at 6% -10%, rgba(250,204,21,0.32), transparent 55%),
-    radial-gradient(circle at 110% 0%, rgba(99,230,226,0.30), transparent 55%),
-    linear-gradient(135deg, #eef2ff 0%, #e0f2fe 55%, #f9fafb 100%);
-  border:2px solid rgba(139,92,246,0.7);
-  box-shadow: var(--shadow);
-}
+    <!-- RESOURCES -->
+    <section class="resources" id="resources">
+      <div class="resources-header">
+        <h2>Energy &amp; infrastructure resources</h2>
+        <span style="font-size:13px; color:var(--muted2);">
+          A curated starting point for Ontario and Canada
+        </span>
+      </div>
 
-/* Thick gradient top + gunmetal side */
-.hero::before{
-  content:"";
-  position:absolute;
-  top:0; left:0; right:0;
-  height: var(--accent-thick);
-  background: linear-gradient(90deg, var(--purple), var(--cyan));
-}
-.hero::after{
-  content:"";
-  position:absolute;
-  top:0; left:0;
-  width: var(--accent-thick);
-  height:100%;
-  background: var(--gunmetal);
-}
+      <div class="resource-grid">
+        <article class="resource-item">
+          <span class="tag">Ontario system operator</span>
+          <a href="https://www.ieso.ca/" target="_blank" rel="noopener">Independent Electricity System Operator</a>
+          <p>Planning, market operations, and incentive programs.</p>
+        </article>
 
-.hero-content{
-  position:relative;
-  z-index:1;
-}
+        <article class="resource-item">
+          <span class="tag">Regulator</span>
+          <a href="https://www.oeb.ca/" target="_blank" rel="noopener">Ontario Energy Board</a>
+          <p>Electricity and natural gas regulation.</p>
+        </article>
 
-h1{
-  margin:0 0 12px;
-  font-size:clamp(36px,3.2vw,44px); /* within your 36–44px guidance */
-  color:#0f172a;
-}
-.subhead{
-  margin:0 0 12px;
-  color:var(--muted);
-  font-size:16px;
-}
-.trust{
-  margin:0 0 18px;
-  color:var(--muted2);
-  font-size:15px;
-}
+        <article class="resource-item">
+          <span class="tag">Incentives</span>
+          <a href="https://www.saveonenergy.ca/" target="_blank" rel="noopener">Save on Energy</a>
+          <p>Ontario efficiency incentives.</p>
+        </article>
+      </div>
+    </section>
 
-.cta-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-}
+    <!-- FOOTER WITH SOCIALS -->
+    <footer class="footer">
+      <div class="footer-left">
+        <span>© <span id="year"></span> Joly Solutions</span>
+        <span>•</span>
+        <a href="mailto:marcantoinejpjoly@gmail.com">marcantoinejpjoly@gmail.com</a>
+      </div>
 
-/* =========================================================
-   CONTACT CARD — PURPLE/CYAN POP
-   ========================================================= */
-.contact-card{
-  position:relative;
-  z-index:1;
-  border-radius:var(--radius);
-  padding:24px 20px 20px;
+      <div class="footer-right">
+        <span>Connect:</span>
+        <a href="https://www.linkedin.com/in/energyjoly17/" target="_blank" rel="noopener">
+          LinkedIn
+        </a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener">
+          Instagram
+        </a>
+      </div>
+    </footer>
+  </main>
 
-  background:
-    linear-gradient(135deg, rgba(99,230,226,0.35), rgba(139,92,246,0.25)),
-    #f9fafb;
-  border:2px solid rgba(139,92,246,0.95);
-  box-shadow:0 16px 40px rgba(15,23,42,0.35);
-}
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
-/* yellow label tab */
-.contact-card::before{
-  content:"Contact";
-  position:absolute;
-  top:-16px;
-  left:18px;
-  padding:4px 10px;
-  background:var(--yellow);
-  color:#3b2f00;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:700;
-  box-shadow:0 6px 16px rgba(15,23,42,0.30);
-}
 
-.contact-card h2{
-  margin:4px 0 10px;
-  font-size:20px;
-  color:#020617;
-}
-
-.kv{
-  display:grid;
-  grid-template-columns: 95px 1fr;
-  gap:10px 14px;
-  align-items:flex-start;
-  font-size:14px;
-}
-.k{
-  color:#0f172a;
-  text-align:right;
-  padding-top:2px;
-}
-.v{
-  color:#020617;
-  word-break:break-word;
-}
-
-.vStack{
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-}
-
-.contact-pill{
-  margin-top:12px;
-  display:inline-flex;
-  align-items:center;
-  padding:6px 10px;
-  border-radius:999px;
-  background:rgba(99,230,226,0.12);
-  border:1px solid rgba(99,230,226,0.9);
-  font-size:12px;
-  color:#0f172a;
-}
-
-.contact-cta-row{
-  margin-top:14px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:14px 18px;
-  border-radius:14px;
-  font-size:15px;
-  font-weight:800;
-  border:2px solid transparent;
-  cursor:pointer;
-  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
-}
-.btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 26px rgba(15,23,42,0.20);
-  text-decoration:none;
-}
-
-.btn-primary{
-  background:var(--purple);
-  color:#ffffff;
-  border-color:rgba(139,92,246,0.95);
-}
-.btn-secondary{
-  background:var(--cyan);
-  color:#020617;
-  border-color:rgba(99,230,226,0.95);
-}
-.btn-outline{
-  background:#ffffff;
-  color:#0f172a;
-  border-color:rgba(15,23,42,0.35);
-}
-
-/* =========================================================
-   PANELS / GRID (INDEX + SUB-PAGES)
-   ========================================================= */
-section{ margin-top:26px; }
-
-.full-panel{
-  border-radius:var(--radius);
-  background:#ffffff;
-  border:1px solid var(--border);
-  box-shadow:0 10px 28px rgba(15,23,42,0.10);
-  padding:22px;
-  position:relative;
-}
-
-/* coloured top stripes for full panels using corporate colours */
-.full-panel.accent-blue::before,
-.full-panel.accent-green::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height: var(--accent-medium);
-}
-.full-panel.accent-blue::before{
-  background: linear-gradient(90deg, var(--purple), var(--cyan));
-}
-.full-panel.accent-green::before{
-  background: var(--gunmetal);
-}
-
-.full-panel h2{
-  margin:8px 0 10px;
-  font-size:26px;
-}
-.full-panel p{
-  margin:0;
-  color:var(--muted);
-  font-size:16px;
-}
-
-/* shared grid layout */
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-  margin-top:18px;
-}
-
-/* smaller panels (used on index + subpages) */
-.panel{
-  padding:20px;
-  border-radius:var(--radius);
-  background:#ffffff;
-  border:1px solid var(--border);
-  box-shadow:0 8px 24px rgba(15,23,42,0.10);
-  position:relative;
-}
-
-/* tinted banners using corporate colours */
-.panel.accent-blue{
-  background: linear-gradient(180deg, rgba(139,92,246,0.08), #ffffff 60%);
-}
-.panel.accent-green{
-  background: linear-gradient(180deg, rgba(99,230,226,0.10), #ffffff 60%);
-}
-.panel.accent-yellow{
-  background: linear-gradient(180deg, rgba(250,204,21,0.12), #ffffff 60%);
-}
-
-/* top stripes */
-.panel.accent-blue::before,
-.panel.accent-green::before,
-.panel.accent-yellow::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height: var(--accent-medium);
-}
-.panel.accent-blue::before{
-  background: linear-gradient(90deg, var(--purple), var(--cyan));
-}
-.panel.accent-green::before{
-  background: var(--gunmetal);
-}
-.panel.accent-yellow::before{
-  background: var(--yellow);
-}
-
-.panel h3{
-  margin:12px 0 10px;
-  font-size:22px;
-  color:#0f172a;
-}
-.panel p,
-.panel li{
-  color:var(--muted);
-  font-size:15px;
-}
-
-/* lists */
-ul{
-  margin:10px 0 0 18px;
-  padding:0;
-}
-li{ margin:6px 0; }
-
-/* clickable headings/links inside panels */
-.panel a{
-  text-decoration:none;
-}
-.panel a:hover{
-  text-decoration:underline;
-  text-underline-offset:3px;
-}
-
-/* =========================================================
-   RESOURCES SECTION (INDEX)
-   ========================================================= */
-.resources{
-  border-radius:var(--radius);
-  background:#ffffff;
-  border:2px solid var(--yellow);
-  box-shadow:0 12px 34px rgba(15,23,42,0.18);
-  padding:24px 20px 20px;
-  position:relative;
-}
-
-.resources::before{
-  content:"Resources";
-  position:absolute;
-  top:-16px;
-  left:18px;
-  padding:4px 10px;
-  background:var(--yellow);
-  color:#3b2f00;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:700;
-  box-shadow:0 6px 16px rgba(15,23,42,0.30);
-}
-
-.resources-header{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  align-items:center;
-  justify-content:space-between;
-}
-.resources-header h2{
-  margin:8px 0;
-  font-size:22px;
-}
-
-.resource-grid{
-  margin-top:14px;
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:12px;
-}
-
-.resource-item{
-  border-radius:16px;
-  border:1px solid rgba(148,163,184,0.8);
-  background:#f8fafc;
-  padding:14px;
-}
-.resource-item .tag{
-  display:inline-block;
-  font-size:11px;
-  padding:3px 8px;
-  border-radius:999px;
-  background:#e0f2fe;
-  color:#0f172a;
-  margin-bottom:6px;
-}
-.resource-item a{
-  display:block;
-  font-weight:800;
-  margin-bottom:4px;
-  color:var(--purple);
-}
-.resource-item p{
-  margin:0;
-  font-size:13px;
-  color:var(--muted2);
-}
-
-/* =========================================================
-   FOOTER — with socials at the bottom
-   ========================================================= */
-.footer{
-  margin-top:30px;
-  padding-top:18px;
-  border-top:1px solid rgba(148,163,184,0.9);
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  align-items:center;
-  justify-content:space-between;
-  font-size:13px;
-  color:var(--muted2);
-}
-
-.footer-left{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  align-items:center;
-}
-
-.footer-right{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  align-items:center;
-}
-
-.footer-right a{
-  font-weight:600;
-  font-size:14px;
-}
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-@media(max-width: 980px){
-  .hero{
-    grid-template-columns:1fr;
-  }
-  nav[aria-label],
-  nav.top-nav{
-    display:none;
-  }
-  .grid{
-    grid-template-columns:1fr;
-  }
-  .resource-grid{
-    grid-template-columns:1fr;
-  }
-  :root{
-    --brandNameSize:36px;
-    --logoSize: 120px;
-  }
-}
