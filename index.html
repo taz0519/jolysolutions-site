@@ -66,11 +66,24 @@
       font-weight: 500;
     }
 
-    /* Main page H1 in the 36–44px band for desktop, responsive on smaller screens */
+    /* Main page H1 */
     h1{
       margin: 14px 0 10px;
-      font-size: clamp(36px, 3.4vw, 44px);
+      font-size: clamp(44px, 3.8vw, 48px);
       letter-spacing: -0.4px;
+      line-height: 1.2;
+    }
+
+    /* Heading hierarchy: h1 > h2 > h3 (per request, h3 = 36px) */
+    h2{
+      margin: 16px 0 10px;
+      font-size: 40px;
+      line-height: 1.2;
+    }
+
+    h3{
+      margin: 12px 0 8px;
+      font-size: 36px;
       line-height: 1.2;
     }
 
@@ -198,10 +211,16 @@
       overflow:hidden;
     }
 
+    /* Subheader & body text in hero – consistent sizing and full use of panel width */
     .subhead{
-      font-size: 24px;
+      font-size: 20px;
       color: var(--muted);
-      max-width: 70ch;
+      margin: 0 0 12px;
+    }
+
+    .hero p{
+      font-size: 20px;
+      color: var(--muted);
       margin: 0 0 12px;
     }
 
@@ -262,7 +281,7 @@
       box-shadow: 0 12px 32px rgba(0,0,0,0.45);
     }
 
-    /* Colour helpers (no gradients) */
+    /* Colour helpers */
     .tile-blue{
       border-color: var(--blue);
       background-color: rgba(31,111,235,0.18);
@@ -271,21 +290,21 @@
       border-color: var(--green);
       background-color: rgba(43,191,106,0.20);
     }
+    /* Muted yellow for readability */
     .tile-yellow{
       border-color: var(--yellow);
-      background-color: var(--yellow);
-      color: #111827;
+      background-color: rgba(247,201,72,0.18);
+      color: var(--text);
     }
     .tile-yellow p,
     .tile-yellow li,
     .tile-yellow a{
-      color: #111827;
+      color: var(--muted);
     }
 
     .full h3,
     .panel h3{
-      margin: 0 0 8px;
-      font-size: 24px;
+      font-size: 36px;   /* ensure panels use the requested h3 size */
     }
     .full p,
     .panel p{
@@ -314,6 +333,20 @@
       grid-template-columns: 1fr 1fr;
       gap: 16px;
       margin-top: 10px;
+    }
+
+    /* Shared icon row layout – text left, icon pushed to right */
+    .icon-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+      margin-top:2px;
+    }
+    .icon-right{
+      flex:0 0 auto;
+      margin-left:auto;
+      text-align:right;
     }
 
     /* Contact tile layout – simple key/value grid */
@@ -440,20 +473,20 @@
 
 
     <!-- ===========================
-         CORE CAPABILITIES (MOVED UP)
+         CORE CAPABILITIES
          - Immediately follows the main tile.
          - Uses the logo icons to anchor each stream.
          =========================== -->
     <section class="panel" id="capabilities">
-      <h3>Core Capabilities - Contact to Discuss</h1>
+      <h2>Core Capabilities - Contact to Discuss</h2> <!-- ** - FIXED ERROR - ** corrected heading level and closing tag to match request -->
 
       <div class="two-col">
         <!-- Energy & resilience -->
         <div class="panel tile-green">
-          <h3>Energy solutions and resilience planning</h2>
-          <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:2px;">
+          <h3>Energy solutions and resilience planning</h3> <!-- ** - FIXED ERROR - ** corrected closing tag from </h2> to </h3> -->
+          <div class="icon-row">
             <!-- lightning logo block -->
-            <div style="flex:0 0 auto;">
+            <div class="icon-right">
               <img src="lightning.png" alt="lightning" style="height:90px; width:auto; display:block;">
             </div>
             <p>
@@ -465,10 +498,10 @@
 
         <!-- Regulated food & production -->
         <div class="panel tile-blue">
-          <h3>Regulated food and critical production environments</h2>
-          <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:2px;">
+          <h3>Regulated food and critical production environments</h3> <!-- ** - FIXED ERROR - ** corrected closing tag from </h2> to </h3> -->
+          <div class="icon-row">
             <!-- leaf logo block -->
-            <div style="flex:0 0 auto;">
+            <div class="icon-right">
               <img src="leaf.png" alt="leaf" style="height:90px; width:auto; display:block;">
             </div>
             <p>
@@ -478,14 +511,13 @@
           </div>
         </div>
       </div>
-      <!-- ** - FIXED ERROR - ** ensured inner flex containers and panels are properly closed to avoid layout issues -->
 
       <!-- Governance / board-facing advisory -->
       <div style="margin-top:14px;" class="panel">
-        <h3>Governance, board oversight, opportunities and enterprise risk</h2>
-        <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:2px;">
+        <h3>Governance, board oversight, opportunities and enterprise risk</h3> <!-- ** - FIXED ERROR - ** corrected closing tag from </h2> to </h3> -->
+        <div class="icon-row">
           <!-- gear logo block -->
-          <div style="flex:0 0 auto;">
+          <div class="icon-right">
             <img src="gear.png" alt="gear" style="height:90px; width:auto; display:block;">
           </div>
           <p>
@@ -494,10 +526,11 @@
           </p>
         </div>
       </div>
-      <!-- ** - FIXED ERROR - ** closed green panel layout container -->
     </section>
 
-
+    <!-- ===========================
+         OECA – MUTED YELLOW WRAP
+         =========================== -->
     <section class="wrap tile-yellow" id="oeca">
       <h3>Ontario Energy Collaborative Association (OECA) - UPCOMING EVENT - ONTARIO ENERGY SYMPOSIUM</h3>
 
@@ -570,7 +603,6 @@
           Specific project details can be shared after NDA.
         </p>
       </div>
-      <!-- ** - FIXED ERROR - ** ensured both services panels close properly -->
     </section>
 
     <!-- ===========================
@@ -666,5 +698,3 @@
   </script>
 </body>
 </html>
-
-
