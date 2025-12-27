@@ -638,6 +638,17 @@ li{ margin:4px 0; }
   font-weight:600;
   font-size:14px;
 }
+/* Icons anchored in the top-right of tiles */
+.tile-with-icon{
+  position: relative;
+  padding-right: 120px;  /* space so text doesn't run under the icon */
+}
+
+.tile-with-icon .tile-icon{
+  position: absolute;
+  top: 20px;
+  right: 24px;
+}
 
 /* =========================================================
    RESPONSIVE (TABLET / MOBILE)
@@ -664,4 +675,5 @@ li{ margin:4px 0; }
     --logoSize: 120px;
   }
 }
+
 
