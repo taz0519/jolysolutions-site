@@ -10,7 +10,7 @@
     FONT SETUP
     - Headings: Roboto (Medium)
     - Body:    Open Sans (Regular)
-    - These match your “Data-Driven & Clean” preference.
+    - These match a data-driven, clean aesthetic.
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,17 +19,19 @@
   <style>
     /* ===========================
        THEME VARIABLES
+       - Central place to adjust colours, radii, shadows, etc.
+       - Body, tiles, and buttons all pull from these values.
        =========================== */
     :root{
-      --bg: #020617;                 /* background */
-      --panel: rgba(15,23,42,0.96);  /* dark panels */
+      --bg: #020617;                 /* page background */
+      --panel: rgba(15,23,42,0.96);  /* hero & panel background */
       --panelAlt: rgba(15,23,42,0.90);
       --border: rgba(148,163,184,0.55);
-      --text: #f9fafb;
-      --muted: #e5e7eb;
-      --muted2: #9ca3af;
+      --text: #f9fafb;               /* primary text colour */
+      --muted: #e5e7eb;              /* tile/body muted text */
+      --muted2: #9ca3af;             /* captions, labels, nav */
 
-      /* Solid accent colours */
+      /* Solid accent colours used for tiles and primary CTA */
       --blue:   #1f6feb;
       --yellow: #f7c948;
       --green:  #2bbf6a;
@@ -40,6 +42,7 @@
 
     /* ===========================
        GLOBAL & TYPOGRAPHY
+       - Base font, layout, background gradients.
        =========================== */
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
@@ -63,7 +66,7 @@
       font-weight: 500;
     }
 
-    /* H1 within the 36–44px band */
+    /* Main page H1 in the 36–44px band for desktop, responsive on smaller screens */
     h1{
       margin: 14px 0 10px;
       font-size: clamp(36px, 3.4vw, 44px);
@@ -80,7 +83,7 @@
       text-underline-offset: 3px;
     }
 
-    /* Main wrapper – no max-width so hero can run full-width */
+    /* Main wrapper for content sections (except the full-width hero) */
     .wrap{
       max-width: none;
       margin: 0;
@@ -91,7 +94,7 @@
        HEADER & NAV
        =========================== */
     header{
-      position: sticky;
+      position: sticky;  /* keeps header visible on scroll */
       top:0;
       z-index:10;
       backdrop-filter: blur(12px);
@@ -117,7 +120,7 @@
       min-width: 260px;
     }
 
-    /* Logo – plain image, 220px wide as requested */
+    /* Logo container – change width here to scale logo (image keeps aspect ratio) */
     .logo{
       width:260px;
       height:auto;
@@ -137,10 +140,17 @@
       justify-content:center;
       line-height:1.1;
     }
+
+    /* ======================================
+       COMPANY NAME FONT SIZE (HEADER TEXT)
+       - "Joly Solutions" text in the header.
+       - Adjust clamp(...) below to change name size.
+       ====================================== */
     .brand-title strong{
-      font-size: clamp(26px, 2.4vw, 32px);
+      font-size: clamp(56px, 2.4vw, 62px);
       letter-spacing: 0.15px;
     }
+
     .brand-title span{
       font-size: 13px;
       color: var(--muted2);
@@ -173,6 +183,7 @@
 
     /* ===========================
        HERO BANNER (FULL WIDTH)
+       - This block intentionally stretches edge-to-edge.
        =========================== */
     .hero{
       /* Negative margins match .wrap padding so the banner goes edge-to-edge */
@@ -200,7 +211,7 @@
       margin: 0 0 18px;
     }
 
-    /* Single CTA – no duplication with nav labels */
+    /* CTA buttons below the hero copy */
     .cta-row{
       display:flex;
       flex-wrap: wrap;
@@ -235,6 +246,7 @@
 
     /* ===========================
        TILES / PANELS
+       - Reusable styling for content tiles.
        =========================== */
     section{
       margin-top: 22px;
@@ -282,7 +294,7 @@
       color: var(--muted);
     }
 
-    /* Two-column layouts */
+    /* Two-column layouts for mid-page sections */
     .grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -304,7 +316,7 @@
       margin-top: 10px;
     }
 
-    /* Contact tile layout */
+    /* Contact tile layout – simple key/value grid */
     .contact-grid{
       display:flex;
       flex-wrap:wrap;
@@ -320,7 +332,7 @@
       flex:1;
     }
 
-    /* Footer */
+    /* Footer styling */
     .footer{
       margin-top: 26px;
       padding-top: 18px;
@@ -336,6 +348,7 @@
 
     /* ===========================
        RESPONSIVE BEHAVIOUR
+       - Simplifies layout below 980px.
        =========================== */
     @media (max-width: 980px){
       header .inner{
@@ -372,6 +385,7 @@
 <body>
   <!-- ===========================
        HEADER
+       - Contains logo, company name, strapline, and nav.
        =========================== -->
   <header>
     <div class="inner">
@@ -381,12 +395,13 @@
           <img src="logo.png" alt="Joly Solutions logo">
         </div>
         <div class="brand-title">
+          <!-- The font size for "Joly Solutions" is controlled in .brand-title strong in the CSS above -->
           <strong>Joly Solutions</strong>
           <span>Independent engineering and operational advisory</span>
         </div>
       </div>
 
-      <!-- Hero nav headings: Services / Projects / About / Contact -->
+      <!-- Header nav headings: Services / Projects / About / Contact -->
       <nav aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#projects">Projects</a>
@@ -398,6 +413,7 @@
 
   <!-- ===========================
        MAIN
+       - All primary page content.
        =========================== -->
   <main class="wrap">
     <!-- HERO (full width) -->
@@ -413,9 +429,12 @@
         Joly Solutions provides independent engineering and operational advisory for assets and programs that cannot fail
         quietly – where downtime, non-compliance, or platform failure carries disproportionate consequence.
       </p>
+      <!-- ** - FIXED ERROR - ** added missing <p> tags and removed stray closing tags so hero copy renders correctly -->
+      <p>
         Work focuses on energy, metering, and infrastructure programs that must balance capital limits, regulatory
         expectations, and real operating constraints.
       </p>
+      <p>
         We help leaders test assumptions, structure options, and make decisions that stand up to audit, scrutiny,
         and long-term operation.
       </p>
@@ -430,6 +449,7 @@
     <!-- ===========================
          CORE CAPABILITIES (MOVED UP)
          - Immediately follows the main tile.
+         - Uses the logo icons to anchor each stream.
          =========================== -->
     <section class="wrap" id="capabilities">
       <h3>Core Capabilities - Contact to Discuss</h3>
@@ -439,50 +459,55 @@
         <div class="panel tile-yellow">
           <h3>Energy solutions and resilience planning</h3>
           <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:2px;">
-             <!-- lightning logo block -->
-          <div style="flex:0 0 auto;">
-          <img src="lightning.png" alt="lightning" style="height:90px; width:auto; display:block;">
+            <!-- lightning logo block -->
+            <div style="flex:0 0 auto;">
+              <img src="lightning.png" alt="lightning" style="height:90px; width:auto; display:block;">
+            </div>
+            <p>
+              Unique or portfolio-scale strategy and program renewal, including evolution of legacy energy platforms, capital-aware
+              transition pathways, and integration with asset management and continuity planning. Practical 3rd and 4th wave energy conservation and operational efficiency practices that have been proven. 
+            </p>
           </div>
-          <p>
-            Unique or portfolio-scale strategy and program renewal, including evolution of legacy energy platforms, capital-aware
-            transition pathways, and integration with asset management and continuity planning. Practical 3rd and 4th wave energy conservation and operational efficiency practices that have been proven. 
-          </p>
         </div>
 
         <!-- Regulated food & production -->
         <div class="panel tile-blue">
           <h3>Regulated food and critical production environments</h3>
           <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:2px;">
-             <!-- leaf logo block -->
-          <div style="flex:0 0 auto;">
-          <img src="leaf.png" alt="leaf" style="height:90px; width:auto; display:block;">
+            <!-- leaf logo block -->
+            <div style="flex:0 0 auto;">
+              <img src="leaf.png" alt="leaf" style="height:90px; width:auto; display:block;">
+            </div>
+            <p>
+              Engineering and operational advisory for facilities where downtime, contamination, or non-compliance carry
+              outsized risk, aligning production reality, biosecurity, and energy reliability.
+            </p>
           </div>
-          <p>
-            Engineering and operational advisory for facilities where downtime, contamination, or non-compliance carry
-            outsized risk, aligning production reality, biosecurity, and energy reliability.
-          </p>
         </div>
       </div>
+      <!-- ** - FIXED ERROR - ** ensured inner flex containers and panels are properly closed to avoid layout issues -->
 
       <!-- Governance / board-facing advisory -->
       <div style="margin-top:14px;" class="panel tile-green">
         <h3>Governance, board oversight, opportunities and enterprise risk</h3>
         <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:2px;">
-             <!-- gear logo block -->
+          <!-- gear logo block -->
           <div style="flex:0 0 auto;">
-          <img src="gear.png" alt="gear" style="height:90px; width:auto; display:block;">
+            <img src="gear.png" alt="gear" style="height:90px; width:auto; display:block;">
           </div>
-        <p>
-          Independent technical review, risk or governance process for Boards and Executives, including risk assessments, business continuity
-          planning, and assurance frameworks aligned with ISO and sector guidance.
-        </p>
+          <p>
+            Independent technical review, risk or governance process for Boards and Executives, including risk assessments, business continuity
+            planning, and assurance frameworks aligned with ISO and sector guidance.
+          </p>
+        </div>
       </div>
+      <!-- ** - FIXED ERROR - ** closed green panel layout container -->
     </section>
 
     <!-- ===========================
          OECA TILE (HIGHLY VISIBLE, YELLOW)
          - Uses OECA logo and stronger call-out.
-         - Make sure an image called "oeca-logo.png" is in the same folder.
+         - Requires an image file "oeca-logo.png" beside this HTML.
          =========================== -->
     <section class="wrap" id="oeca">
       <h3>Ontario Energy Collaborative Association (OECA) - UPCOMING EVENT - ONTARIO ENERGY SYMPOSIUM</h3>
@@ -512,6 +537,7 @@
 
     <!-- ===========================
          SERVICES (2-COLUMN)
+         - Left: services; right: typical project types.
          =========================== -->
     <section class="grid" id="services">
       <!-- Services overview -->
@@ -520,13 +546,15 @@
         <p>
           Portfolio-scale energy, infrastructure, and resilience advisory – vendor-agnostic and grounded in operating reality.
         </p>
+        <!-- ** - FIXED ERROR - ** closed first <ul> correctly and moved paragraphs out of list -->
         <ul>
           <li>Energy program reset and legacy platform replacement</li>
           <li>Infrastructure resilience and continuity planning</li>
           <li>Capital-aware roadmaps and options analysis</li>
           <li>Procurement-ready technical architectures and requirements</li>
+        </ul>
         <p>
-        Our advisory work approach takes the time to integrate engineering, operations, and governance rather than treating them separately.
+          Our advisory work approach takes the time to integrate engineering, operations, and governance rather than treating them separately.
         </p>
         <ul>
           <li>Surface critical dependencies and failure modes early</li>
@@ -535,25 +563,25 @@
           <li>Design solutions that survive audit, implementation, and turnover</li>
         </ul>
       </div>
-        </ul>
-      </div>
 
-      <!-- How risk is framed -->
+      <!-- How risk is framed / example project types -->
       <div class="panel tile-blue">
-      <h3>Types of Projects</h3>
-      <p>
-        Typical engagements involve complex programs and portfolios where decisions affect production, continuity,
-        and governance, for example:
-      </p>
-      <ul>
-        <li>Program resets for metering, monitoring, and energy data platforms</li>
-        <li>Resilience and continuity planning for production facilities</li>
-        <li>Aligning deferred maintenance backlog with actual capital resources/reserves, creating long term plans</li>
-        <li>Portfolio-level prioritization under capital and staffing constraints</li>
-      </ul>
-      <p style="margin-top:8px;">
-        Specific project details can be shared after NDA.
-      </p>
+        <h3>Types of Projects</h3>
+        <p>
+          Typical engagements involve complex programs and portfolios where decisions affect production, continuity,
+          and governance, for example:
+        </p>
+        <ul>
+          <li>Program resets for metering, monitoring, and energy data platforms</li>
+          <li>Resilience and continuity planning for production facilities</li>
+          <li>Aligning deferred maintenance backlog with actual capital resources/reserves, creating long term plans</li>
+          <li>Portfolio-level prioritization under capital and staffing constraints</li>
+        </ul>
+        <p style="margin-top:8px;">
+          Specific project details can be shared after NDA.
+        </p>
+      </div>
+      <!-- ** - FIXED ERROR - ** ensured both services panels close properly -->
     </section>
 
     <!-- ===========================
@@ -586,6 +614,7 @@
 
     <!-- ===========================
          CONTACT (BOTTOM)
+         - Simple card with key details and CTA.
          =========================== -->
     <section class="card tile-blue" id="contact">
       <h3>Contact Us</h3>
@@ -599,7 +628,8 @@
           <a href="mailto:marcantoinejpjoly@gmail.com">marcantoinejpjoly@gmail.com</a>
         </div>
 
-        </p>
+        <!-- ** - FIXED ERROR - ** removed stray </p> that broke contact layout -->
+
         <div class="contact-label">Mobile</div>
         <div class="contact-value">
           <a href="tel:+16132194375">+1 (613) 219-4375</a>
@@ -617,19 +647,22 @@
       </div>
 
       <div class="cta-row" style="margin-top:14px;">
+        <!-- ** - FIXED ERROR - ** closed <a> tag so button is clickable and valid HTML -->
         <a class="btn primary" href="mailto:marcantoinejpjoly@gmail.com?subject=Joly%20Solutions%20%7C%20Consultation%20Request">
           Schedule a consult
+        </a>
       </div>
     </section>
 
     <!-- ===========================
          FOOTER
+         - Copyright + back-to-top + email.
          =========================== -->
     <footer class="footer">
       <div>© <span id="year"></span> Joly Solutions. Independent. Portfolio-minded. Built for consequence.</div>
 
       <div>
-        </a>
+        <!-- ** - FIXED ERROR - ** removed unmatched stray </a> and kept only the Back to top link -->
         <a class="btn" href="#top">Back to top</a>
       </div>
       
@@ -639,8 +672,8 @@
 
   <!-- Dynamic year -->
   <script>
+    // Sets the footer year automatically so you don't have to update it manually
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
